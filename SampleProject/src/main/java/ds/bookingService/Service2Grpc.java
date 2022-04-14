@@ -1,4 +1,4 @@
-package ds.service2;
+package ds.bookingService;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
@@ -30,30 +30,30 @@ public final class Service2Grpc {
   public static final String SERVICE_NAME = "service2.Service2";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<ds.service2.RequestMessage,
-      ds.service2.ResponseMessage> getService2DoMethod;
+  private static volatile io.grpc.MethodDescriptor<ds.bookingService.RequestMessage,
+      ds.bookingService.ResponseMessage> getService2DoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "service2_do",
-      requestType = ds.service2.RequestMessage.class,
-      responseType = ds.service2.ResponseMessage.class,
+      requestType = ds.bookingService.RequestMessage.class,
+      responseType = ds.bookingService.ResponseMessage.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<ds.service2.RequestMessage,
-      ds.service2.ResponseMessage> getService2DoMethod() {
-    io.grpc.MethodDescriptor<ds.service2.RequestMessage, ds.service2.ResponseMessage> getService2DoMethod;
+  public static io.grpc.MethodDescriptor<ds.bookingService.RequestMessage,
+      ds.bookingService.ResponseMessage> getService2DoMethod() {
+    io.grpc.MethodDescriptor<ds.bookingService.RequestMessage, ds.bookingService.ResponseMessage> getService2DoMethod;
     if ((getService2DoMethod = Service2Grpc.getService2DoMethod) == null) {
       synchronized (Service2Grpc.class) {
         if ((getService2DoMethod = Service2Grpc.getService2DoMethod) == null) {
           Service2Grpc.getService2DoMethod = getService2DoMethod = 
-              io.grpc.MethodDescriptor.<ds.service2.RequestMessage, ds.service2.ResponseMessage>newBuilder()
+              io.grpc.MethodDescriptor.<ds.bookingService.RequestMessage, ds.bookingService.ResponseMessage>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "service2.Service2", "service2_do"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.service2.RequestMessage.getDefaultInstance()))
+                  ds.bookingService.RequestMessage.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.service2.ResponseMessage.getDefaultInstance()))
+                  ds.bookingService.ResponseMessage.getDefaultInstance()))
                   .setSchemaDescriptor(new Service2MethodDescriptorSupplier("service2_do"))
                   .build();
           }
@@ -94,8 +94,8 @@ public final class Service2Grpc {
 
     /**
      */
-    public void service2Do(ds.service2.RequestMessage request,
-        io.grpc.stub.StreamObserver<ds.service2.ResponseMessage> responseObserver) {
+    public void service2Do(ds.bookingService.RequestMessage request,
+        io.grpc.stub.StreamObserver<ds.bookingService.ResponseMessage> responseObserver) {
       asyncUnimplementedUnaryCall(getService2DoMethod(), responseObserver);
     }
 
@@ -105,8 +105,8 @@ public final class Service2Grpc {
             getService2DoMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                ds.service2.RequestMessage,
-                ds.service2.ResponseMessage>(
+                ds.bookingService.RequestMessage,
+                ds.bookingService.ResponseMessage>(
                   this, METHODID_SERVICE2_DO)))
           .build();
     }
@@ -135,8 +135,8 @@ public final class Service2Grpc {
 
     /**
      */
-    public void service2Do(ds.service2.RequestMessage request,
-        io.grpc.stub.StreamObserver<ds.service2.ResponseMessage> responseObserver) {
+    public void service2Do(ds.bookingService.RequestMessage request,
+        io.grpc.stub.StreamObserver<ds.bookingService.ResponseMessage> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getService2DoMethod(), getCallOptions()), request, responseObserver);
     }
@@ -165,7 +165,7 @@ public final class Service2Grpc {
 
     /**
      */
-    public ds.service2.ResponseMessage service2Do(ds.service2.RequestMessage request) {
+    public ds.bookingService.ResponseMessage service2Do(ds.bookingService.RequestMessage request) {
       return blockingUnaryCall(
           getChannel(), getService2DoMethod(), getCallOptions(), request);
     }
@@ -194,8 +194,8 @@ public final class Service2Grpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<ds.service2.ResponseMessage> service2Do(
-        ds.service2.RequestMessage request) {
+    public com.google.common.util.concurrent.ListenableFuture<ds.bookingService.ResponseMessage> service2Do(
+        ds.bookingService.RequestMessage request) {
       return futureUnaryCall(
           getChannel().newCall(getService2DoMethod(), getCallOptions()), request);
     }
@@ -221,8 +221,8 @@ public final class Service2Grpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_SERVICE2_DO:
-          serviceImpl.service2Do((ds.service2.RequestMessage) request,
-              (io.grpc.stub.StreamObserver<ds.service2.ResponseMessage>) responseObserver);
+          serviceImpl.service2Do((ds.bookingService.RequestMessage) request,
+              (io.grpc.stub.StreamObserver<ds.bookingService.ResponseMessage>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -246,7 +246,7 @@ public final class Service2Grpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return ds.service2.Service2Impl.getDescriptor();
+      return ds.bookingService.Service2Impl.getDescriptor();
     }
 
     @java.lang.Override

@@ -1,35 +1,35 @@
-package ds.service1;
+package ds.bookingService;
 
 import java.io.IOException;
 
-import ds.service1.Service1Grpc.Service1ImplBase;
+import ds.bookingService.Service2Grpc.Service2ImplBase;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
 
-public class Service1 extends Service1ImplBase{
+public class Service2 extends Service2ImplBase{
 
 
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-		Service1 service1 = new Service1();
+		Service2 service1 = new Service2();
 
-		int port = 50051;
+		int port = 50052;
 
 		Server server = ServerBuilder.forPort(port)
 				.addService(service1)
 				.build()
 				.start();
 
-		System.out.println("Service-1 started, listening on " + port);
+		System.out.println("Service-2 started, listening on " + port);
 
 		server.awaitTermination();
 	}
 
 
 	@Override
-	public void service1Do(RequestMessage request, StreamObserver<ResponseMessage> responseObserver) {
+	public void service2Do(RequestMessage request, StreamObserver<ResponseMessage> responseObserver) {
 
 		//prepare the value to be set back
 		int length = request.getText().length();

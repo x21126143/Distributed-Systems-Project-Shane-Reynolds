@@ -1,4 +1,4 @@
-package ds.client;
+package ds.aClient;
 
 import java.awt.Dimension;
 import java.awt.Insets;
@@ -14,10 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import ds.service1.Service1Grpc;
-import ds.service2.Service2Grpc;
-import ds.service3.Service3Grpc;
-import ds.service4.Service4Grpc;
+import ds.bookingService.Service2Grpc;
+import ds.supportService.Service3Grpc;
+import ds.timetableService.Service1Grpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -196,10 +195,10 @@ public class ControllerGUI implements ActionListener{
 			Service1Grpc.Service1BlockingStub blockingStub = Service1Grpc.newBlockingStub(channel);
 
 			//preparing message to send
-			ds.service1.RequestMessage request = ds.service1.RequestMessage.newBuilder().setText(entry1.getText()).build();
+			ds.timetableService.RequestMessage request = ds.timetableService.RequestMessage.newBuilder().setText(entry1.getText()).build();
 
 			//retreving reply from service
-			ds.service1.ResponseMessage response = blockingStub.service1Do(request);
+			ds.timetableService.ResponseMessage response = blockingStub.service1Do(request);
 
 			reply1.setText( String.valueOf( response.getLength()) );
 		
@@ -214,10 +213,10 @@ public class ControllerGUI implements ActionListener{
 			Service2Grpc.Service2BlockingStub blockingStub = Service2Grpc.newBlockingStub(channel);
 
 			//preparing message to send
-			ds.service2.RequestMessage request = ds.service2.RequestMessage.newBuilder().setText(entry2.getText()).build();
+			ds.bookingService.RequestMessage request = ds.bookingService.RequestMessage.newBuilder().setText(entry2.getText()).build();
 
 			//retreving reply from service
-			ds.service2.ResponseMessage response = blockingStub.service2Do(request);
+			ds.bookingService.ResponseMessage response = blockingStub.service2Do(request);
 
 			reply2.setText( String.valueOf( response.getLength()) );
 			
@@ -232,30 +231,12 @@ public class ControllerGUI implements ActionListener{
 			Service3Grpc.Service3BlockingStub blockingStub = Service3Grpc.newBlockingStub(channel);
 
 			//preparing message to send
-			ds.service3.RequestMessage request = ds.service3.RequestMessage.newBuilder().setText(entry3.getText()).build();
+			ds.supportService.RequestMessage request = ds.supportService.RequestMessage.newBuilder().setText(entry3.getText()).build();
 
 			//retreving reply from service
-			ds.service3.ResponseMessage response = blockingStub.service3Do(request);
+			ds.supportService.ResponseMessage response = blockingStub.service3Do(request);
 
 			reply3.setText( String.valueOf( response.getLength()) );
-		
-		}else if (label.equals("Invoke Service 4")) {
-			System.out.println("service 4 to be invoked ...");
-
-		
-			/*
-			 * 
-			 */
-			ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50054).usePlaintext().build();
-			Service4Grpc.Service4BlockingStub blockingStub = Service4Grpc.newBlockingStub(channel);
-
-			//preparing message to send
-			ds.service4.RequestMessage request = ds.service4.RequestMessage.newBuilder().setText(entry4.getText()).build();
-
-			//retreving reply from service
-			ds.service4.ResponseMessage response = blockingStub.service4Do(request);
-
-			reply4.setText( String.valueOf( response.getLength()) );
 		
 		}else{
 			

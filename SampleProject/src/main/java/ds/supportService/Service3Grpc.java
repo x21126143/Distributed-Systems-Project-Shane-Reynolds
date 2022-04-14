@@ -1,4 +1,4 @@
-package ds.service3;
+package ds.supportService;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
@@ -30,30 +30,30 @@ public final class Service3Grpc {
   public static final String SERVICE_NAME = "service3.Service3";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<ds.service3.RequestMessage,
-      ds.service3.ResponseMessage> getService3DoMethod;
+  private static volatile io.grpc.MethodDescriptor<ds.supportService.RequestMessage,
+      ds.supportService.ResponseMessage> getService3DoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "service3_do",
-      requestType = ds.service3.RequestMessage.class,
-      responseType = ds.service3.ResponseMessage.class,
+      requestType = ds.supportService.RequestMessage.class,
+      responseType = ds.supportService.ResponseMessage.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<ds.service3.RequestMessage,
-      ds.service3.ResponseMessage> getService3DoMethod() {
-    io.grpc.MethodDescriptor<ds.service3.RequestMessage, ds.service3.ResponseMessage> getService3DoMethod;
+  public static io.grpc.MethodDescriptor<ds.supportService.RequestMessage,
+      ds.supportService.ResponseMessage> getService3DoMethod() {
+    io.grpc.MethodDescriptor<ds.supportService.RequestMessage, ds.supportService.ResponseMessage> getService3DoMethod;
     if ((getService3DoMethod = Service3Grpc.getService3DoMethod) == null) {
       synchronized (Service3Grpc.class) {
         if ((getService3DoMethod = Service3Grpc.getService3DoMethod) == null) {
           Service3Grpc.getService3DoMethod = getService3DoMethod = 
-              io.grpc.MethodDescriptor.<ds.service3.RequestMessage, ds.service3.ResponseMessage>newBuilder()
+              io.grpc.MethodDescriptor.<ds.supportService.RequestMessage, ds.supportService.ResponseMessage>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "service3.Service3", "service3_do"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.service3.RequestMessage.getDefaultInstance()))
+                  ds.supportService.RequestMessage.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.service3.ResponseMessage.getDefaultInstance()))
+                  ds.supportService.ResponseMessage.getDefaultInstance()))
                   .setSchemaDescriptor(new Service3MethodDescriptorSupplier("service3_do"))
                   .build();
           }
@@ -94,8 +94,8 @@ public final class Service3Grpc {
 
     /**
      */
-    public void service3Do(ds.service3.RequestMessage request,
-        io.grpc.stub.StreamObserver<ds.service3.ResponseMessage> responseObserver) {
+    public void service3Do(ds.supportService.RequestMessage request,
+        io.grpc.stub.StreamObserver<ds.supportService.ResponseMessage> responseObserver) {
       asyncUnimplementedUnaryCall(getService3DoMethod(), responseObserver);
     }
 
@@ -105,8 +105,8 @@ public final class Service3Grpc {
             getService3DoMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                ds.service3.RequestMessage,
-                ds.service3.ResponseMessage>(
+                ds.supportService.RequestMessage,
+                ds.supportService.ResponseMessage>(
                   this, METHODID_SERVICE3_DO)))
           .build();
     }
@@ -135,8 +135,8 @@ public final class Service3Grpc {
 
     /**
      */
-    public void service3Do(ds.service3.RequestMessage request,
-        io.grpc.stub.StreamObserver<ds.service3.ResponseMessage> responseObserver) {
+    public void service3Do(ds.supportService.RequestMessage request,
+        io.grpc.stub.StreamObserver<ds.supportService.ResponseMessage> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getService3DoMethod(), getCallOptions()), request, responseObserver);
     }
@@ -165,7 +165,7 @@ public final class Service3Grpc {
 
     /**
      */
-    public ds.service3.ResponseMessage service3Do(ds.service3.RequestMessage request) {
+    public ds.supportService.ResponseMessage service3Do(ds.supportService.RequestMessage request) {
       return blockingUnaryCall(
           getChannel(), getService3DoMethod(), getCallOptions(), request);
     }
@@ -194,8 +194,8 @@ public final class Service3Grpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<ds.service3.ResponseMessage> service3Do(
-        ds.service3.RequestMessage request) {
+    public com.google.common.util.concurrent.ListenableFuture<ds.supportService.ResponseMessage> service3Do(
+        ds.supportService.RequestMessage request) {
       return futureUnaryCall(
           getChannel().newCall(getService3DoMethod(), getCallOptions()), request);
     }
@@ -221,8 +221,8 @@ public final class Service3Grpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_SERVICE3_DO:
-          serviceImpl.service3Do((ds.service3.RequestMessage) request,
-              (io.grpc.stub.StreamObserver<ds.service3.ResponseMessage>) responseObserver);
+          serviceImpl.service3Do((ds.supportService.RequestMessage) request,
+              (io.grpc.stub.StreamObserver<ds.supportService.ResponseMessage>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -246,7 +246,7 @@ public final class Service3Grpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return ds.service3.Service3Impl.getDescriptor();
+      return ds.supportService.Service3Impl.getDescriptor();
     }
 
     @java.lang.Override

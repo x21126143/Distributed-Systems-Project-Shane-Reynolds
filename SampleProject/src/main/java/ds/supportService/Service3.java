@@ -1,35 +1,35 @@
-package ds.service4;
+package ds.supportService;
 
 import java.io.IOException;
 
-import ds.service4.Service4Grpc.Service4ImplBase;
+import ds.supportService.Service3Grpc.Service3ImplBase;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
 
-public class Service4 extends Service4ImplBase{
+public class Service3 extends Service3ImplBase{
 
 
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-		Service4 service1 = new Service4();
+		Service3 service1 = new Service3();
 
-		int port = 50054;
+		int port = 50053;
 
 		Server server = ServerBuilder.forPort(port)
 				.addService(service1)
 				.build()
 				.start();
 
-		System.out.println("Service-4 started, listening on " + port);
+		System.out.println("Service-3 started, listening on " + port);
 
 		server.awaitTermination();
 	}
 
 
 	@Override
-	public void service4Do(RequestMessage request, StreamObserver<ResponseMessage> responseObserver) {
+	public void service3Do(RequestMessage request, StreamObserver<ResponseMessage> responseObserver) {
 
 		//prepare the value to be set back
 		int length = request.getText().length();

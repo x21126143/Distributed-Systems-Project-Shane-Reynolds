@@ -1,4 +1,4 @@
-package ds.service1;
+package ds.timetableService;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
@@ -30,30 +30,30 @@ public final class Service1Grpc {
   public static final String SERVICE_NAME = "service1.Service1";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<ds.service1.RequestMessage,
-      ds.service1.ResponseMessage> getService1DoMethod;
+  private static volatile io.grpc.MethodDescriptor<ds.timetableService.RequestMessage,
+      ds.timetableService.ResponseMessage> getService1DoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "service1_do",
-      requestType = ds.service1.RequestMessage.class,
-      responseType = ds.service1.ResponseMessage.class,
+      requestType = ds.timetableService.RequestMessage.class,
+      responseType = ds.timetableService.ResponseMessage.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<ds.service1.RequestMessage,
-      ds.service1.ResponseMessage> getService1DoMethod() {
-    io.grpc.MethodDescriptor<ds.service1.RequestMessage, ds.service1.ResponseMessage> getService1DoMethod;
+  public static io.grpc.MethodDescriptor<ds.timetableService.RequestMessage,
+      ds.timetableService.ResponseMessage> getService1DoMethod() {
+    io.grpc.MethodDescriptor<ds.timetableService.RequestMessage, ds.timetableService.ResponseMessage> getService1DoMethod;
     if ((getService1DoMethod = Service1Grpc.getService1DoMethod) == null) {
       synchronized (Service1Grpc.class) {
         if ((getService1DoMethod = Service1Grpc.getService1DoMethod) == null) {
           Service1Grpc.getService1DoMethod = getService1DoMethod = 
-              io.grpc.MethodDescriptor.<ds.service1.RequestMessage, ds.service1.ResponseMessage>newBuilder()
+              io.grpc.MethodDescriptor.<ds.timetableService.RequestMessage, ds.timetableService.ResponseMessage>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "service1.Service1", "service1_do"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.service1.RequestMessage.getDefaultInstance()))
+                  ds.timetableService.RequestMessage.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.service1.ResponseMessage.getDefaultInstance()))
+                  ds.timetableService.ResponseMessage.getDefaultInstance()))
                   .setSchemaDescriptor(new Service1MethodDescriptorSupplier("service1_do"))
                   .build();
           }
@@ -94,8 +94,8 @@ public final class Service1Grpc {
 
     /**
      */
-    public void service1Do(ds.service1.RequestMessage request,
-        io.grpc.stub.StreamObserver<ds.service1.ResponseMessage> responseObserver) {
+    public void service1Do(ds.timetableService.RequestMessage request,
+        io.grpc.stub.StreamObserver<ds.timetableService.ResponseMessage> responseObserver) {
       asyncUnimplementedUnaryCall(getService1DoMethod(), responseObserver);
     }
 
@@ -105,8 +105,8 @@ public final class Service1Grpc {
             getService1DoMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                ds.service1.RequestMessage,
-                ds.service1.ResponseMessage>(
+                ds.timetableService.RequestMessage,
+                ds.timetableService.ResponseMessage>(
                   this, METHODID_SERVICE1_DO)))
           .build();
     }
@@ -135,8 +135,8 @@ public final class Service1Grpc {
 
     /**
      */
-    public void service1Do(ds.service1.RequestMessage request,
-        io.grpc.stub.StreamObserver<ds.service1.ResponseMessage> responseObserver) {
+    public void service1Do(ds.timetableService.RequestMessage request,
+        io.grpc.stub.StreamObserver<ds.timetableService.ResponseMessage> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getService1DoMethod(), getCallOptions()), request, responseObserver);
     }
@@ -165,7 +165,7 @@ public final class Service1Grpc {
 
     /**
      */
-    public ds.service1.ResponseMessage service1Do(ds.service1.RequestMessage request) {
+    public ds.timetableService.ResponseMessage service1Do(ds.timetableService.RequestMessage request) {
       return blockingUnaryCall(
           getChannel(), getService1DoMethod(), getCallOptions(), request);
     }
@@ -194,8 +194,8 @@ public final class Service1Grpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<ds.service1.ResponseMessage> service1Do(
-        ds.service1.RequestMessage request) {
+    public com.google.common.util.concurrent.ListenableFuture<ds.timetableService.ResponseMessage> service1Do(
+        ds.timetableService.RequestMessage request) {
       return futureUnaryCall(
           getChannel().newCall(getService1DoMethod(), getCallOptions()), request);
     }
@@ -221,8 +221,8 @@ public final class Service1Grpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_SERVICE1_DO:
-          serviceImpl.service1Do((ds.service1.RequestMessage) request,
-              (io.grpc.stub.StreamObserver<ds.service1.ResponseMessage>) responseObserver);
+          serviceImpl.service1Do((ds.timetableService.RequestMessage) request,
+              (io.grpc.stub.StreamObserver<ds.timetableService.ResponseMessage>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -246,7 +246,7 @@ public final class Service1Grpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return ds.service1.Service1Impl.getDescriptor();
+      return ds.timetableService.Service1Impl.getDescriptor();
     }
 
     @java.lang.Override
