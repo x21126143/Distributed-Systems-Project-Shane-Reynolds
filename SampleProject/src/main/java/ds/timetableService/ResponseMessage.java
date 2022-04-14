@@ -69,13 +69,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return ds.timetableService.Service1Impl.internal_static_service1_ResponseMessage_descriptor;
+    return ds.timetableService.TimetableServiceImpl.internal_static_service1_ResponseMessage_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return ds.timetableService.Service1Impl.internal_static_service1_ResponseMessage_fieldAccessorTable
+    return ds.timetableService.TimetableServiceImpl.internal_static_service1_ResponseMessage_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             ds.timetableService.ResponseMessage.class, ds.timetableService.ResponseMessage.Builder.class);
   }
@@ -254,13 +254,13 @@ private static final long serialVersionUID = 0L;
       ds.timetableService.ResponseMessageOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ds.timetableService.Service1Impl.internal_static_service1_ResponseMessage_descriptor;
+      return ds.timetableService.TimetableServiceImpl.internal_static_service1_ResponseMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ds.timetableService.Service1Impl.internal_static_service1_ResponseMessage_fieldAccessorTable
+      return ds.timetableService.TimetableServiceImpl.internal_static_service1_ResponseMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               ds.timetableService.ResponseMessage.class, ds.timetableService.ResponseMessage.Builder.class);
     }
@@ -291,7 +291,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return ds.timetableService.Service1Impl.internal_static_service1_ResponseMessage_descriptor;
+      return ds.timetableService.TimetableServiceImpl.internal_static_service1_ResponseMessage_descriptor;
     }
 
     @java.lang.Override

@@ -1,35 +1,35 @@
-package ds.timetableService;
+package ds.bookingService;
 
 import java.io.IOException;
 
-import ds.timetableService.Service1Grpc.Service1ImplBase;
+import ds.bookingService.BookingServiceGrpc.Service2ImplBase;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
 
-public class Service1 extends Service1ImplBase{
+public class BookingService extends Service2ImplBase{
 
 
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-		Service1 service1 = new Service1();
+		BookingService service1 = new BookingService();
 
-		int port = 50051;
+		int port = 50052;
 
 		Server server = ServerBuilder.forPort(port)
 				.addService(service1)
 				.build()
 				.start();
 
-		System.out.println("Service-1 started, listening on " + port);
+		System.out.println("Service-2 started, listening on " + port);
 
 		server.awaitTermination();
 	}
 
 
 	@Override
-	public void service1Do(RequestMessage request, StreamObserver<ResponseMessage> responseObserver) {
+	public void service2Do(RequestMessage request, StreamObserver<ResponseMessage> responseObserver) {
 
 		//prepare the value to be set back
 		int length = request.getText().length();

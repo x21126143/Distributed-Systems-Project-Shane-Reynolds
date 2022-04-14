@@ -14,9 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import ds.bookingService.Service2Grpc;
-import ds.supportService.Service3Grpc;
-import ds.timetableService.Service1Grpc;
+import ds.bookingService.BookingServiceGrpc;
+import ds.supportService.SupportServiceGrpc;
+import ds.timetableService.TimetableServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -192,7 +192,7 @@ public class ControllerGUI implements ActionListener{
 			 * 
 			 */
 			ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
-			Service1Grpc.Service1BlockingStub blockingStub = Service1Grpc.newBlockingStub(channel);
+			TimetableServiceGrpc.Service1BlockingStub blockingStub = TimetableServiceGrpc.newBlockingStub(channel);
 
 			//preparing message to send
 			ds.timetableService.RequestMessage request = ds.timetableService.RequestMessage.newBuilder().setText(entry1.getText()).build();
@@ -210,7 +210,7 @@ public class ControllerGUI implements ActionListener{
 			 * 
 			 */
 			ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();
-			Service2Grpc.Service2BlockingStub blockingStub = Service2Grpc.newBlockingStub(channel);
+			BookingServiceGrpc.Service2BlockingStub blockingStub = BookingServiceGrpc.newBlockingStub(channel);
 
 			//preparing message to send
 			ds.bookingService.RequestMessage request = ds.bookingService.RequestMessage.newBuilder().setText(entry2.getText()).build();
@@ -228,7 +228,7 @@ public class ControllerGUI implements ActionListener{
 			 * 
 			 */
 			ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50053).usePlaintext().build();
-			Service3Grpc.Service3BlockingStub blockingStub = Service3Grpc.newBlockingStub(channel);
+			SupportServiceGrpc.Service3BlockingStub blockingStub = SupportServiceGrpc.newBlockingStub(channel);
 
 			//preparing message to send
 			ds.supportService.RequestMessage request = ds.supportService.RequestMessage.newBuilder().setText(entry3.getText()).build();

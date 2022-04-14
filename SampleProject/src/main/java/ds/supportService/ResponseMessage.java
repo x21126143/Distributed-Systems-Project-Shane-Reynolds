@@ -69,13 +69,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return ds.supportService.Service3Impl.internal_static_service3_ResponseMessage_descriptor;
+    return ds.supportService.SupportServiceImpl.internal_static_service3_ResponseMessage_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return ds.supportService.Service3Impl.internal_static_service3_ResponseMessage_fieldAccessorTable
+    return ds.supportService.SupportServiceImpl.internal_static_service3_ResponseMessage_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             ds.supportService.ResponseMessage.class, ds.supportService.ResponseMessage.Builder.class);
   }
@@ -254,13 +254,13 @@ private static final long serialVersionUID = 0L;
       ds.supportService.ResponseMessageOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ds.supportService.Service3Impl.internal_static_service3_ResponseMessage_descriptor;
+      return ds.supportService.SupportServiceImpl.internal_static_service3_ResponseMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ds.supportService.Service3Impl.internal_static_service3_ResponseMessage_fieldAccessorTable
+      return ds.supportService.SupportServiceImpl.internal_static_service3_ResponseMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               ds.supportService.ResponseMessage.class, ds.supportService.ResponseMessage.Builder.class);
     }
@@ -291,7 +291,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return ds.supportService.Service3Impl.internal_static_service3_ResponseMessage_descriptor;
+      return ds.supportService.SupportServiceImpl.internal_static_service3_ResponseMessage_descriptor;
     }
 
     @java.lang.Override

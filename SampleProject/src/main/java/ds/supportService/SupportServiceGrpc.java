@@ -1,4 +1,4 @@
-package ds.timetableService;
+package ds.supportService;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
@@ -22,67 +22,67 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.15.0)",
-    comments = "Source: service1.proto")
-public final class Service1Grpc {
+    comments = "Source: service3.proto")
+public final class SupportServiceGrpc {
 
-  private Service1Grpc() {}
+  private SupportServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "service1.Service1";
+  public static final String SERVICE_NAME = "service3.Service3";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<ds.timetableService.RequestMessage,
-      ds.timetableService.ResponseMessage> getService1DoMethod;
+  private static volatile io.grpc.MethodDescriptor<ds.supportService.RequestMessage,
+      ds.supportService.ResponseMessage> getService3DoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "service1_do",
-      requestType = ds.timetableService.RequestMessage.class,
-      responseType = ds.timetableService.ResponseMessage.class,
+      fullMethodName = SERVICE_NAME + '/' + "service3_do",
+      requestType = ds.supportService.RequestMessage.class,
+      responseType = ds.supportService.ResponseMessage.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<ds.timetableService.RequestMessage,
-      ds.timetableService.ResponseMessage> getService1DoMethod() {
-    io.grpc.MethodDescriptor<ds.timetableService.RequestMessage, ds.timetableService.ResponseMessage> getService1DoMethod;
-    if ((getService1DoMethod = Service1Grpc.getService1DoMethod) == null) {
-      synchronized (Service1Grpc.class) {
-        if ((getService1DoMethod = Service1Grpc.getService1DoMethod) == null) {
-          Service1Grpc.getService1DoMethod = getService1DoMethod = 
-              io.grpc.MethodDescriptor.<ds.timetableService.RequestMessage, ds.timetableService.ResponseMessage>newBuilder()
+  public static io.grpc.MethodDescriptor<ds.supportService.RequestMessage,
+      ds.supportService.ResponseMessage> getService3DoMethod() {
+    io.grpc.MethodDescriptor<ds.supportService.RequestMessage, ds.supportService.ResponseMessage> getService3DoMethod;
+    if ((getService3DoMethod = SupportServiceGrpc.getService3DoMethod) == null) {
+      synchronized (SupportServiceGrpc.class) {
+        if ((getService3DoMethod = SupportServiceGrpc.getService3DoMethod) == null) {
+          SupportServiceGrpc.getService3DoMethod = getService3DoMethod = 
+              io.grpc.MethodDescriptor.<ds.supportService.RequestMessage, ds.supportService.ResponseMessage>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "service1.Service1", "service1_do"))
+                  "service3.Service3", "service3_do"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.timetableService.RequestMessage.getDefaultInstance()))
+                  ds.supportService.RequestMessage.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.timetableService.ResponseMessage.getDefaultInstance()))
-                  .setSchemaDescriptor(new Service1MethodDescriptorSupplier("service1_do"))
+                  ds.supportService.ResponseMessage.getDefaultInstance()))
+                  .setSchemaDescriptor(new Service3MethodDescriptorSupplier("service3_do"))
                   .build();
           }
         }
      }
-     return getService1DoMethod;
+     return getService3DoMethod;
   }
 
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static Service1Stub newStub(io.grpc.Channel channel) {
-    return new Service1Stub(channel);
+  public static Service3Stub newStub(io.grpc.Channel channel) {
+    return new Service3Stub(channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static Service1BlockingStub newBlockingStub(
+  public static Service3BlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    return new Service1BlockingStub(channel);
+    return new Service3BlockingStub(channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static Service1FutureStub newFutureStub(
+  public static Service3FutureStub newFutureStub(
       io.grpc.Channel channel) {
-    return new Service1FutureStub(channel);
+    return new Service3FutureStub(channel);
   }
 
   /**
@@ -90,24 +90,24 @@ public final class Service1Grpc {
    * Interface exported by the server.
    * </pre>
    */
-  public static abstract class Service1ImplBase implements io.grpc.BindableService {
+  public static abstract class Service3ImplBase implements io.grpc.BindableService {
 
     /**
      */
-    public void service1Do(ds.timetableService.RequestMessage request,
-        io.grpc.stub.StreamObserver<ds.timetableService.ResponseMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getService1DoMethod(), responseObserver);
+    public void service3Do(ds.supportService.RequestMessage request,
+        io.grpc.stub.StreamObserver<ds.supportService.ResponseMessage> responseObserver) {
+      asyncUnimplementedUnaryCall(getService3DoMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getService1DoMethod(),
+            getService3DoMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                ds.timetableService.RequestMessage,
-                ds.timetableService.ResponseMessage>(
-                  this, METHODID_SERVICE1_DO)))
+                ds.supportService.RequestMessage,
+                ds.supportService.ResponseMessage>(
+                  this, METHODID_SERVICE3_DO)))
           .build();
     }
   }
@@ -117,28 +117,28 @@ public final class Service1Grpc {
    * Interface exported by the server.
    * </pre>
    */
-  public static final class Service1Stub extends io.grpc.stub.AbstractStub<Service1Stub> {
-    private Service1Stub(io.grpc.Channel channel) {
+  public static final class Service3Stub extends io.grpc.stub.AbstractStub<Service3Stub> {
+    private Service3Stub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private Service1Stub(io.grpc.Channel channel,
+    private Service3Stub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected Service1Stub build(io.grpc.Channel channel,
+    protected Service3Stub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new Service1Stub(channel, callOptions);
+      return new Service3Stub(channel, callOptions);
     }
 
     /**
      */
-    public void service1Do(ds.timetableService.RequestMessage request,
-        io.grpc.stub.StreamObserver<ds.timetableService.ResponseMessage> responseObserver) {
+    public void service3Do(ds.supportService.RequestMessage request,
+        io.grpc.stub.StreamObserver<ds.supportService.ResponseMessage> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getService1DoMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getService3DoMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -147,27 +147,27 @@ public final class Service1Grpc {
    * Interface exported by the server.
    * </pre>
    */
-  public static final class Service1BlockingStub extends io.grpc.stub.AbstractStub<Service1BlockingStub> {
-    private Service1BlockingStub(io.grpc.Channel channel) {
+  public static final class Service3BlockingStub extends io.grpc.stub.AbstractStub<Service3BlockingStub> {
+    private Service3BlockingStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private Service1BlockingStub(io.grpc.Channel channel,
+    private Service3BlockingStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected Service1BlockingStub build(io.grpc.Channel channel,
+    protected Service3BlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new Service1BlockingStub(channel, callOptions);
+      return new Service3BlockingStub(channel, callOptions);
     }
 
     /**
      */
-    public ds.timetableService.ResponseMessage service1Do(ds.timetableService.RequestMessage request) {
+    public ds.supportService.ResponseMessage service3Do(ds.supportService.RequestMessage request) {
       return blockingUnaryCall(
-          getChannel(), getService1DoMethod(), getCallOptions(), request);
+          getChannel(), getService3DoMethod(), getCallOptions(), request);
     }
   }
 
@@ -176,42 +176,42 @@ public final class Service1Grpc {
    * Interface exported by the server.
    * </pre>
    */
-  public static final class Service1FutureStub extends io.grpc.stub.AbstractStub<Service1FutureStub> {
-    private Service1FutureStub(io.grpc.Channel channel) {
+  public static final class Service3FutureStub extends io.grpc.stub.AbstractStub<Service3FutureStub> {
+    private Service3FutureStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private Service1FutureStub(io.grpc.Channel channel,
+    private Service3FutureStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected Service1FutureStub build(io.grpc.Channel channel,
+    protected Service3FutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new Service1FutureStub(channel, callOptions);
+      return new Service3FutureStub(channel, callOptions);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<ds.timetableService.ResponseMessage> service1Do(
-        ds.timetableService.RequestMessage request) {
+    public com.google.common.util.concurrent.ListenableFuture<ds.supportService.ResponseMessage> service3Do(
+        ds.supportService.RequestMessage request) {
       return futureUnaryCall(
-          getChannel().newCall(getService1DoMethod(), getCallOptions()), request);
+          getChannel().newCall(getService3DoMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_SERVICE1_DO = 0;
+  private static final int METHODID_SERVICE3_DO = 0;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final Service1ImplBase serviceImpl;
+    private final Service3ImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(Service1ImplBase serviceImpl, int methodId) {
+    MethodHandlers(Service3ImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -220,9 +220,9 @@ public final class Service1Grpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_SERVICE1_DO:
-          serviceImpl.service1Do((ds.timetableService.RequestMessage) request,
-              (io.grpc.stub.StreamObserver<ds.timetableService.ResponseMessage>) responseObserver);
+        case METHODID_SERVICE3_DO:
+          serviceImpl.service3Do((ds.supportService.RequestMessage) request,
+              (io.grpc.stub.StreamObserver<ds.supportService.ResponseMessage>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -240,32 +240,32 @@ public final class Service1Grpc {
     }
   }
 
-  private static abstract class Service1BaseDescriptorSupplier
+  private static abstract class Service3BaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    Service1BaseDescriptorSupplier() {}
+    Service3BaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return ds.timetableService.Service1Impl.getDescriptor();
+      return ds.supportService.SupportServiceImpl.getDescriptor();
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("Service1");
+      return getFileDescriptor().findServiceByName("Service3");
     }
   }
 
-  private static final class Service1FileDescriptorSupplier
-      extends Service1BaseDescriptorSupplier {
-    Service1FileDescriptorSupplier() {}
+  private static final class Service3FileDescriptorSupplier
+      extends Service3BaseDescriptorSupplier {
+    Service3FileDescriptorSupplier() {}
   }
 
-  private static final class Service1MethodDescriptorSupplier
-      extends Service1BaseDescriptorSupplier
+  private static final class Service3MethodDescriptorSupplier
+      extends Service3BaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final String methodName;
 
-    Service1MethodDescriptorSupplier(String methodName) {
+    Service3MethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -280,12 +280,12 @@ public final class Service1Grpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (Service1Grpc.class) {
+      synchronized (SupportServiceGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new Service1FileDescriptorSupplier())
-              .addMethod(getService1DoMethod())
+              .setSchemaDescriptor(new Service3FileDescriptorSupplier())
+              .addMethod(getService3DoMethod())
               .build();
         }
       }

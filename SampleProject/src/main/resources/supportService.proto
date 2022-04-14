@@ -1,15 +1,15 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "ds.service4";
-option java_outer_classname = "Service4Impl";
+option java_package = "ds.service3";
+option java_outer_classname = "Service3Impl";
 
-package service4;
+package service3;
 
 // Interface exported by the server.
-service Service4 {
+service supportService {
   
-  rpc service4_do(RequestMessage) returns (ResponseMessage) {}
+  rpc service3_do(RequestMessage) returns (ResponseMessage) {}
     
 }
 

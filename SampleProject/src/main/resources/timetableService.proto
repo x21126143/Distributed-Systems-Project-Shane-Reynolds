@@ -7,7 +7,7 @@ option java_outer_classname = "Service1Impl";
 package service1;
 
 // Interface exported by the server.
-service Service1 {
+service timetableService {
   
   rpc service1_do(RequestMessage) returns (ResponseMessage) {}
     

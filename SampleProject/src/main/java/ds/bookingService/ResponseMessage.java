@@ -69,13 +69,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return ds.bookingService.Service2Impl.internal_static_service2_ResponseMessage_descriptor;
+    return ds.bookingService.BookingServiceImpl.internal_static_service2_ResponseMessage_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return ds.bookingService.Service2Impl.internal_static_service2_ResponseMessage_fieldAccessorTable
+    return ds.bookingService.BookingServiceImpl.internal_static_service2_ResponseMessage_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             ds.bookingService.ResponseMessage.class, ds.bookingService.ResponseMessage.Builder.class);
   }
@@ -254,13 +254,13 @@ private static final long serialVersionUID = 0L;
       ds.bookingService.ResponseMessageOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ds.bookingService.Service2Impl.internal_static_service2_ResponseMessage_descriptor;
+      return ds.bookingService.BookingServiceImpl.internal_static_service2_ResponseMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ds.bookingService.Service2Impl.internal_static_service2_ResponseMessage_fieldAccessorTable
+      return ds.bookingService.BookingServiceImpl.internal_static_service2_ResponseMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               ds.bookingService.ResponseMessage.class, ds.bookingService.ResponseMessage.Builder.class);
     }
@@ -291,7 +291,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return ds.bookingService.Service2Impl.internal_static_service2_ResponseMessage_descriptor;
+      return ds.bookingService.BookingServiceImpl.internal_static_service2_ResponseMessage_descriptor;
     }
 
     @java.lang.Override

@@ -1,4 +1,4 @@
-package ds.supportService;
+package ds.bookingService;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
@@ -22,67 +22,67 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.15.0)",
-    comments = "Source: service3.proto")
-public final class Service3Grpc {
+    comments = "Source: service2.proto")
+public final class BookingServiceGrpc {
 
-  private Service3Grpc() {}
+  private BookingServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "service3.Service3";
+  public static final String SERVICE_NAME = "service2.Service2";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<ds.supportService.RequestMessage,
-      ds.supportService.ResponseMessage> getService3DoMethod;
+  private static volatile io.grpc.MethodDescriptor<ds.bookingService.RequestMessage,
+      ds.bookingService.ResponseMessage> getService2DoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "service3_do",
-      requestType = ds.supportService.RequestMessage.class,
-      responseType = ds.supportService.ResponseMessage.class,
+      fullMethodName = SERVICE_NAME + '/' + "service2_do",
+      requestType = ds.bookingService.RequestMessage.class,
+      responseType = ds.bookingService.ResponseMessage.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<ds.supportService.RequestMessage,
-      ds.supportService.ResponseMessage> getService3DoMethod() {
-    io.grpc.MethodDescriptor<ds.supportService.RequestMessage, ds.supportService.ResponseMessage> getService3DoMethod;
-    if ((getService3DoMethod = Service3Grpc.getService3DoMethod) == null) {
-      synchronized (Service3Grpc.class) {
-        if ((getService3DoMethod = Service3Grpc.getService3DoMethod) == null) {
-          Service3Grpc.getService3DoMethod = getService3DoMethod = 
-              io.grpc.MethodDescriptor.<ds.supportService.RequestMessage, ds.supportService.ResponseMessage>newBuilder()
+  public static io.grpc.MethodDescriptor<ds.bookingService.RequestMessage,
+      ds.bookingService.ResponseMessage> getService2DoMethod() {
+    io.grpc.MethodDescriptor<ds.bookingService.RequestMessage, ds.bookingService.ResponseMessage> getService2DoMethod;
+    if ((getService2DoMethod = BookingServiceGrpc.getService2DoMethod) == null) {
+      synchronized (BookingServiceGrpc.class) {
+        if ((getService2DoMethod = BookingServiceGrpc.getService2DoMethod) == null) {
+          BookingServiceGrpc.getService2DoMethod = getService2DoMethod = 
+              io.grpc.MethodDescriptor.<ds.bookingService.RequestMessage, ds.bookingService.ResponseMessage>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "service3.Service3", "service3_do"))
+                  "service2.Service2", "service2_do"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.supportService.RequestMessage.getDefaultInstance()))
+                  ds.bookingService.RequestMessage.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.supportService.ResponseMessage.getDefaultInstance()))
-                  .setSchemaDescriptor(new Service3MethodDescriptorSupplier("service3_do"))
+                  ds.bookingService.ResponseMessage.getDefaultInstance()))
+                  .setSchemaDescriptor(new Service2MethodDescriptorSupplier("service2_do"))
                   .build();
           }
         }
      }
-     return getService3DoMethod;
+     return getService2DoMethod;
   }
 
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static Service3Stub newStub(io.grpc.Channel channel) {
-    return new Service3Stub(channel);
+  public static Service2Stub newStub(io.grpc.Channel channel) {
+    return new Service2Stub(channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static Service3BlockingStub newBlockingStub(
+  public static Service2BlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    return new Service3BlockingStub(channel);
+    return new Service2BlockingStub(channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static Service3FutureStub newFutureStub(
+  public static Service2FutureStub newFutureStub(
       io.grpc.Channel channel) {
-    return new Service3FutureStub(channel);
+    return new Service2FutureStub(channel);
   }
 
   /**
@@ -90,24 +90,24 @@ public final class Service3Grpc {
    * Interface exported by the server.
    * </pre>
    */
-  public static abstract class Service3ImplBase implements io.grpc.BindableService {
+  public static abstract class Service2ImplBase implements io.grpc.BindableService {
 
     /**
      */
-    public void service3Do(ds.supportService.RequestMessage request,
-        io.grpc.stub.StreamObserver<ds.supportService.ResponseMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getService3DoMethod(), responseObserver);
+    public void service2Do(ds.bookingService.RequestMessage request,
+        io.grpc.stub.StreamObserver<ds.bookingService.ResponseMessage> responseObserver) {
+      asyncUnimplementedUnaryCall(getService2DoMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getService3DoMethod(),
+            getService2DoMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                ds.supportService.RequestMessage,
-                ds.supportService.ResponseMessage>(
-                  this, METHODID_SERVICE3_DO)))
+                ds.bookingService.RequestMessage,
+                ds.bookingService.ResponseMessage>(
+                  this, METHODID_SERVICE2_DO)))
           .build();
     }
   }
@@ -117,28 +117,28 @@ public final class Service3Grpc {
    * Interface exported by the server.
    * </pre>
    */
-  public static final class Service3Stub extends io.grpc.stub.AbstractStub<Service3Stub> {
-    private Service3Stub(io.grpc.Channel channel) {
+  public static final class Service2Stub extends io.grpc.stub.AbstractStub<Service2Stub> {
+    private Service2Stub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private Service3Stub(io.grpc.Channel channel,
+    private Service2Stub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected Service3Stub build(io.grpc.Channel channel,
+    protected Service2Stub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new Service3Stub(channel, callOptions);
+      return new Service2Stub(channel, callOptions);
     }
 
     /**
      */
-    public void service3Do(ds.supportService.RequestMessage request,
-        io.grpc.stub.StreamObserver<ds.supportService.ResponseMessage> responseObserver) {
+    public void service2Do(ds.bookingService.RequestMessage request,
+        io.grpc.stub.StreamObserver<ds.bookingService.ResponseMessage> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getService3DoMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getService2DoMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -147,27 +147,27 @@ public final class Service3Grpc {
    * Interface exported by the server.
    * </pre>
    */
-  public static final class Service3BlockingStub extends io.grpc.stub.AbstractStub<Service3BlockingStub> {
-    private Service3BlockingStub(io.grpc.Channel channel) {
+  public static final class Service2BlockingStub extends io.grpc.stub.AbstractStub<Service2BlockingStub> {
+    private Service2BlockingStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private Service3BlockingStub(io.grpc.Channel channel,
+    private Service2BlockingStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected Service3BlockingStub build(io.grpc.Channel channel,
+    protected Service2BlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new Service3BlockingStub(channel, callOptions);
+      return new Service2BlockingStub(channel, callOptions);
     }
 
     /**
      */
-    public ds.supportService.ResponseMessage service3Do(ds.supportService.RequestMessage request) {
+    public ds.bookingService.ResponseMessage service2Do(ds.bookingService.RequestMessage request) {
       return blockingUnaryCall(
-          getChannel(), getService3DoMethod(), getCallOptions(), request);
+          getChannel(), getService2DoMethod(), getCallOptions(), request);
     }
   }
 
@@ -176,42 +176,42 @@ public final class Service3Grpc {
    * Interface exported by the server.
    * </pre>
    */
-  public static final class Service3FutureStub extends io.grpc.stub.AbstractStub<Service3FutureStub> {
-    private Service3FutureStub(io.grpc.Channel channel) {
+  public static final class Service2FutureStub extends io.grpc.stub.AbstractStub<Service2FutureStub> {
+    private Service2FutureStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private Service3FutureStub(io.grpc.Channel channel,
+    private Service2FutureStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected Service3FutureStub build(io.grpc.Channel channel,
+    protected Service2FutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new Service3FutureStub(channel, callOptions);
+      return new Service2FutureStub(channel, callOptions);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<ds.supportService.ResponseMessage> service3Do(
-        ds.supportService.RequestMessage request) {
+    public com.google.common.util.concurrent.ListenableFuture<ds.bookingService.ResponseMessage> service2Do(
+        ds.bookingService.RequestMessage request) {
       return futureUnaryCall(
-          getChannel().newCall(getService3DoMethod(), getCallOptions()), request);
+          getChannel().newCall(getService2DoMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_SERVICE3_DO = 0;
+  private static final int METHODID_SERVICE2_DO = 0;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final Service3ImplBase serviceImpl;
+    private final Service2ImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(Service3ImplBase serviceImpl, int methodId) {
+    MethodHandlers(Service2ImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -220,9 +220,9 @@ public final class Service3Grpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_SERVICE3_DO:
-          serviceImpl.service3Do((ds.supportService.RequestMessage) request,
-              (io.grpc.stub.StreamObserver<ds.supportService.ResponseMessage>) responseObserver);
+        case METHODID_SERVICE2_DO:
+          serviceImpl.service2Do((ds.bookingService.RequestMessage) request,
+              (io.grpc.stub.StreamObserver<ds.bookingService.ResponseMessage>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -240,32 +240,32 @@ public final class Service3Grpc {
     }
   }
 
-  private static abstract class Service3BaseDescriptorSupplier
+  private static abstract class Service2BaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    Service3BaseDescriptorSupplier() {}
+    Service2BaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return ds.supportService.Service3Impl.getDescriptor();
+      return ds.bookingService.BookingServiceImpl.getDescriptor();
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("Service3");
+      return getFileDescriptor().findServiceByName("Service2");
     }
   }
 
-  private static final class Service3FileDescriptorSupplier
-      extends Service3BaseDescriptorSupplier {
-    Service3FileDescriptorSupplier() {}
+  private static final class Service2FileDescriptorSupplier
+      extends Service2BaseDescriptorSupplier {
+    Service2FileDescriptorSupplier() {}
   }
 
-  private static final class Service3MethodDescriptorSupplier
-      extends Service3BaseDescriptorSupplier
+  private static final class Service2MethodDescriptorSupplier
+      extends Service2BaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final String methodName;
 
-    Service3MethodDescriptorSupplier(String methodName) {
+    Service2MethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -280,12 +280,12 @@ public final class Service3Grpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (Service3Grpc.class) {
+      synchronized (BookingServiceGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new Service3FileDescriptorSupplier())
-              .addMethod(getService3DoMethod())
+              .setSchemaDescriptor(new Service2FileDescriptorSupplier())
+              .addMethod(getService2DoMethod())
               .build();
         }
       }
