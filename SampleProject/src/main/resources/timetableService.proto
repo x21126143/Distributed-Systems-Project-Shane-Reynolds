@@ -1,22 +1,45 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "ds.service1";
-option java_outer_classname = "Service1Impl";
+option java_package = "ds.timetableService";
+option java_outer_classname = "TimetableServiceImpl";
 
 package service1;
 
-// Interface exported by the server.
+
 service timetableService {
   
-  rpc service1_do(RequestMessage) returns (ResponseMessage) {}
+  rpc ViewTimetable(stream Stations) returns (stream TrainDetails) {}
+  
+  rpc delays(TrainNo) returns (DelaysBool){}
+  
+  rpc amenities(TrainNo) returns (stream TrainAmenities){}
     
 }
+  
 
-message RequestMessage {
-  string text = 1;  
+message Stations {
+  String departStation = 1;
+  String arrivalStation = 2; 
 }
 
-message ResponseMessage {
-  int32 length = 1;
+
+message TrainDetails {
+  String time = 1;
+  double price = 2;
+  int32 trainNo = 3;
+}
+
+message TrainNo{
+  int32 trainNo = 1;
+}
+
+message DelaysBool{
+  Boolean delaysBool = 1;
+}
+
+message TrainAmenities{
+  String catering = 1;
+  String bikeSlot = 2;
+  String petsAllowed = 3;
 }

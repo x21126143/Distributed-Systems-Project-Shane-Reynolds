@@ -22,7 +22,7 @@ public class BookingService extends Service2ImplBase{
 				.build()
 				.start();
 
-		System.out.println("Service-2 started, listening on " + port);
+		System.out.println("Booking Service started, listening on " + port);
 
 		server.awaitTermination();
 	}

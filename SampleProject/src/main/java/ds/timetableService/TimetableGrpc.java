@@ -15,6 +15,8 @@ import static io.grpc.stub.ServerCalls.asyncUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
+import io.grpc.stub.StreamObserver;
+
 /**
  * <pre>
  * Interface exported by the server.
@@ -23,9 +25,9 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.15.0)",
     comments = "Source: service1.proto")
-public final class TimetableServiceGrpc {
+public final class TimetableGrpc {
 
-  private TimetableServiceGrpc() {}
+  private TimetableGrpc() {}
 
   public static final String SERVICE_NAME = "service1.Service1";
 
@@ -41,10 +43,10 @@ public final class TimetableServiceGrpc {
   public static io.grpc.MethodDescriptor<ds.timetableService.RequestMessage,
       ds.timetableService.ResponseMessage> getService1DoMethod() {
     io.grpc.MethodDescriptor<ds.timetableService.RequestMessage, ds.timetableService.ResponseMessage> getService1DoMethod;
-    if ((getService1DoMethod = TimetableServiceGrpc.getService1DoMethod) == null) {
-      synchronized (TimetableServiceGrpc.class) {
-        if ((getService1DoMethod = TimetableServiceGrpc.getService1DoMethod) == null) {
-          TimetableServiceGrpc.getService1DoMethod = getService1DoMethod = 
+    if ((getService1DoMethod = TimetableGrpc.getService1DoMethod) == null) {
+      synchronized (TimetableGrpc.class) {
+        if ((getService1DoMethod = TimetableGrpc.getService1DoMethod) == null) {
+          TimetableGrpc.getService1DoMethod = getService1DoMethod = 
               io.grpc.MethodDescriptor.<ds.timetableService.RequestMessage, ds.timetableService.ResponseMessage>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
@@ -110,6 +112,17 @@ public final class TimetableServiceGrpc {
                   this, METHODID_SERVICE1_DO)))
           .build();
     }
+
+	public void viewTimetable(ds.timetableService.RequestMessage request,
+	        io.grpc.stub.StreamObserver<ds.timetableService.ResponseMessage> responseObserver) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void service1Do(StreamObserver<ResponseMessage> responseObserver) {
+		// TODO Auto-generated method stub
+		
+	}
   }
 
   /**
@@ -280,7 +293,7 @@ public final class TimetableServiceGrpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (TimetableServiceGrpc.class) {
+      synchronized (TimetableGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)

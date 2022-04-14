@@ -1,15 +1,15 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "ds.service2";
-option java_outer_classname = "Service2Impl";
+option java_package = "ds.bookingService";
+option java_outer_classname = "BookingServiceImpl";
 
 package service2;
 
 // Interface exported by the server.
 service bookingService {
   
-  rpc service2_do(RequestMessage) returns (ResponseMessage) {}
+  rpc login(LoginRequest) returns (LoginReply) {}
     
 }
 

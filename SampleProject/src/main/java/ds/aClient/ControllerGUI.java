@@ -16,7 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 import ds.bookingService.BookingServiceGrpc;
 import ds.supportService.SupportServiceGrpc;
-import ds.timetableService.TimetableServiceGrpc;
+import ds.timetableService.TimetableGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -43,7 +43,7 @@ public class ControllerGUI implements ActionListener{
 		panel.add(entry1);
 		panel.add(Box.createRigidArea(new Dimension(10, 0)));
 
-		JButton button = new JButton("Invoke Service 1");
+		JButton button = new JButton("Timetable Service");
 		button.addActionListener(this);
 		panel.add(button);
 		panel.add(Box.createRigidArea(new Dimension(10, 0)));
@@ -192,7 +192,7 @@ public class ControllerGUI implements ActionListener{
 			 * 
 			 */
 			ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
-			TimetableServiceGrpc.Service1BlockingStub blockingStub = TimetableServiceGrpc.newBlockingStub(channel);
+			TimetableGrpc.Service1BlockingStub blockingStub = TimetableGrpc.newBlockingStub(channel);
 
 			//preparing message to send
 			ds.timetableService.RequestMessage request = ds.timetableService.RequestMessage.newBuilder().setText(entry1.getText()).build();
