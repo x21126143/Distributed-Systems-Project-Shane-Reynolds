@@ -19,13 +19,13 @@ service timetableService {
   
 
 message Stations {
-  String departStation = 1;
-  String arrivalStation = 2; 
+  string departStation = 1;
+  string arrivalStation = 2; 
 }
 
 
 message TrainDetails {
-  String time = 1;
+  string time = 1;
   double price = 2;
   int32 trainNo = 3;
 }
@@ -35,11 +35,11 @@ message TrainNo{
 }
 
 message DelaysBool{
-  Boolean delaysBool = 1;
+  bool delaysBool = 1;
 }
 
 message TrainAmenities{
-  String catering = 1;
-  String bikeSlot = 2;
-  String petsAllowed = 3;
+  string catering = 1;
+  string bikeSlot = 2;
+  string petsAllowed = 3;
 }

@@ -4,12 +4,12 @@ option java_multiple_files = true;
 option java_package = "ds.bookingService";
 option java_outer_classname = "BookingServiceImpl";
 
-package service2;
+package ds.bookingService;
 
 // Interface exported by the server.
 service bookingService {
   
-  rpc login(LoginRequest) returns (LoginReply) {}
+  rpc login(RequestMessage) returns (ResponseMessage) {}
     
 }
 
@@ -20,3 +20,4 @@ message RequestMessage {
 message ResponseMessage {
   int32 length = 1;
 }
+
