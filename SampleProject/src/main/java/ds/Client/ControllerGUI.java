@@ -1,4 +1,4 @@
-package ds.aClient;
+package ds.Client;
 
 import java.awt.Dimension;
 import java.awt.Insets;

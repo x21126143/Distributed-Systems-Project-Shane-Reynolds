@@ -28,7 +28,7 @@ public class BookingService extends Service2ImplBase{
 	}
 
 
-	@Override
+	//@Override
 	public void service2Do(RequestMessage request, StreamObserver<ResponseMessage> responseObserver) {
 
 		//prepare the value to be set back

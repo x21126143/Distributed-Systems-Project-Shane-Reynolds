@@ -4,7 +4,7 @@ option java_multiple_files = true;
 option java_package = "ds.bookingService";
 option java_outer_classname = "BookingServiceImpl";
 
-package ds.bookingService;
+package bookingService;
 
 // Interface exported by the server.
 service bookingService {
