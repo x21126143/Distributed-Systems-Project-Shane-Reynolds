@@ -1,6 +1,7 @@
 package ds.examples.maths;
 
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -13,13 +14,14 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+//import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.FlowLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import ds.examples.maths.CalculateRequest.Operation;
+//import ds.examples.maths.CalculateRequest.Operation;
 import ds.examples.maths.MathServiceGrpc.MathServiceBlockingStub;
 import ds.examples.maths.MathServiceGrpc.MathServiceStub;
 import io.grpc.ManagedChannel;
@@ -41,9 +43,9 @@ public class MainGUIApplication {
 	
 	
 	private JFrame frame;
-	private JTextField textNumber1;
-	private JTextField textNumber2;
-	private JTextArea textResponse ;
+	private JTextField departInput;
+	private JTextField arrivalInput;
+	private JTextArea textResponse;
 
 	/**
 	 * Launch the application.
@@ -118,14 +120,14 @@ public class MainGUIApplication {
 				
 				@Override
 				public void serviceRemoved(ServiceEvent event) {
-					System.out.println("Math Service removed: " + event.getInfo());
+					System.out.println("Smart Railway removed: " + event.getInfo());
 
 					
 				}
 				
 				@Override
 				public void serviceAdded(ServiceEvent event) {
-					System.out.println("Math Service added: " + event.getInfo());
+					System.out.println("Smart Railway Service added: " + event.getInfo());
 
 					
 				}
@@ -155,7 +157,7 @@ public class MainGUIApplication {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Client - Service Controller");
-		frame.setBounds(100, 100, 500, 300);
+		frame.setBounds(300, 300, 800, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		BoxLayout bl = new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS);
@@ -164,51 +166,63 @@ public class MainGUIApplication {
 		
 		JPanel panel_service_1 = new JPanel();
 		frame.getContentPane().add(panel_service_1);
-		panel_service_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel_service_1.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
 		
-		JLabel lblNewLabel_1 = new JLabel("Number 1");
-		panel_service_1.add(lblNewLabel_1);
+		JPanel panel_service_title = new JPanel();
+		frame.getContentPane().add(panel_service_title);
+		panel_service_title.setLayout(new FlowLayout(FlowLayout.CENTER, 2, 5));
 		
-		textNumber1 = new JTextField();
-		panel_service_1.add(textNumber1);
-		textNumber1.setColumns(10);
+		JLabel departLabel = new JLabel("Departure Station");
+		panel_service_1.add(departLabel);
 		
-		JLabel lblNewLabel_2 = new JLabel("Number 2");
-		panel_service_1.add(lblNewLabel_2);
+		departInput = new JTextField();
+		panel_service_1.add(departInput);
+		departInput.setColumns(10);
 		
-		textNumber2 = new JTextField();
-		panel_service_1.add(textNumber2);
-		textNumber2.setColumns(10);
+		JLabel arrivalLabel = new JLabel("Arrival Station");
+		panel_service_1.add(arrivalLabel);
 		
+		arrivalInput = new JTextField();
+		panel_service_1.add(arrivalInput);
+		arrivalInput.setColumns(10);
 		
+		/*
 		JComboBox comboOperation = new JComboBox();
 		comboOperation.setModel(new DefaultComboBoxModel(new String[] {"ADDITION", "SUBTRACTION", "MULTIPLICATION", "DIVISION"}));
 		panel_service_1.add(comboOperation);
-	
+	*/
 		
-		JButton btnCalculate = new JButton("Calculate");
-		btnCalculate.addActionListener(new ActionListener() {
+		JButton btnJourneyFinder = new JButton("Find journeys");
+		btnJourneyFinder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				int num1 = Integer.parseInt(textNumber1.getText());
-				int num2 = Integer.parseInt(textNumber2.getText());
+				String station1 = departInput.getText();
+				String station2 = arrivalInput.getText();
 
-				int index = comboOperation.getSelectedIndex();
-				Operation operation = Operation.forNumber(index);
+				//int index = comboOperation.getSelectedIndex();
+				//Operation operation = Operation.forNumber(index);
 				
-				CalculateRequest req = CalculateRequest.newBuilder().setNumber1(num1).setNumber2(num2).setOperation(operation).build();
+				Stations req = Stations.newBuilder().setDepartStation(station1).setArrivalStation(station2).build();
 
-				CalculateResponse response = blockingStub.calculate(req);
+				TrainDetails response = blockingStub.viewTimetable(req);
 
-				textResponse.append("reply:"+ response.getResult() + " mes:"+ response.getMessage() + "\n");
+					//textResponse.append("reply:"+ response.getResult() + " mes:"+ response.getMessage() + "\n");
+				if (station1.equals(null) || station2.equals(null)) {
+					textResponse.append("This is not a valid train station. Try again.");
+					System.out.println("This is not a valid train station. Try again.");
+				}
+				else {
+					textResponse.append(station1 + " to " + station2 + ": Price is: €"+ response.getPrice() + ", Time is: "+ response.getTime() + "PM, Train number is: " + response.getTrainNo() + "\n");
 				
-				System.out.println("res: " + response.getResult() + " mes: " + response.getMessage());
+					System.out.println((station1 + " to " + station2 + ": Price is: €"+ response.getPrice() + ", Time is: "+ response.getTime() + "PM, Train number is: " + response.getTrainNo() + "\n"));
+					//System.out.println("res: " + response.getResult() + " mes: " + response.getMessage());
+				}
 
 			}
 		});
-		panel_service_1.add(btnCalculate);
+		panel_service_1.add(btnJourneyFinder);
 		
-		textResponse = new JTextArea(3, 20);
+		textResponse = new JTextArea(10, 60);
 		textResponse .setLineWrap(true);
 		textResponse.setWrapStyleWord(true);
 		

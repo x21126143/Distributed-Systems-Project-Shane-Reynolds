@@ -8,14 +8,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetAddress;
-import java.util.ArrayList;
 import java.util.Properties;
-import java.util.Random;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 
-import ds.examples.maths.CalculateRequest.Operation;
+//import ds.examples.maths.CalculateRequest.Operation;
 import ds.examples.maths.MathServiceGrpc.MathServiceImplBase;
 
 import io.grpc.Server;
@@ -119,34 +117,82 @@ public class MathServer extends MathServiceImplBase {
 	    
 	}
 	
-	public void calculate(CalculateRequest request, 
-			StreamObserver<CalculateResponse> responseObserver) {
+	public void viewTimetable(Stations request, 
+			StreamObserver<TrainDetails> responseObserver) {
 
-		System.out.println("receiving calculate method " + request.getNumber1() + " , " + request.getNumber2() + " " + request.getOperation() );
+		System.out.println("receiving arrival station method " + request.getArrivalStation() + " , " + request.getDepartStation());
 
-		float value = Float.NaN;
-		String msg= "ok " + request.getOperation().name() + " result ";
-
-		if(	request.getOperation()==Operation.ADDITION)
-			value = request.getNumber1() + request.getNumber2();
-		else if(	request.getOperation()==Operation.SUBTRACTION)
-			value = request.getNumber1() - request.getNumber2();
-		else if(	request.getOperation()==Operation.MULTIPLICATION)
-			value = request.getNumber1() * request.getNumber2();
-		else if(	request.getOperation()==Operation.DIVISION)
-			value = request.getNumber1() / request.getNumber2();
+		String time = "";
+		float price = Float.NaN;
+		int trainNo = 0;
+		
+		String[] stationArray = {"Wexford", "Arklow", "Wicklow", "Greystones", "Bray", "Dun Laoghaire"};
+		
+		if (request.getDepartStation().equals(stationArray[0]) || request.getDepartStation().equals(stationArray[0].toLowerCase())
+				|| request.getDepartStation().equals(stationArray[0].toUpperCase())) {
+			
+			if(request.getArrivalStation().equals(stationArray[1]) || request.getArrivalStation().equals(stationArray[1].toLowerCase())
+					|| request.getArrivalStation().equals(stationArray[1].toUpperCase())) {
+				time = "1:25";
+				price = 7.25f;
+				trainNo = 102;
+				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo).build();
+				responseObserver.onNext(reply);
+				responseObserver.onCompleted();
+			}
+			
+			else if(request.getArrivalStation().equals(stationArray[2]) || request.getArrivalStation().equals(stationArray[2].toLowerCase())
+					|| request.getArrivalStation().equals(stationArray[2].toUpperCase())) {
+				time = "1:45";
+				price = 8.25f;
+				trainNo = 103;
+				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo).build();
+				responseObserver.onNext(reply);
+				responseObserver.onCompleted();
+			}
+			
+			else if(request.getArrivalStation().equals(stationArray[3]) || request.getArrivalStation().equals(stationArray[3].toLowerCase())
+					|| request.getArrivalStation().equals(stationArray[3].toUpperCase())) {
+				time = "2:15";
+				price = 8.87f;
+				trainNo = 104;
+				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo).build();
+				responseObserver.onNext(reply);
+				responseObserver.onCompleted();
+			}
+			
+			else if(request.getArrivalStation().equals(stationArray[4]) || request.getArrivalStation().equals(stationArray[4].toLowerCase())
+					|| request.getArrivalStation().equals(stationArray[4].toUpperCase())) {
+				time = "2:45";
+				price = 9.03f;
+				trainNo = 105;
+				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo).build();
+				responseObserver.onNext(reply);
+				responseObserver.onCompleted();
+			}
+			else if(request.getArrivalStation().equals(stationArray[5]) || request.getArrivalStation().equals(stationArray[5].toLowerCase())
+					|| request.getArrivalStation().equals(stationArray[5].toUpperCase())) {
+				time = "3:10";
+				price = 10.10f;
+				trainNo = 106;
+				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo).build();
+				responseObserver.onNext(reply);
+				responseObserver.onCompleted();
+			}
+			
+		}
 		else {
-			value = Float.NaN;
-			msg = "no supported/implemented operation";
-		}		
+			System.out.println("Did not match.");
+		}
 
-		CalculateResponse reply = CalculateResponse.newBuilder().setResult(value).setMessage(msg).build();
+		TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo).build();
+				
 
 		responseObserver.onNext(reply);
-
 		responseObserver.onCompleted();
 	}
 
+	/*
 	//service implmentation for 
 	public void generateRandomNumbers(RandomRequest request,
 			StreamObserver<NumberResponse> responseObserver) {
@@ -179,9 +225,9 @@ public class MathServer extends MathServiceImplBase {
 
 
 	}
+*/
 
-
-	
+	/*
 	public StreamObserver<ConvertMessage> convertBase(StreamObserver<ConvertResponse> responseObserver) {
 		
 		return new StreamObserver<ConvertMessage> () {
@@ -215,4 +261,5 @@ public class MathServer extends MathServiceImplBase {
 			
 		};
 	}
+	*/
 }

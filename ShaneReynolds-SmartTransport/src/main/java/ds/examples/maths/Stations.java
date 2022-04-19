@@ -4,20 +4,20 @@
 package ds.examples.maths;
 
 /**
- * Protobuf type {@code maths.ConvertResponse}
+ * Protobuf type {@code maths.Stations}
  */
-public  final class ConvertResponse extends
+public  final class Stations extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:maths.ConvertResponse)
-    ConvertResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:maths.Stations)
+    StationsOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use ConvertResponse.newBuilder() to construct.
-  private ConvertResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use Stations.newBuilder() to construct.
+  private Stations(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private ConvertResponse() {
-    number_ = "";
-    base_ = 0;
+  private Stations() {
+    departStation_ = "";
+    arrivalStation_ = "";
   }
 
   @java.lang.Override
@@ -25,7 +25,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private ConvertResponse(
+  private Stations(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -47,12 +47,13 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            number_ = s;
+            departStation_ = s;
             break;
           }
-          case 16: {
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            base_ = input.readInt32();
+            arrivalStation_ = s;
             break;
           }
           default: {
@@ -76,58 +77,83 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return ds.examples.maths.MathServiceImpl.internal_static_maths_ConvertResponse_descriptor;
+    return ds.examples.maths.MathServiceImpl.internal_static_maths_Stations_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return ds.examples.maths.MathServiceImpl.internal_static_maths_ConvertResponse_fieldAccessorTable
+    return ds.examples.maths.MathServiceImpl.internal_static_maths_Stations_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            ds.examples.maths.ConvertResponse.class, ds.examples.maths.ConvertResponse.Builder.class);
+            ds.examples.maths.Stations.class, ds.examples.maths.Stations.Builder.class);
   }
 
-  public static final int NUMBER_FIELD_NUMBER = 1;
-  private volatile java.lang.Object number_;
+  public static final int DEPARTSTATION_FIELD_NUMBER = 1;
+  private volatile java.lang.Object departStation_;
   /**
-   * <code>string number = 1;</code>
+   * <code>string departStation = 1;</code>
    */
-  public java.lang.String getNumber() {
-    java.lang.Object ref = number_;
+  public java.lang.String getDepartStation() {
+    java.lang.Object ref = departStation_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      number_ = s;
+      departStation_ = s;
       return s;
     }
   }
   /**
-   * <code>string number = 1;</code>
+   * <code>string departStation = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getNumberBytes() {
-    java.lang.Object ref = number_;
+      getDepartStationBytes() {
+    java.lang.Object ref = departStation_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      number_ = b;
+      departStation_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int BASE_FIELD_NUMBER = 2;
-  private int base_;
+  public static final int ARRIVALSTATION_FIELD_NUMBER = 2;
+  private volatile java.lang.Object arrivalStation_;
   /**
-   * <code>int32 base = 2;</code>
+   * <code>string arrivalStation = 2;</code>
    */
-  public int getBase() {
-    return base_;
+  public java.lang.String getArrivalStation() {
+    java.lang.Object ref = arrivalStation_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      arrivalStation_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string arrivalStation = 2;</code>
+   */
+  public com.google.protobuf.ByteString
+      getArrivalStationBytes() {
+    java.lang.Object ref = arrivalStation_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      arrivalStation_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -144,11 +170,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getNumberBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, number_);
+    if (!getDepartStationBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, departStation_);
     }
-    if (base_ != 0) {
-      output.writeInt32(2, base_);
+    if (!getArrivalStationBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, arrivalStation_);
     }
     unknownFields.writeTo(output);
   }
@@ -159,12 +185,11 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getNumberBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, number_);
+    if (!getDepartStationBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, departStation_);
     }
-    if (base_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, base_);
+    if (!getArrivalStationBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, arrivalStation_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -176,16 +201,16 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof ds.examples.maths.ConvertResponse)) {
+    if (!(obj instanceof ds.examples.maths.Stations)) {
       return super.equals(obj);
     }
-    ds.examples.maths.ConvertResponse other = (ds.examples.maths.ConvertResponse) obj;
+    ds.examples.maths.Stations other = (ds.examples.maths.Stations) obj;
 
     boolean result = true;
-    result = result && getNumber()
-        .equals(other.getNumber());
-    result = result && (getBase()
-        == other.getBase());
+    result = result && getDepartStation()
+        .equals(other.getDepartStation());
+    result = result && getArrivalStation()
+        .equals(other.getArrivalStation());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -197,78 +222,78 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + NUMBER_FIELD_NUMBER;
-    hash = (53 * hash) + getNumber().hashCode();
-    hash = (37 * hash) + BASE_FIELD_NUMBER;
-    hash = (53 * hash) + getBase();
+    hash = (37 * hash) + DEPARTSTATION_FIELD_NUMBER;
+    hash = (53 * hash) + getDepartStation().hashCode();
+    hash = (37 * hash) + ARRIVALSTATION_FIELD_NUMBER;
+    hash = (53 * hash) + getArrivalStation().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static ds.examples.maths.ConvertResponse parseFrom(
+  public static ds.examples.maths.Stations parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ds.examples.maths.ConvertResponse parseFrom(
+  public static ds.examples.maths.Stations parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ds.examples.maths.ConvertResponse parseFrom(
+  public static ds.examples.maths.Stations parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ds.examples.maths.ConvertResponse parseFrom(
+  public static ds.examples.maths.Stations parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ds.examples.maths.ConvertResponse parseFrom(byte[] data)
+  public static ds.examples.maths.Stations parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ds.examples.maths.ConvertResponse parseFrom(
+  public static ds.examples.maths.Stations parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ds.examples.maths.ConvertResponse parseFrom(java.io.InputStream input)
+  public static ds.examples.maths.Stations parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ds.examples.maths.ConvertResponse parseFrom(
+  public static ds.examples.maths.Stations parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ds.examples.maths.ConvertResponse parseDelimitedFrom(java.io.InputStream input)
+  public static ds.examples.maths.Stations parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static ds.examples.maths.ConvertResponse parseDelimitedFrom(
+  public static ds.examples.maths.Stations parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ds.examples.maths.ConvertResponse parseFrom(
+  public static ds.examples.maths.Stations parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ds.examples.maths.ConvertResponse parseFrom(
+  public static ds.examples.maths.Stations parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -281,7 +306,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(ds.examples.maths.ConvertResponse prototype) {
+  public static Builder newBuilder(ds.examples.maths.Stations prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -297,26 +322,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code maths.ConvertResponse}
+   * Protobuf type {@code maths.Stations}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:maths.ConvertResponse)
-      ds.examples.maths.ConvertResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:maths.Stations)
+      ds.examples.maths.StationsOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ds.examples.maths.MathServiceImpl.internal_static_maths_ConvertResponse_descriptor;
+      return ds.examples.maths.MathServiceImpl.internal_static_maths_Stations_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ds.examples.maths.MathServiceImpl.internal_static_maths_ConvertResponse_fieldAccessorTable
+      return ds.examples.maths.MathServiceImpl.internal_static_maths_Stations_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ds.examples.maths.ConvertResponse.class, ds.examples.maths.ConvertResponse.Builder.class);
+              ds.examples.maths.Stations.class, ds.examples.maths.Stations.Builder.class);
     }
 
-    // Construct using ds.examples.maths.ConvertResponse.newBuilder()
+    // Construct using ds.examples.maths.Stations.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -334,9 +359,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      number_ = "";
+      departStation_ = "";
 
-      base_ = 0;
+      arrivalStation_ = "";
 
       return this;
     }
@@ -344,17 +369,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return ds.examples.maths.MathServiceImpl.internal_static_maths_ConvertResponse_descriptor;
+      return ds.examples.maths.MathServiceImpl.internal_static_maths_Stations_descriptor;
     }
 
     @java.lang.Override
-    public ds.examples.maths.ConvertResponse getDefaultInstanceForType() {
-      return ds.examples.maths.ConvertResponse.getDefaultInstance();
+    public ds.examples.maths.Stations getDefaultInstanceForType() {
+      return ds.examples.maths.Stations.getDefaultInstance();
     }
 
     @java.lang.Override
-    public ds.examples.maths.ConvertResponse build() {
-      ds.examples.maths.ConvertResponse result = buildPartial();
+    public ds.examples.maths.Stations build() {
+      ds.examples.maths.Stations result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -362,10 +387,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public ds.examples.maths.ConvertResponse buildPartial() {
-      ds.examples.maths.ConvertResponse result = new ds.examples.maths.ConvertResponse(this);
-      result.number_ = number_;
-      result.base_ = base_;
+    public ds.examples.maths.Stations buildPartial() {
+      ds.examples.maths.Stations result = new ds.examples.maths.Stations(this);
+      result.departStation_ = departStation_;
+      result.arrivalStation_ = arrivalStation_;
       onBuilt();
       return result;
     }
@@ -404,22 +429,23 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof ds.examples.maths.ConvertResponse) {
-        return mergeFrom((ds.examples.maths.ConvertResponse)other);
+      if (other instanceof ds.examples.maths.Stations) {
+        return mergeFrom((ds.examples.maths.Stations)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(ds.examples.maths.ConvertResponse other) {
-      if (other == ds.examples.maths.ConvertResponse.getDefaultInstance()) return this;
-      if (!other.getNumber().isEmpty()) {
-        number_ = other.number_;
+    public Builder mergeFrom(ds.examples.maths.Stations other) {
+      if (other == ds.examples.maths.Stations.getDefaultInstance()) return this;
+      if (!other.getDepartStation().isEmpty()) {
+        departStation_ = other.departStation_;
         onChanged();
       }
-      if (other.getBase() != 0) {
-        setBase(other.getBase());
+      if (!other.getArrivalStation().isEmpty()) {
+        arrivalStation_ = other.arrivalStation_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -436,11 +462,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      ds.examples.maths.ConvertResponse parsedMessage = null;
+      ds.examples.maths.Stations parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (ds.examples.maths.ConvertResponse) e.getUnfinishedMessage();
+        parsedMessage = (ds.examples.maths.Stations) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -450,97 +476,140 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object number_ = "";
+    private java.lang.Object departStation_ = "";
     /**
-     * <code>string number = 1;</code>
+     * <code>string departStation = 1;</code>
      */
-    public java.lang.String getNumber() {
-      java.lang.Object ref = number_;
+    public java.lang.String getDepartStation() {
+      java.lang.Object ref = departStation_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        number_ = s;
+        departStation_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string number = 1;</code>
+     * <code>string departStation = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getNumberBytes() {
-      java.lang.Object ref = number_;
+        getDepartStationBytes() {
+      java.lang.Object ref = departStation_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        number_ = b;
+        departStation_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string number = 1;</code>
+     * <code>string departStation = 1;</code>
      */
-    public Builder setNumber(
+    public Builder setDepartStation(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      number_ = value;
+      departStation_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string number = 1;</code>
+     * <code>string departStation = 1;</code>
      */
-    public Builder clearNumber() {
+    public Builder clearDepartStation() {
       
-      number_ = getDefaultInstance().getNumber();
+      departStation_ = getDefaultInstance().getDepartStation();
       onChanged();
       return this;
     }
     /**
-     * <code>string number = 1;</code>
+     * <code>string departStation = 1;</code>
      */
-    public Builder setNumberBytes(
+    public Builder setDepartStationBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      number_ = value;
+      departStation_ = value;
       onChanged();
       return this;
     }
 
-    private int base_ ;
+    private java.lang.Object arrivalStation_ = "";
     /**
-     * <code>int32 base = 2;</code>
+     * <code>string arrivalStation = 2;</code>
      */
-    public int getBase() {
-      return base_;
+    public java.lang.String getArrivalStation() {
+      java.lang.Object ref = arrivalStation_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        arrivalStation_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int32 base = 2;</code>
+     * <code>string arrivalStation = 2;</code>
      */
-    public Builder setBase(int value) {
-      
-      base_ = value;
+    public com.google.protobuf.ByteString
+        getArrivalStationBytes() {
+      java.lang.Object ref = arrivalStation_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        arrivalStation_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string arrivalStation = 2;</code>
+     */
+    public Builder setArrivalStation(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      arrivalStation_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 base = 2;</code>
+     * <code>string arrivalStation = 2;</code>
      */
-    public Builder clearBase() {
+    public Builder clearArrivalStation() {
       
-      base_ = 0;
+      arrivalStation_ = getDefaultInstance().getArrivalStation();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string arrivalStation = 2;</code>
+     */
+    public Builder setArrivalStationBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      arrivalStation_ = value;
       onChanged();
       return this;
     }
@@ -557,41 +626,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:maths.ConvertResponse)
+    // @@protoc_insertion_point(builder_scope:maths.Stations)
   }
 
-  // @@protoc_insertion_point(class_scope:maths.ConvertResponse)
-  private static final ds.examples.maths.ConvertResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:maths.Stations)
+  private static final ds.examples.maths.Stations DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new ds.examples.maths.ConvertResponse();
+    DEFAULT_INSTANCE = new ds.examples.maths.Stations();
   }
 
-  public static ds.examples.maths.ConvertResponse getDefaultInstance() {
+  public static ds.examples.maths.Stations getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ConvertResponse>
-      PARSER = new com.google.protobuf.AbstractParser<ConvertResponse>() {
+  private static final com.google.protobuf.Parser<Stations>
+      PARSER = new com.google.protobuf.AbstractParser<Stations>() {
     @java.lang.Override
-    public ConvertResponse parsePartialFrom(
+    public Stations parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new ConvertResponse(input, extensionRegistry);
+      return new Stations(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<ConvertResponse> parser() {
+  public static com.google.protobuf.Parser<Stations> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<ConvertResponse> getParserForType() {
+  public com.google.protobuf.Parser<Stations> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public ds.examples.maths.ConvertResponse getDefaultInstanceForType() {
+  public ds.examples.maths.Stations getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

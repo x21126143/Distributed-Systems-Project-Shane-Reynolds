@@ -33,30 +33,37 @@ public class MathClient {
 
 
 		
-		calculate();
+		viewTimetable();
 		
 		
-		generateRandomNumbersAsyn();
-		generateRandomNumbersBlocking();
+		//generateRandomNumbersAsyn();
+		//generateRandomNumbersBlocking();
 
 
-		convertBase();
+		//convertBase();
 
 	}
 
 
+	
 	//unary rpc
-	public static void calculate() {
-		int num1 = 10;
-		int num2 = 20;
+	public static void viewTimetable() {
+		//int num1 = 10;
+		//int num2 = 20;
+		String station1 = "Wexford";
+		String station2 = "Arklow";
 
-		CalculateRequest req = CalculateRequest.newBuilder().setNumber1(num1).setNumber2(num2).build();
+		Stations req = Stations.newBuilder().setDepartStation(station1).setArrivalStation(station2).build();
+		//CalculateRequest req = CalculateRequest.newBuilder().setNumber1(num1).setNumber2(num2).build();
 
-		CalculateResponse response = blockingStub.calculate(req);
+		TrainDetails response = blockingStub.viewTimetable(req);
+		//CalculateResponse response = blockingStub.calculate(req);
 
-		System.out.println("res: " + response.getResult() + " mes: " + response.getMessage());
+		//System.out.println("res: " + response.getResult() + " mes: " + response.getMessage());
+		System.out.println("Price: €" + response.getPrice() + ", time: " + response.getTime() + "PM, train number: " + response.getTrainNo());
 	}
 
+	/*
 	//blocking server-streaming
 	public static void generateRandomNumbersBlocking() {
 		RandomRequest request = RandomRequest.newBuilder()
@@ -75,8 +82,9 @@ public class MathClient {
 		}
 
 	}
-
-
+	
+	*/
+	/*
 	public static void generateRandomNumbersAsyn() {
 
 		RandomRequest request = RandomRequest.newBuilder()
@@ -116,9 +124,9 @@ public class MathClient {
 		}
 
 	}
+*/
 
-
-	
+	/*
 
 	public static void convertBase() {
 
@@ -145,9 +153,9 @@ public class MathClient {
 			}
 
 		};
+*/
 
-
-
+/*
 		StreamObserver<ConvertMessage> requestObserver = asyncStub.convertBase(responseObserver);
 
 		try {
@@ -183,7 +191,7 @@ public class MathClient {
 		}
 
 	}	
-
+*/
 
 
 }

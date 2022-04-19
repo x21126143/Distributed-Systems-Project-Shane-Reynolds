@@ -30,132 +30,36 @@ public final class MathServiceGrpc {
   public static final String SERVICE_NAME = "maths.MathService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<ds.examples.maths.CalculateRequest,
-      ds.examples.maths.CalculateResponse> getCalculateMethod;
+  private static volatile io.grpc.MethodDescriptor<ds.examples.maths.Stations,
+      ds.examples.maths.TrainDetails> getViewTimetableMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "calculate",
-      requestType = ds.examples.maths.CalculateRequest.class,
-      responseType = ds.examples.maths.CalculateResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "viewTimetable",
+      requestType = ds.examples.maths.Stations.class,
+      responseType = ds.examples.maths.TrainDetails.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<ds.examples.maths.CalculateRequest,
-      ds.examples.maths.CalculateResponse> getCalculateMethod() {
-    io.grpc.MethodDescriptor<ds.examples.maths.CalculateRequest, ds.examples.maths.CalculateResponse> getCalculateMethod;
-    if ((getCalculateMethod = MathServiceGrpc.getCalculateMethod) == null) {
+  public static io.grpc.MethodDescriptor<ds.examples.maths.Stations,
+      ds.examples.maths.TrainDetails> getViewTimetableMethod() {
+    io.grpc.MethodDescriptor<ds.examples.maths.Stations, ds.examples.maths.TrainDetails> getViewTimetableMethod;
+    if ((getViewTimetableMethod = MathServiceGrpc.getViewTimetableMethod) == null) {
       synchronized (MathServiceGrpc.class) {
-        if ((getCalculateMethod = MathServiceGrpc.getCalculateMethod) == null) {
-          MathServiceGrpc.getCalculateMethod = getCalculateMethod = 
-              io.grpc.MethodDescriptor.<ds.examples.maths.CalculateRequest, ds.examples.maths.CalculateResponse>newBuilder()
+        if ((getViewTimetableMethod = MathServiceGrpc.getViewTimetableMethod) == null) {
+          MathServiceGrpc.getViewTimetableMethod = getViewTimetableMethod = 
+              io.grpc.MethodDescriptor.<ds.examples.maths.Stations, ds.examples.maths.TrainDetails>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "maths.MathService", "calculate"))
+                  "maths.MathService", "viewTimetable"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.examples.maths.CalculateRequest.getDefaultInstance()))
+                  ds.examples.maths.Stations.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.examples.maths.CalculateResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new MathServiceMethodDescriptorSupplier("calculate"))
+                  ds.examples.maths.TrainDetails.getDefaultInstance()))
+                  .setSchemaDescriptor(new MathServiceMethodDescriptorSupplier("viewTimetable"))
                   .build();
           }
         }
      }
-     return getCalculateMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<ds.examples.maths.RandomRequest,
-      ds.examples.maths.NumberResponse> getGenerateRandomNumbersMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "generateRandomNumbers",
-      requestType = ds.examples.maths.RandomRequest.class,
-      responseType = ds.examples.maths.NumberResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<ds.examples.maths.RandomRequest,
-      ds.examples.maths.NumberResponse> getGenerateRandomNumbersMethod() {
-    io.grpc.MethodDescriptor<ds.examples.maths.RandomRequest, ds.examples.maths.NumberResponse> getGenerateRandomNumbersMethod;
-    if ((getGenerateRandomNumbersMethod = MathServiceGrpc.getGenerateRandomNumbersMethod) == null) {
-      synchronized (MathServiceGrpc.class) {
-        if ((getGenerateRandomNumbersMethod = MathServiceGrpc.getGenerateRandomNumbersMethod) == null) {
-          MathServiceGrpc.getGenerateRandomNumbersMethod = getGenerateRandomNumbersMethod = 
-              io.grpc.MethodDescriptor.<ds.examples.maths.RandomRequest, ds.examples.maths.NumberResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-              .setFullMethodName(generateFullMethodName(
-                  "maths.MathService", "generateRandomNumbers"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.examples.maths.RandomRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.examples.maths.NumberResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new MathServiceMethodDescriptorSupplier("generateRandomNumbers"))
-                  .build();
-          }
-        }
-     }
-     return getGenerateRandomNumbersMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<ds.examples.maths.NumberMessage,
-      ds.examples.maths.CalculateResponse> getAverageValuesMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "averageValues",
-      requestType = ds.examples.maths.NumberMessage.class,
-      responseType = ds.examples.maths.CalculateResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-  public static io.grpc.MethodDescriptor<ds.examples.maths.NumberMessage,
-      ds.examples.maths.CalculateResponse> getAverageValuesMethod() {
-    io.grpc.MethodDescriptor<ds.examples.maths.NumberMessage, ds.examples.maths.CalculateResponse> getAverageValuesMethod;
-    if ((getAverageValuesMethod = MathServiceGrpc.getAverageValuesMethod) == null) {
-      synchronized (MathServiceGrpc.class) {
-        if ((getAverageValuesMethod = MathServiceGrpc.getAverageValuesMethod) == null) {
-          MathServiceGrpc.getAverageValuesMethod = getAverageValuesMethod = 
-              io.grpc.MethodDescriptor.<ds.examples.maths.NumberMessage, ds.examples.maths.CalculateResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-              .setFullMethodName(generateFullMethodName(
-                  "maths.MathService", "averageValues"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.examples.maths.NumberMessage.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.examples.maths.CalculateResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new MathServiceMethodDescriptorSupplier("averageValues"))
-                  .build();
-          }
-        }
-     }
-     return getAverageValuesMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<ds.examples.maths.ConvertMessage,
-      ds.examples.maths.ConvertResponse> getConvertBaseMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "convertBase",
-      requestType = ds.examples.maths.ConvertMessage.class,
-      responseType = ds.examples.maths.ConvertResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-  public static io.grpc.MethodDescriptor<ds.examples.maths.ConvertMessage,
-      ds.examples.maths.ConvertResponse> getConvertBaseMethod() {
-    io.grpc.MethodDescriptor<ds.examples.maths.ConvertMessage, ds.examples.maths.ConvertResponse> getConvertBaseMethod;
-    if ((getConvertBaseMethod = MathServiceGrpc.getConvertBaseMethod) == null) {
-      synchronized (MathServiceGrpc.class) {
-        if ((getConvertBaseMethod = MathServiceGrpc.getConvertBaseMethod) == null) {
-          MathServiceGrpc.getConvertBaseMethod = getConvertBaseMethod = 
-              io.grpc.MethodDescriptor.<ds.examples.maths.ConvertMessage, ds.examples.maths.ConvertResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-              .setFullMethodName(generateFullMethodName(
-                  "maths.MathService", "convertBase"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.examples.maths.ConvertMessage.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.examples.maths.ConvertResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new MathServiceMethodDescriptorSupplier("convertBase"))
-                  .build();
-          }
-        }
-     }
-     return getConvertBaseMethod;
+     return getViewTimetableMethod;
   }
 
   /**
@@ -190,62 +94,20 @@ public final class MathServiceGrpc {
 
     /**
      */
-    public void calculate(ds.examples.maths.CalculateRequest request,
-        io.grpc.stub.StreamObserver<ds.examples.maths.CalculateResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(getCalculateMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void generateRandomNumbers(ds.examples.maths.RandomRequest request,
-        io.grpc.stub.StreamObserver<ds.examples.maths.NumberResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(getGenerateRandomNumbersMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public io.grpc.stub.StreamObserver<ds.examples.maths.NumberMessage> averageValues(
-        io.grpc.stub.StreamObserver<ds.examples.maths.CalculateResponse> responseObserver) {
-      return asyncUnimplementedStreamingCall(getAverageValuesMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public io.grpc.stub.StreamObserver<ds.examples.maths.ConvertMessage> convertBase(
-        io.grpc.stub.StreamObserver<ds.examples.maths.ConvertResponse> responseObserver) {
-      return asyncUnimplementedStreamingCall(getConvertBaseMethod(), responseObserver);
+    public void viewTimetable(ds.examples.maths.Stations request,
+        io.grpc.stub.StreamObserver<ds.examples.maths.TrainDetails> responseObserver) {
+      asyncUnimplementedUnaryCall(getViewTimetableMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getCalculateMethod(),
+            getViewTimetableMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                ds.examples.maths.CalculateRequest,
-                ds.examples.maths.CalculateResponse>(
-                  this, METHODID_CALCULATE)))
-          .addMethod(
-            getGenerateRandomNumbersMethod(),
-            asyncServerStreamingCall(
-              new MethodHandlers<
-                ds.examples.maths.RandomRequest,
-                ds.examples.maths.NumberResponse>(
-                  this, METHODID_GENERATE_RANDOM_NUMBERS)))
-          .addMethod(
-            getAverageValuesMethod(),
-            asyncClientStreamingCall(
-              new MethodHandlers<
-                ds.examples.maths.NumberMessage,
-                ds.examples.maths.CalculateResponse>(
-                  this, METHODID_AVERAGE_VALUES)))
-          .addMethod(
-            getConvertBaseMethod(),
-            asyncBidiStreamingCall(
-              new MethodHandlers<
-                ds.examples.maths.ConvertMessage,
-                ds.examples.maths.ConvertResponse>(
-                  this, METHODID_CONVERT_BASE)))
+                ds.examples.maths.Stations,
+                ds.examples.maths.TrainDetails>(
+                  this, METHODID_VIEW_TIMETABLE)))
           .build();
     }
   }
@@ -273,34 +135,10 @@ public final class MathServiceGrpc {
 
     /**
      */
-    public void calculate(ds.examples.maths.CalculateRequest request,
-        io.grpc.stub.StreamObserver<ds.examples.maths.CalculateResponse> responseObserver) {
+    public void viewTimetable(ds.examples.maths.Stations request,
+        io.grpc.stub.StreamObserver<ds.examples.maths.TrainDetails> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getCalculateMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void generateRandomNumbers(ds.examples.maths.RandomRequest request,
-        io.grpc.stub.StreamObserver<ds.examples.maths.NumberResponse> responseObserver) {
-      asyncServerStreamingCall(
-          getChannel().newCall(getGenerateRandomNumbersMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public io.grpc.stub.StreamObserver<ds.examples.maths.NumberMessage> averageValues(
-        io.grpc.stub.StreamObserver<ds.examples.maths.CalculateResponse> responseObserver) {
-      return asyncClientStreamingCall(
-          getChannel().newCall(getAverageValuesMethod(), getCallOptions()), responseObserver);
-    }
-
-    /**
-     */
-    public io.grpc.stub.StreamObserver<ds.examples.maths.ConvertMessage> convertBase(
-        io.grpc.stub.StreamObserver<ds.examples.maths.ConvertResponse> responseObserver) {
-      return asyncBidiStreamingCall(
-          getChannel().newCall(getConvertBaseMethod(), getCallOptions()), responseObserver);
+          getChannel().newCall(getViewTimetableMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -327,17 +165,9 @@ public final class MathServiceGrpc {
 
     /**
      */
-    public ds.examples.maths.CalculateResponse calculate(ds.examples.maths.CalculateRequest request) {
+    public ds.examples.maths.TrainDetails viewTimetable(ds.examples.maths.Stations request) {
       return blockingUnaryCall(
-          getChannel(), getCalculateMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public java.util.Iterator<ds.examples.maths.NumberResponse> generateRandomNumbers(
-        ds.examples.maths.RandomRequest request) {
-      return blockingServerStreamingCall(
-          getChannel(), getGenerateRandomNumbersMethod(), getCallOptions(), request);
+          getChannel(), getViewTimetableMethod(), getCallOptions(), request);
     }
   }
 
@@ -364,17 +194,14 @@ public final class MathServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<ds.examples.maths.CalculateResponse> calculate(
-        ds.examples.maths.CalculateRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<ds.examples.maths.TrainDetails> viewTimetable(
+        ds.examples.maths.Stations request) {
       return futureUnaryCall(
-          getChannel().newCall(getCalculateMethod(), getCallOptions()), request);
+          getChannel().newCall(getViewTimetableMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_CALCULATE = 0;
-  private static final int METHODID_GENERATE_RANDOM_NUMBERS = 1;
-  private static final int METHODID_AVERAGE_VALUES = 2;
-  private static final int METHODID_CONVERT_BASE = 3;
+  private static final int METHODID_VIEW_TIMETABLE = 0;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -393,13 +220,9 @@ public final class MathServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_CALCULATE:
-          serviceImpl.calculate((ds.examples.maths.CalculateRequest) request,
-              (io.grpc.stub.StreamObserver<ds.examples.maths.CalculateResponse>) responseObserver);
-          break;
-        case METHODID_GENERATE_RANDOM_NUMBERS:
-          serviceImpl.generateRandomNumbers((ds.examples.maths.RandomRequest) request,
-              (io.grpc.stub.StreamObserver<ds.examples.maths.NumberResponse>) responseObserver);
+        case METHODID_VIEW_TIMETABLE:
+          serviceImpl.viewTimetable((ds.examples.maths.Stations) request,
+              (io.grpc.stub.StreamObserver<ds.examples.maths.TrainDetails>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -411,12 +234,6 @@ public final class MathServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_AVERAGE_VALUES:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.averageValues(
-              (io.grpc.stub.StreamObserver<ds.examples.maths.CalculateResponse>) responseObserver);
-        case METHODID_CONVERT_BASE:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.convertBase(
-              (io.grpc.stub.StreamObserver<ds.examples.maths.ConvertResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -468,10 +285,7 @@ public final class MathServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new MathServiceFileDescriptorSupplier())
-              .addMethod(getCalculateMethod())
-              .addMethod(getGenerateRandomNumbersMethod())
-              .addMethod(getAverageValuesMethod())
-              .addMethod(getConvertBaseMethod())
+              .addMethod(getViewTimetableMethod())
               .build();
         }
       }

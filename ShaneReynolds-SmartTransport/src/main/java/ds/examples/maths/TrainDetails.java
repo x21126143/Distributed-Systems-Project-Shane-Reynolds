@@ -4,19 +4,21 @@
 package ds.examples.maths;
 
 /**
- * Protobuf type {@code maths.NumberResponse}
+ * Protobuf type {@code maths.TrainDetails}
  */
-public  final class NumberResponse extends
+public  final class TrainDetails extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:maths.NumberResponse)
-    NumberResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:maths.TrainDetails)
+    TrainDetailsOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use NumberResponse.newBuilder() to construct.
-  private NumberResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use TrainDetails.newBuilder() to construct.
+  private TrainDetails(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private NumberResponse() {
-    number_ = 0;
+  private TrainDetails() {
+    time_ = "";
+    price_ = 0F;
+    trainNo_ = 0;
   }
 
   @java.lang.Override
@@ -24,7 +26,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private NumberResponse(
+  private TrainDetails(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -43,9 +45,20 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            number_ = input.readInt32();
+            time_ = s;
+            break;
+          }
+          case 21: {
+
+            price_ = input.readFloat();
+            break;
+          }
+          case 24: {
+
+            trainNo_ = input.readInt32();
             break;
           }
           default: {
@@ -69,24 +82,67 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return ds.examples.maths.MathServiceImpl.internal_static_maths_NumberResponse_descriptor;
+    return ds.examples.maths.MathServiceImpl.internal_static_maths_TrainDetails_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return ds.examples.maths.MathServiceImpl.internal_static_maths_NumberResponse_fieldAccessorTable
+    return ds.examples.maths.MathServiceImpl.internal_static_maths_TrainDetails_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            ds.examples.maths.NumberResponse.class, ds.examples.maths.NumberResponse.Builder.class);
+            ds.examples.maths.TrainDetails.class, ds.examples.maths.TrainDetails.Builder.class);
   }
 
-  public static final int NUMBER_FIELD_NUMBER = 1;
-  private int number_;
+  public static final int TIME_FIELD_NUMBER = 1;
+  private volatile java.lang.Object time_;
   /**
-   * <code>int32 number = 1;</code>
+   * <code>string time = 1;</code>
    */
-  public int getNumber() {
-    return number_;
+  public java.lang.String getTime() {
+    java.lang.Object ref = time_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      time_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string time = 1;</code>
+   */
+  public com.google.protobuf.ByteString
+      getTimeBytes() {
+    java.lang.Object ref = time_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      time_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int PRICE_FIELD_NUMBER = 2;
+  private float price_;
+  /**
+   * <code>float price = 2;</code>
+   */
+  public float getPrice() {
+    return price_;
+  }
+
+  public static final int TRAINNO_FIELD_NUMBER = 3;
+  private int trainNo_;
+  /**
+   * <code>int32 trainNo = 3;</code>
+   */
+  public int getTrainNo() {
+    return trainNo_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -103,8 +159,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (number_ != 0) {
-      output.writeInt32(1, number_);
+    if (!getTimeBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, time_);
+    }
+    if (price_ != 0F) {
+      output.writeFloat(2, price_);
+    }
+    if (trainNo_ != 0) {
+      output.writeInt32(3, trainNo_);
     }
     unknownFields.writeTo(output);
   }
@@ -115,9 +177,16 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (number_ != 0) {
+    if (!getTimeBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, time_);
+    }
+    if (price_ != 0F) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, number_);
+        .computeFloatSize(2, price_);
+    }
+    if (trainNo_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, trainNo_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -129,14 +198,20 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof ds.examples.maths.NumberResponse)) {
+    if (!(obj instanceof ds.examples.maths.TrainDetails)) {
       return super.equals(obj);
     }
-    ds.examples.maths.NumberResponse other = (ds.examples.maths.NumberResponse) obj;
+    ds.examples.maths.TrainDetails other = (ds.examples.maths.TrainDetails) obj;
 
     boolean result = true;
-    result = result && (getNumber()
-        == other.getNumber());
+    result = result && getTime()
+        .equals(other.getTime());
+    result = result && (
+        java.lang.Float.floatToIntBits(getPrice())
+        == java.lang.Float.floatToIntBits(
+            other.getPrice()));
+    result = result && (getTrainNo()
+        == other.getTrainNo());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -148,76 +223,81 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + NUMBER_FIELD_NUMBER;
-    hash = (53 * hash) + getNumber();
+    hash = (37 * hash) + TIME_FIELD_NUMBER;
+    hash = (53 * hash) + getTime().hashCode();
+    hash = (37 * hash) + PRICE_FIELD_NUMBER;
+    hash = (53 * hash) + java.lang.Float.floatToIntBits(
+        getPrice());
+    hash = (37 * hash) + TRAINNO_FIELD_NUMBER;
+    hash = (53 * hash) + getTrainNo();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static ds.examples.maths.NumberResponse parseFrom(
+  public static ds.examples.maths.TrainDetails parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ds.examples.maths.NumberResponse parseFrom(
+  public static ds.examples.maths.TrainDetails parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ds.examples.maths.NumberResponse parseFrom(
+  public static ds.examples.maths.TrainDetails parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ds.examples.maths.NumberResponse parseFrom(
+  public static ds.examples.maths.TrainDetails parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ds.examples.maths.NumberResponse parseFrom(byte[] data)
+  public static ds.examples.maths.TrainDetails parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ds.examples.maths.NumberResponse parseFrom(
+  public static ds.examples.maths.TrainDetails parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ds.examples.maths.NumberResponse parseFrom(java.io.InputStream input)
+  public static ds.examples.maths.TrainDetails parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ds.examples.maths.NumberResponse parseFrom(
+  public static ds.examples.maths.TrainDetails parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ds.examples.maths.NumberResponse parseDelimitedFrom(java.io.InputStream input)
+  public static ds.examples.maths.TrainDetails parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static ds.examples.maths.NumberResponse parseDelimitedFrom(
+  public static ds.examples.maths.TrainDetails parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ds.examples.maths.NumberResponse parseFrom(
+  public static ds.examples.maths.TrainDetails parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ds.examples.maths.NumberResponse parseFrom(
+  public static ds.examples.maths.TrainDetails parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -230,7 +310,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(ds.examples.maths.NumberResponse prototype) {
+  public static Builder newBuilder(ds.examples.maths.TrainDetails prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -246,26 +326,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code maths.NumberResponse}
+   * Protobuf type {@code maths.TrainDetails}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:maths.NumberResponse)
-      ds.examples.maths.NumberResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:maths.TrainDetails)
+      ds.examples.maths.TrainDetailsOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ds.examples.maths.MathServiceImpl.internal_static_maths_NumberResponse_descriptor;
+      return ds.examples.maths.MathServiceImpl.internal_static_maths_TrainDetails_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ds.examples.maths.MathServiceImpl.internal_static_maths_NumberResponse_fieldAccessorTable
+      return ds.examples.maths.MathServiceImpl.internal_static_maths_TrainDetails_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ds.examples.maths.NumberResponse.class, ds.examples.maths.NumberResponse.Builder.class);
+              ds.examples.maths.TrainDetails.class, ds.examples.maths.TrainDetails.Builder.class);
     }
 
-    // Construct using ds.examples.maths.NumberResponse.newBuilder()
+    // Construct using ds.examples.maths.TrainDetails.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -283,7 +363,11 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      number_ = 0;
+      time_ = "";
+
+      price_ = 0F;
+
+      trainNo_ = 0;
 
       return this;
     }
@@ -291,17 +375,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return ds.examples.maths.MathServiceImpl.internal_static_maths_NumberResponse_descriptor;
+      return ds.examples.maths.MathServiceImpl.internal_static_maths_TrainDetails_descriptor;
     }
 
     @java.lang.Override
-    public ds.examples.maths.NumberResponse getDefaultInstanceForType() {
-      return ds.examples.maths.NumberResponse.getDefaultInstance();
+    public ds.examples.maths.TrainDetails getDefaultInstanceForType() {
+      return ds.examples.maths.TrainDetails.getDefaultInstance();
     }
 
     @java.lang.Override
-    public ds.examples.maths.NumberResponse build() {
-      ds.examples.maths.NumberResponse result = buildPartial();
+    public ds.examples.maths.TrainDetails build() {
+      ds.examples.maths.TrainDetails result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -309,9 +393,11 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public ds.examples.maths.NumberResponse buildPartial() {
-      ds.examples.maths.NumberResponse result = new ds.examples.maths.NumberResponse(this);
-      result.number_ = number_;
+    public ds.examples.maths.TrainDetails buildPartial() {
+      ds.examples.maths.TrainDetails result = new ds.examples.maths.TrainDetails(this);
+      result.time_ = time_;
+      result.price_ = price_;
+      result.trainNo_ = trainNo_;
       onBuilt();
       return result;
     }
@@ -350,18 +436,25 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof ds.examples.maths.NumberResponse) {
-        return mergeFrom((ds.examples.maths.NumberResponse)other);
+      if (other instanceof ds.examples.maths.TrainDetails) {
+        return mergeFrom((ds.examples.maths.TrainDetails)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(ds.examples.maths.NumberResponse other) {
-      if (other == ds.examples.maths.NumberResponse.getDefaultInstance()) return this;
-      if (other.getNumber() != 0) {
-        setNumber(other.getNumber());
+    public Builder mergeFrom(ds.examples.maths.TrainDetails other) {
+      if (other == ds.examples.maths.TrainDetails.getDefaultInstance()) return this;
+      if (!other.getTime().isEmpty()) {
+        time_ = other.time_;
+        onChanged();
+      }
+      if (other.getPrice() != 0F) {
+        setPrice(other.getPrice());
+      }
+      if (other.getTrainNo() != 0) {
+        setTrainNo(other.getTrainNo());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -378,11 +471,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      ds.examples.maths.NumberResponse parsedMessage = null;
+      ds.examples.maths.TrainDetails parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (ds.examples.maths.NumberResponse) e.getUnfinishedMessage();
+        parsedMessage = (ds.examples.maths.TrainDetails) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -392,28 +485,123 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int number_ ;
+    private java.lang.Object time_ = "";
     /**
-     * <code>int32 number = 1;</code>
+     * <code>string time = 1;</code>
      */
-    public int getNumber() {
-      return number_;
+    public java.lang.String getTime() {
+      java.lang.Object ref = time_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        time_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int32 number = 1;</code>
+     * <code>string time = 1;</code>
      */
-    public Builder setNumber(int value) {
-      
-      number_ = value;
+    public com.google.protobuf.ByteString
+        getTimeBytes() {
+      java.lang.Object ref = time_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        time_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string time = 1;</code>
+     */
+    public Builder setTime(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      time_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 number = 1;</code>
+     * <code>string time = 1;</code>
      */
-    public Builder clearNumber() {
+    public Builder clearTime() {
       
-      number_ = 0;
+      time_ = getDefaultInstance().getTime();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string time = 1;</code>
+     */
+    public Builder setTimeBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      time_ = value;
+      onChanged();
+      return this;
+    }
+
+    private float price_ ;
+    /**
+     * <code>float price = 2;</code>
+     */
+    public float getPrice() {
+      return price_;
+    }
+    /**
+     * <code>float price = 2;</code>
+     */
+    public Builder setPrice(float value) {
+      
+      price_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>float price = 2;</code>
+     */
+    public Builder clearPrice() {
+      
+      price_ = 0F;
+      onChanged();
+      return this;
+    }
+
+    private int trainNo_ ;
+    /**
+     * <code>int32 trainNo = 3;</code>
+     */
+    public int getTrainNo() {
+      return trainNo_;
+    }
+    /**
+     * <code>int32 trainNo = 3;</code>
+     */
+    public Builder setTrainNo(int value) {
+      
+      trainNo_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 trainNo = 3;</code>
+     */
+    public Builder clearTrainNo() {
+      
+      trainNo_ = 0;
       onChanged();
       return this;
     }
@@ -430,41 +618,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:maths.NumberResponse)
+    // @@protoc_insertion_point(builder_scope:maths.TrainDetails)
   }
 
-  // @@protoc_insertion_point(class_scope:maths.NumberResponse)
-  private static final ds.examples.maths.NumberResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:maths.TrainDetails)
+  private static final ds.examples.maths.TrainDetails DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new ds.examples.maths.NumberResponse();
+    DEFAULT_INSTANCE = new ds.examples.maths.TrainDetails();
   }
 
-  public static ds.examples.maths.NumberResponse getDefaultInstance() {
+  public static ds.examples.maths.TrainDetails getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<NumberResponse>
-      PARSER = new com.google.protobuf.AbstractParser<NumberResponse>() {
+  private static final com.google.protobuf.Parser<TrainDetails>
+      PARSER = new com.google.protobuf.AbstractParser<TrainDetails>() {
     @java.lang.Override
-    public NumberResponse parsePartialFrom(
+    public TrainDetails parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new NumberResponse(input, extensionRegistry);
+      return new TrainDetails(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<NumberResponse> parser() {
+  public static com.google.protobuf.Parser<TrainDetails> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<NumberResponse> getParserForType() {
+  public com.google.protobuf.Parser<TrainDetails> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public ds.examples.maths.NumberResponse getDefaultInstanceForType() {
+  public ds.examples.maths.TrainDetails getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 
