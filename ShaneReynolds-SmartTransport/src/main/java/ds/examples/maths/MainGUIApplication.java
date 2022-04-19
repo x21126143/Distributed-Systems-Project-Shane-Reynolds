@@ -1,6 +1,7 @@
 package ds.examples.maths;
 
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 
@@ -164,13 +165,26 @@ public class MainGUIApplication {
 		
 		frame.getContentPane().setLayout(bl);
 		
-		JPanel panel_service_1 = new JPanel();
-		frame.getContentPane().add(panel_service_1);
-		panel_service_1.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
-		
 		JPanel panel_service_title = new JPanel();
 		frame.getContentPane().add(panel_service_title);
 		panel_service_title.setLayout(new FlowLayout(FlowLayout.CENTER, 2, 5));
+		
+		JLabel titleLabel = new JLabel("Northbound Rail Line");
+		panel_service_title.add(titleLabel);
+		
+		
+		JPanel panel_service_info = new JPanel();
+		JLabel info = new JLabel("Stations: Wexford, Arklow, Wicklow, Greystones, Bray, Dun Laoghaire");
+		info.setForeground(Color.gray);
+		frame.getContentPane().add(panel_service_info);
+		panel_service_info.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
+		panel_service_info.add(info);
+		
+		JPanel panel_service_1 = new JPanel();
+		frame.getContentPane().add(panel_service_1);
+		panel_service_1.setLayout(new FlowLayout(FlowLayout.CENTER, 8, 5));
+		
+		
 		
 		JLabel departLabel = new JLabel("Departure Station");
 		panel_service_1.add(departLabel);
