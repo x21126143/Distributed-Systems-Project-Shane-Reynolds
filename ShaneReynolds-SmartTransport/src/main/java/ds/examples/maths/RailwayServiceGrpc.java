@@ -23,13 +23,45 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.15.0)",
     comments = "Source: service1Timetable.proto")
-public final class MathServiceGrpc {
+public final class RailwayServiceGrpc {
 
-  private MathServiceGrpc() {}
+  private RailwayServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "maths.MathService";
+  public static final String SERVICE_NAME = "maths.RailwayService";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<ds.examples.maths.Request,
+      ds.examples.maths.Pricing> getViewPricingMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "viewPricing",
+      requestType = ds.examples.maths.Request.class,
+      responseType = ds.examples.maths.Pricing.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<ds.examples.maths.Request,
+      ds.examples.maths.Pricing> getViewPricingMethod() {
+    io.grpc.MethodDescriptor<ds.examples.maths.Request, ds.examples.maths.Pricing> getViewPricingMethod;
+    if ((getViewPricingMethod = RailwayServiceGrpc.getViewPricingMethod) == null) {
+      synchronized (RailwayServiceGrpc.class) {
+        if ((getViewPricingMethod = RailwayServiceGrpc.getViewPricingMethod) == null) {
+          RailwayServiceGrpc.getViewPricingMethod = getViewPricingMethod = 
+              io.grpc.MethodDescriptor.<ds.examples.maths.Request, ds.examples.maths.Pricing>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "maths.RailwayService", "viewPricing"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ds.examples.maths.Request.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ds.examples.maths.Pricing.getDefaultInstance()))
+                  .setSchemaDescriptor(new RailwayServiceMethodDescriptorSupplier("viewPricing"))
+                  .build();
+          }
+        }
+     }
+     return getViewPricingMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<ds.examples.maths.Stations,
       ds.examples.maths.TrainDetails> getViewTimetableMethod;
 
@@ -37,24 +69,24 @@ public final class MathServiceGrpc {
       fullMethodName = SERVICE_NAME + '/' + "viewTimetable",
       requestType = ds.examples.maths.Stations.class,
       responseType = ds.examples.maths.TrainDetails.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<ds.examples.maths.Stations,
       ds.examples.maths.TrainDetails> getViewTimetableMethod() {
     io.grpc.MethodDescriptor<ds.examples.maths.Stations, ds.examples.maths.TrainDetails> getViewTimetableMethod;
-    if ((getViewTimetableMethod = MathServiceGrpc.getViewTimetableMethod) == null) {
-      synchronized (MathServiceGrpc.class) {
-        if ((getViewTimetableMethod = MathServiceGrpc.getViewTimetableMethod) == null) {
-          MathServiceGrpc.getViewTimetableMethod = getViewTimetableMethod = 
+    if ((getViewTimetableMethod = RailwayServiceGrpc.getViewTimetableMethod) == null) {
+      synchronized (RailwayServiceGrpc.class) {
+        if ((getViewTimetableMethod = RailwayServiceGrpc.getViewTimetableMethod) == null) {
+          RailwayServiceGrpc.getViewTimetableMethod = getViewTimetableMethod = 
               io.grpc.MethodDescriptor.<ds.examples.maths.Stations, ds.examples.maths.TrainDetails>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "maths.MathService", "viewTimetable"))
+                  "maths.RailwayService", "viewTimetable"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   ds.examples.maths.Stations.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   ds.examples.maths.TrainDetails.getDefaultInstance()))
-                  .setSchemaDescriptor(new MathServiceMethodDescriptorSupplier("viewTimetable"))
+                  .setSchemaDescriptor(new RailwayServiceMethodDescriptorSupplier("viewTimetable"))
                   .build();
           }
         }
@@ -65,24 +97,24 @@ public final class MathServiceGrpc {
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static MathServiceStub newStub(io.grpc.Channel channel) {
-    return new MathServiceStub(channel);
+  public static RailwayServiceStub newStub(io.grpc.Channel channel) {
+    return new RailwayServiceStub(channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static MathServiceBlockingStub newBlockingStub(
+  public static RailwayServiceBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    return new MathServiceBlockingStub(channel);
+    return new RailwayServiceBlockingStub(channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static MathServiceFutureStub newFutureStub(
+  public static RailwayServiceFutureStub newFutureStub(
       io.grpc.Channel channel) {
-    return new MathServiceFutureStub(channel);
+    return new RailwayServiceFutureStub(channel);
   }
 
   /**
@@ -90,7 +122,14 @@ public final class MathServiceGrpc {
    * Interface exported by the server.
    * </pre>
    */
-  public static abstract class MathServiceImplBase implements io.grpc.BindableService {
+  public static abstract class RailwayServiceImplBase implements io.grpc.BindableService {
+
+    /**
+     */
+    public void viewPricing(ds.examples.maths.Request request,
+        io.grpc.stub.StreamObserver<ds.examples.maths.Pricing> responseObserver) {
+      asyncUnimplementedUnaryCall(getViewPricingMethod(), responseObserver);
+    }
 
     /**
      */
@@ -102,8 +141,15 @@ public final class MathServiceGrpc {
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getViewTimetableMethod(),
+            getViewPricingMethod(),
             asyncUnaryCall(
+              new MethodHandlers<
+                ds.examples.maths.Request,
+                ds.examples.maths.Pricing>(
+                  this, METHODID_VIEW_PRICING)))
+          .addMethod(
+            getViewTimetableMethod(),
+            asyncServerStreamingCall(
               new MethodHandlers<
                 ds.examples.maths.Stations,
                 ds.examples.maths.TrainDetails>(
@@ -117,27 +163,35 @@ public final class MathServiceGrpc {
    * Interface exported by the server.
    * </pre>
    */
-  public static final class MathServiceStub extends io.grpc.stub.AbstractStub<MathServiceStub> {
-    private MathServiceStub(io.grpc.Channel channel) {
+  public static final class RailwayServiceStub extends io.grpc.stub.AbstractStub<RailwayServiceStub> {
+    private RailwayServiceStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private MathServiceStub(io.grpc.Channel channel,
+    private RailwayServiceStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected MathServiceStub build(io.grpc.Channel channel,
+    protected RailwayServiceStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new MathServiceStub(channel, callOptions);
+      return new RailwayServiceStub(channel, callOptions);
+    }
+
+    /**
+     */
+    public void viewPricing(ds.examples.maths.Request request,
+        io.grpc.stub.StreamObserver<ds.examples.maths.Pricing> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getViewPricingMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
     public void viewTimetable(ds.examples.maths.Stations request,
         io.grpc.stub.StreamObserver<ds.examples.maths.TrainDetails> responseObserver) {
-      asyncUnaryCall(
+      asyncServerStreamingCall(
           getChannel().newCall(getViewTimetableMethod(), getCallOptions()), request, responseObserver);
     }
   }
@@ -147,26 +201,34 @@ public final class MathServiceGrpc {
    * Interface exported by the server.
    * </pre>
    */
-  public static final class MathServiceBlockingStub extends io.grpc.stub.AbstractStub<MathServiceBlockingStub> {
-    private MathServiceBlockingStub(io.grpc.Channel channel) {
+  public static final class RailwayServiceBlockingStub extends io.grpc.stub.AbstractStub<RailwayServiceBlockingStub> {
+    private RailwayServiceBlockingStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private MathServiceBlockingStub(io.grpc.Channel channel,
+    private RailwayServiceBlockingStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected MathServiceBlockingStub build(io.grpc.Channel channel,
+    protected RailwayServiceBlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new MathServiceBlockingStub(channel, callOptions);
+      return new RailwayServiceBlockingStub(channel, callOptions);
     }
 
     /**
      */
-    public ds.examples.maths.TrainDetails viewTimetable(ds.examples.maths.Stations request) {
+    public ds.examples.maths.Pricing viewPricing(ds.examples.maths.Request request) {
       return blockingUnaryCall(
+          getChannel(), getViewPricingMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<ds.examples.maths.TrainDetails> viewTimetable(
+        ds.examples.maths.Stations request) {
+      return blockingServerStreamingCall(
           getChannel(), getViewTimetableMethod(), getCallOptions(), request);
     }
   }
@@ -176,42 +238,43 @@ public final class MathServiceGrpc {
    * Interface exported by the server.
    * </pre>
    */
-  public static final class MathServiceFutureStub extends io.grpc.stub.AbstractStub<MathServiceFutureStub> {
-    private MathServiceFutureStub(io.grpc.Channel channel) {
+  public static final class RailwayServiceFutureStub extends io.grpc.stub.AbstractStub<RailwayServiceFutureStub> {
+    private RailwayServiceFutureStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private MathServiceFutureStub(io.grpc.Channel channel,
+    private RailwayServiceFutureStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected MathServiceFutureStub build(io.grpc.Channel channel,
+    protected RailwayServiceFutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new MathServiceFutureStub(channel, callOptions);
+      return new RailwayServiceFutureStub(channel, callOptions);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<ds.examples.maths.TrainDetails> viewTimetable(
-        ds.examples.maths.Stations request) {
+    public com.google.common.util.concurrent.ListenableFuture<ds.examples.maths.Pricing> viewPricing(
+        ds.examples.maths.Request request) {
       return futureUnaryCall(
-          getChannel().newCall(getViewTimetableMethod(), getCallOptions()), request);
+          getChannel().newCall(getViewPricingMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_VIEW_TIMETABLE = 0;
+  private static final int METHODID_VIEW_PRICING = 0;
+  private static final int METHODID_VIEW_TIMETABLE = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final MathServiceImplBase serviceImpl;
+    private final RailwayServiceImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(MathServiceImplBase serviceImpl, int methodId) {
+    MethodHandlers(RailwayServiceImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -220,6 +283,10 @@ public final class MathServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_VIEW_PRICING:
+          serviceImpl.viewPricing((ds.examples.maths.Request) request,
+              (io.grpc.stub.StreamObserver<ds.examples.maths.Pricing>) responseObserver);
+          break;
         case METHODID_VIEW_TIMETABLE:
           serviceImpl.viewTimetable((ds.examples.maths.Stations) request,
               (io.grpc.stub.StreamObserver<ds.examples.maths.TrainDetails>) responseObserver);
@@ -240,32 +307,32 @@ public final class MathServiceGrpc {
     }
   }
 
-  private static abstract class MathServiceBaseDescriptorSupplier
+  private static abstract class RailwayServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    MathServiceBaseDescriptorSupplier() {}
+    RailwayServiceBaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return ds.examples.maths.MathServiceImpl.getDescriptor();
+      return ds.examples.maths.RailwayServiceImpl.getDescriptor();
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("MathService");
+      return getFileDescriptor().findServiceByName("RailwayService");
     }
   }
 
-  private static final class MathServiceFileDescriptorSupplier
-      extends MathServiceBaseDescriptorSupplier {
-    MathServiceFileDescriptorSupplier() {}
+  private static final class RailwayServiceFileDescriptorSupplier
+      extends RailwayServiceBaseDescriptorSupplier {
+    RailwayServiceFileDescriptorSupplier() {}
   }
 
-  private static final class MathServiceMethodDescriptorSupplier
-      extends MathServiceBaseDescriptorSupplier
+  private static final class RailwayServiceMethodDescriptorSupplier
+      extends RailwayServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final String methodName;
 
-    MathServiceMethodDescriptorSupplier(String methodName) {
+    RailwayServiceMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -280,11 +347,12 @@ public final class MathServiceGrpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (MathServiceGrpc.class) {
+      synchronized (RailwayServiceGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new MathServiceFileDescriptorSupplier())
+              .setSchemaDescriptor(new RailwayServiceFileDescriptorSupplier())
+              .addMethod(getViewPricingMethod())
               .addMethod(getViewTimetableMethod())
               .build();
         }

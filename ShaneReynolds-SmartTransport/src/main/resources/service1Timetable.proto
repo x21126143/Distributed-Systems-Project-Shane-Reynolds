@@ -3,14 +3,16 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 option java_package = "ds.examples.maths";
-option java_outer_classname = "MathServiceImpl";
+option java_outer_classname = "RailwayServiceImpl";
 
 package maths;
 
 // Interface exported by the server.
-service MathService {
+service RailwayService {
 
-	rpc viewTimetable(Stations) returns (TrainDetails) {} //Unary
+	rpc viewPricing(Request) returns (Pricing) {} //Unary
+	
+	rpc viewTimetable(Stations) returns (stream TrainDetails) {} //Server Streaming
 
   //rpc calculate(CalculateRequest) returns (CalculateResponse) {}
 
@@ -25,6 +27,17 @@ service MathService {
 
 }
 
+
+message Request{
+	string request = 1;
+}
+
+message Pricing{
+	string price = 1;
+}
+
+
+
 message Stations{
 	string departStation = 1;
 	string arrivalStation = 2;
@@ -36,6 +49,8 @@ message TrainDetails{
 	int32 trainNo = 3;
 	string msg = 4;
 }
+
+
 
 //message ConvertMessage {
 //	string number = 1;

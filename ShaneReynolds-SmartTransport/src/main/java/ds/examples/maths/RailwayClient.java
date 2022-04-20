@@ -5,28 +5,29 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import ds.examples.maths.MathServiceGrpc.MathServiceBlockingStub;
-import ds.examples.maths.MathServiceGrpc.MathServiceStub;
+
+import ds.examples.maths.RailwayServiceGrpc.RailwayServiceBlockingStub;
+import ds.examples.maths.RailwayServiceGrpc.RailwayServiceStub;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
 
-public class MathClient {
+public class RailwayClient {
 
-	private static MathServiceBlockingStub blockingStub;
-	private static MathServiceStub asyncStub;
+	private static RailwayServiceBlockingStub blockingStub;
+	private static RailwayServiceStub asyncStub;
 
 	public static void main(String[] args) {
 
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
 
 		// stubs -- generate from proto
-		blockingStub = MathServiceGrpc.newBlockingStub(channel);
+		blockingStub = RailwayServiceGrpc.newBlockingStub(channel);
 
-		asyncStub = MathServiceGrpc.newStub(channel);
+		asyncStub = RailwayServiceGrpc.newStub(channel);
 
-		viewTimetable();
+		//viewTimetable();
 
 		// generateRandomNumbersAsyn();
 		// generateRandomNumbersBlocking();
@@ -45,14 +46,18 @@ public class MathClient {
 		Stations req = Stations.newBuilder().setDepartStation(station1).setArrivalStation(station2).build();
 		// CalculateRequest req =
 		// CalculateRequest.newBuilder().setNumber1(num1).setNumber2(num2).build();
-
-		TrainDetails response = blockingStub.viewTimetable(req);
+		//TrainDetails response = blockingStub.viewTimetable(req);
+		Iterator<TrainDetails> response = blockingStub.viewTimetable(req);
 		// CalculateResponse response = blockingStub.calculate(req);
 
 		// System.out.println("res: " + response.getResult() + " mes: " +
 		// response.getMessage());
-		System.out.println("Price: €" + response.getPrice() + ", time: " + response.getTime() + "PM, train number: "
-				+ response.getTrainNo() + ", Additioanl Info: " + response.getMsg());
+		while (response.hasNext()) {
+			TrainDetails temp = response.next();
+			System.out.println(temp.getTrainNo());
+		}
+		//System.out.println("Price: €" + response.getPrice() + ", time: " + response.getTime() + "PM, train number: "
+		//		+ response.getTrainNo() + ", Additioanl Info: " + response.getMsg());
 	}
 
 	/*

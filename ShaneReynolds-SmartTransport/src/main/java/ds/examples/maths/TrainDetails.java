@@ -89,13 +89,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return ds.examples.maths.MathServiceImpl.internal_static_maths_TrainDetails_descriptor;
+    return ds.examples.maths.RailwayServiceImpl.internal_static_maths_TrainDetails_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return ds.examples.maths.MathServiceImpl.internal_static_maths_TrainDetails_fieldAccessorTable
+    return ds.examples.maths.RailwayServiceImpl.internal_static_maths_TrainDetails_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             ds.examples.maths.TrainDetails.class, ds.examples.maths.TrainDetails.Builder.class);
   }
@@ -385,13 +385,13 @@ private static final long serialVersionUID = 0L;
       ds.examples.maths.TrainDetailsOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ds.examples.maths.MathServiceImpl.internal_static_maths_TrainDetails_descriptor;
+      return ds.examples.maths.RailwayServiceImpl.internal_static_maths_TrainDetails_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ds.examples.maths.MathServiceImpl.internal_static_maths_TrainDetails_fieldAccessorTable
+      return ds.examples.maths.RailwayServiceImpl.internal_static_maths_TrainDetails_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               ds.examples.maths.TrainDetails.class, ds.examples.maths.TrainDetails.Builder.class);
     }
@@ -428,7 +428,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return ds.examples.maths.MathServiceImpl.internal_static_maths_TrainDetails_descriptor;
+      return ds.examples.maths.RailwayServiceImpl.internal_static_maths_TrainDetails_descriptor;
     }
 
     @java.lang.Override

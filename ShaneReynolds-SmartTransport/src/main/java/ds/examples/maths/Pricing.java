@@ -4,20 +4,19 @@
 package ds.examples.maths;
 
 /**
- * Protobuf type {@code maths.Stations}
+ * Protobuf type {@code maths.Pricing}
  */
-public  final class Stations extends
+public  final class Pricing extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:maths.Stations)
-    StationsOrBuilder {
+    // @@protoc_insertion_point(message_implements:maths.Pricing)
+    PricingOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use Stations.newBuilder() to construct.
-  private Stations(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use Pricing.newBuilder() to construct.
+  private Pricing(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private Stations() {
-    departStation_ = "";
-    arrivalStation_ = "";
+  private Pricing() {
+    price_ = "";
   }
 
   @java.lang.Override
@@ -25,7 +24,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Stations(
+  private Pricing(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -47,13 +46,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            departStation_ = s;
-            break;
-          }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            arrivalStation_ = s;
+            price_ = s;
             break;
           }
           default: {
@@ -77,79 +70,45 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return ds.examples.maths.RailwayServiceImpl.internal_static_maths_Stations_descriptor;
+    return ds.examples.maths.RailwayServiceImpl.internal_static_maths_Pricing_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return ds.examples.maths.RailwayServiceImpl.internal_static_maths_Stations_fieldAccessorTable
+    return ds.examples.maths.RailwayServiceImpl.internal_static_maths_Pricing_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            ds.examples.maths.Stations.class, ds.examples.maths.Stations.Builder.class);
+            ds.examples.maths.Pricing.class, ds.examples.maths.Pricing.Builder.class);
   }
 
-  public static final int DEPARTSTATION_FIELD_NUMBER = 1;
-  private volatile java.lang.Object departStation_;
+  public static final int PRICE_FIELD_NUMBER = 1;
+  private volatile java.lang.Object price_;
   /**
-   * <code>string departStation = 1;</code>
+   * <code>string price = 1;</code>
    */
-  public java.lang.String getDepartStation() {
-    java.lang.Object ref = departStation_;
+  public java.lang.String getPrice() {
+    java.lang.Object ref = price_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      departStation_ = s;
+      price_ = s;
       return s;
     }
   }
   /**
-   * <code>string departStation = 1;</code>
+   * <code>string price = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getDepartStationBytes() {
-    java.lang.Object ref = departStation_;
+      getPriceBytes() {
+    java.lang.Object ref = price_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      departStation_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int ARRIVALSTATION_FIELD_NUMBER = 2;
-  private volatile java.lang.Object arrivalStation_;
-  /**
-   * <code>string arrivalStation = 2;</code>
-   */
-  public java.lang.String getArrivalStation() {
-    java.lang.Object ref = arrivalStation_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      arrivalStation_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string arrivalStation = 2;</code>
-   */
-  public com.google.protobuf.ByteString
-      getArrivalStationBytes() {
-    java.lang.Object ref = arrivalStation_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      arrivalStation_ = b;
+      price_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -170,11 +129,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getDepartStationBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, departStation_);
-    }
-    if (!getArrivalStationBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, arrivalStation_);
+    if (!getPriceBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, price_);
     }
     unknownFields.writeTo(output);
   }
@@ -185,11 +141,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getDepartStationBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, departStation_);
-    }
-    if (!getArrivalStationBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, arrivalStation_);
+    if (!getPriceBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, price_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -201,16 +154,14 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof ds.examples.maths.Stations)) {
+    if (!(obj instanceof ds.examples.maths.Pricing)) {
       return super.equals(obj);
     }
-    ds.examples.maths.Stations other = (ds.examples.maths.Stations) obj;
+    ds.examples.maths.Pricing other = (ds.examples.maths.Pricing) obj;
 
     boolean result = true;
-    result = result && getDepartStation()
-        .equals(other.getDepartStation());
-    result = result && getArrivalStation()
-        .equals(other.getArrivalStation());
+    result = result && getPrice()
+        .equals(other.getPrice());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -222,78 +173,76 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + DEPARTSTATION_FIELD_NUMBER;
-    hash = (53 * hash) + getDepartStation().hashCode();
-    hash = (37 * hash) + ARRIVALSTATION_FIELD_NUMBER;
-    hash = (53 * hash) + getArrivalStation().hashCode();
+    hash = (37 * hash) + PRICE_FIELD_NUMBER;
+    hash = (53 * hash) + getPrice().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static ds.examples.maths.Stations parseFrom(
+  public static ds.examples.maths.Pricing parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ds.examples.maths.Stations parseFrom(
+  public static ds.examples.maths.Pricing parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ds.examples.maths.Stations parseFrom(
+  public static ds.examples.maths.Pricing parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ds.examples.maths.Stations parseFrom(
+  public static ds.examples.maths.Pricing parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ds.examples.maths.Stations parseFrom(byte[] data)
+  public static ds.examples.maths.Pricing parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ds.examples.maths.Stations parseFrom(
+  public static ds.examples.maths.Pricing parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ds.examples.maths.Stations parseFrom(java.io.InputStream input)
+  public static ds.examples.maths.Pricing parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ds.examples.maths.Stations parseFrom(
+  public static ds.examples.maths.Pricing parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ds.examples.maths.Stations parseDelimitedFrom(java.io.InputStream input)
+  public static ds.examples.maths.Pricing parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static ds.examples.maths.Stations parseDelimitedFrom(
+  public static ds.examples.maths.Pricing parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ds.examples.maths.Stations parseFrom(
+  public static ds.examples.maths.Pricing parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ds.examples.maths.Stations parseFrom(
+  public static ds.examples.maths.Pricing parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -306,7 +255,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(ds.examples.maths.Stations prototype) {
+  public static Builder newBuilder(ds.examples.maths.Pricing prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -322,26 +271,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code maths.Stations}
+   * Protobuf type {@code maths.Pricing}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:maths.Stations)
-      ds.examples.maths.StationsOrBuilder {
+      // @@protoc_insertion_point(builder_implements:maths.Pricing)
+      ds.examples.maths.PricingOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ds.examples.maths.RailwayServiceImpl.internal_static_maths_Stations_descriptor;
+      return ds.examples.maths.RailwayServiceImpl.internal_static_maths_Pricing_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ds.examples.maths.RailwayServiceImpl.internal_static_maths_Stations_fieldAccessorTable
+      return ds.examples.maths.RailwayServiceImpl.internal_static_maths_Pricing_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ds.examples.maths.Stations.class, ds.examples.maths.Stations.Builder.class);
+              ds.examples.maths.Pricing.class, ds.examples.maths.Pricing.Builder.class);
     }
 
-    // Construct using ds.examples.maths.Stations.newBuilder()
+    // Construct using ds.examples.maths.Pricing.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -359,9 +308,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      departStation_ = "";
-
-      arrivalStation_ = "";
+      price_ = "";
 
       return this;
     }
@@ -369,17 +316,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return ds.examples.maths.RailwayServiceImpl.internal_static_maths_Stations_descriptor;
+      return ds.examples.maths.RailwayServiceImpl.internal_static_maths_Pricing_descriptor;
     }
 
     @java.lang.Override
-    public ds.examples.maths.Stations getDefaultInstanceForType() {
-      return ds.examples.maths.Stations.getDefaultInstance();
+    public ds.examples.maths.Pricing getDefaultInstanceForType() {
+      return ds.examples.maths.Pricing.getDefaultInstance();
     }
 
     @java.lang.Override
-    public ds.examples.maths.Stations build() {
-      ds.examples.maths.Stations result = buildPartial();
+    public ds.examples.maths.Pricing build() {
+      ds.examples.maths.Pricing result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -387,10 +334,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public ds.examples.maths.Stations buildPartial() {
-      ds.examples.maths.Stations result = new ds.examples.maths.Stations(this);
-      result.departStation_ = departStation_;
-      result.arrivalStation_ = arrivalStation_;
+    public ds.examples.maths.Pricing buildPartial() {
+      ds.examples.maths.Pricing result = new ds.examples.maths.Pricing(this);
+      result.price_ = price_;
       onBuilt();
       return result;
     }
@@ -429,22 +375,18 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof ds.examples.maths.Stations) {
-        return mergeFrom((ds.examples.maths.Stations)other);
+      if (other instanceof ds.examples.maths.Pricing) {
+        return mergeFrom((ds.examples.maths.Pricing)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(ds.examples.maths.Stations other) {
-      if (other == ds.examples.maths.Stations.getDefaultInstance()) return this;
-      if (!other.getDepartStation().isEmpty()) {
-        departStation_ = other.departStation_;
-        onChanged();
-      }
-      if (!other.getArrivalStation().isEmpty()) {
-        arrivalStation_ = other.arrivalStation_;
+    public Builder mergeFrom(ds.examples.maths.Pricing other) {
+      if (other == ds.examples.maths.Pricing.getDefaultInstance()) return this;
+      if (!other.getPrice().isEmpty()) {
+        price_ = other.price_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -462,11 +404,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      ds.examples.maths.Stations parsedMessage = null;
+      ds.examples.maths.Pricing parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (ds.examples.maths.Stations) e.getUnfinishedMessage();
+        parsedMessage = (ds.examples.maths.Pricing) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -476,140 +418,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object departStation_ = "";
+    private java.lang.Object price_ = "";
     /**
-     * <code>string departStation = 1;</code>
+     * <code>string price = 1;</code>
      */
-    public java.lang.String getDepartStation() {
-      java.lang.Object ref = departStation_;
+    public java.lang.String getPrice() {
+      java.lang.Object ref = price_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        departStation_ = s;
+        price_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string departStation = 1;</code>
+     * <code>string price = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getDepartStationBytes() {
-      java.lang.Object ref = departStation_;
+        getPriceBytes() {
+      java.lang.Object ref = price_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        departStation_ = b;
+        price_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string departStation = 1;</code>
+     * <code>string price = 1;</code>
      */
-    public Builder setDepartStation(
+    public Builder setPrice(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      departStation_ = value;
+      price_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string departStation = 1;</code>
+     * <code>string price = 1;</code>
      */
-    public Builder clearDepartStation() {
+    public Builder clearPrice() {
       
-      departStation_ = getDefaultInstance().getDepartStation();
+      price_ = getDefaultInstance().getPrice();
       onChanged();
       return this;
     }
     /**
-     * <code>string departStation = 1;</code>
+     * <code>string price = 1;</code>
      */
-    public Builder setDepartStationBytes(
+    public Builder setPriceBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      departStation_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object arrivalStation_ = "";
-    /**
-     * <code>string arrivalStation = 2;</code>
-     */
-    public java.lang.String getArrivalStation() {
-      java.lang.Object ref = arrivalStation_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        arrivalStation_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string arrivalStation = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getArrivalStationBytes() {
-      java.lang.Object ref = arrivalStation_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        arrivalStation_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string arrivalStation = 2;</code>
-     */
-    public Builder setArrivalStation(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      arrivalStation_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string arrivalStation = 2;</code>
-     */
-    public Builder clearArrivalStation() {
-      
-      arrivalStation_ = getDefaultInstance().getArrivalStation();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string arrivalStation = 2;</code>
-     */
-    public Builder setArrivalStationBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      arrivalStation_ = value;
+      price_ = value;
       onChanged();
       return this;
     }
@@ -626,41 +499,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:maths.Stations)
+    // @@protoc_insertion_point(builder_scope:maths.Pricing)
   }
 
-  // @@protoc_insertion_point(class_scope:maths.Stations)
-  private static final ds.examples.maths.Stations DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:maths.Pricing)
+  private static final ds.examples.maths.Pricing DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new ds.examples.maths.Stations();
+    DEFAULT_INSTANCE = new ds.examples.maths.Pricing();
   }
 
-  public static ds.examples.maths.Stations getDefaultInstance() {
+  public static ds.examples.maths.Pricing getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Stations>
-      PARSER = new com.google.protobuf.AbstractParser<Stations>() {
+  private static final com.google.protobuf.Parser<Pricing>
+      PARSER = new com.google.protobuf.AbstractParser<Pricing>() {
     @java.lang.Override
-    public Stations parsePartialFrom(
+    public Pricing parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Stations(input, extensionRegistry);
+      return new Pricing(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<Stations> parser() {
+  public static com.google.protobuf.Parser<Pricing> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<Stations> getParserForType() {
+  public com.google.protobuf.Parser<Pricing> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public ds.examples.maths.Stations getDefaultInstanceForType() {
+  public ds.examples.maths.Pricing getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

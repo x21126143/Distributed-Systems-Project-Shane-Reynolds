@@ -3,8 +3,8 @@
 
 package ds.examples.maths;
 
-public final class MathServiceImpl {
-  private MathServiceImpl() {}
+public final class RailwayServiceImpl {
+  private RailwayServiceImpl() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -14,6 +14,16 @@ public final class MathServiceImpl {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_maths_Request_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_maths_Request_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_maths_Pricing_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_maths_Pricing_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_maths_Stations_descriptor;
   static final 
@@ -33,14 +43,16 @@ public final class MathServiceImpl {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\027service1Timetable.proto\022\005maths\"9\n\010Stat" +
-      "ions\022\025\n\rdepartStation\030\001 \001(\t\022\026\n\016arrivalSt" +
-      "ation\030\002 \001(\t\"I\n\014TrainDetails\022\014\n\004time\030\001 \001(" +
-      "\t\022\r\n\005price\030\002 \001(\002\022\017\n\007trainNo\030\003 \001(\005\022\013\n\003msg" +
-      "\030\004 \001(\t2F\n\013MathService\0227\n\rviewTimetable\022\017" +
-      ".maths.Stations\032\023.maths.TrainDetails\"\000B&" +
-      "\n\021ds.examples.mathsB\017MathServiceImplP\001b\006" +
-      "proto3"
+      "\n\027service1Timetable.proto\022\005maths\"\032\n\007Requ" +
+      "est\022\017\n\007request\030\001 \001(\t\"\030\n\007Pricing\022\r\n\005price" +
+      "\030\001 \001(\t\"9\n\010Stations\022\025\n\rdepartStation\030\001 \001(" +
+      "\t\022\026\n\016arrivalStation\030\002 \001(\t\"I\n\014TrainDetail" +
+      "s\022\014\n\004time\030\001 \001(\t\022\r\n\005price\030\002 \001(\002\022\017\n\007trainN" +
+      "o\030\003 \001(\005\022\013\n\003msg\030\004 \001(\t2|\n\016RailwayService\022/" +
+      "\n\013viewPricing\022\016.maths.Request\032\016.maths.Pr" +
+      "icing\"\000\0229\n\rviewTimetable\022\017.maths.Station" +
+      "s\032\023.maths.TrainDetails\"\0000\001B)\n\021ds.example" +
+      "s.mathsB\022RailwayServiceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -54,14 +66,26 @@ public final class MathServiceImpl {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_maths_Stations_descriptor =
+    internal_static_maths_Request_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_maths_Request_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_maths_Request_descriptor,
+        new java.lang.String[] { "Request", });
+    internal_static_maths_Pricing_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_maths_Pricing_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_maths_Pricing_descriptor,
+        new java.lang.String[] { "Price", });
+    internal_static_maths_Stations_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_maths_Stations_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_maths_Stations_descriptor,
         new java.lang.String[] { "DepartStation", "ArrivalStation", });
     internal_static_maths_TrainDetails_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_maths_TrainDetails_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_maths_TrainDetails_descriptor,

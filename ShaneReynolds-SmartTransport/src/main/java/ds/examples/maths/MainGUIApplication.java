@@ -21,9 +21,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-//import ds.examples.maths.CalculateRequest.Operation;
-import ds.examples.maths.MathServiceGrpc.MathServiceBlockingStub;
-import ds.examples.maths.MathServiceGrpc.MathServiceStub;
+import ds.examples.maths.RailwayServiceGrpc.RailwayServiceBlockingStub;
+import ds.examples.maths.RailwayServiceGrpc.RailwayServiceStub;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -31,12 +30,13 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.Iterator;
 import java.awt.event.ActionEvent;
 
 public class MainGUIApplication {
 
-	private static MathServiceBlockingStub blockingStub;
-	private static MathServiceStub asyncStub;
+	private static RailwayServiceBlockingStub blockingStub;
+	private static RailwayServiceStub asyncStub;
 
 	private ServiceInfo mathServiceInfo;
 
@@ -75,9 +75,9 @@ public class MainGUIApplication {
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
 
 		// stubs -- generate from proto
-		blockingStub = MathServiceGrpc.newBlockingStub(channel);
+		blockingStub = RailwayServiceGrpc.newBlockingStub(channel);
 
-		asyncStub = MathServiceGrpc.newStub(channel);
+		asyncStub = RailwayServiceGrpc.newStub(channel);
 
 		initialize();
 	}
@@ -142,7 +142,7 @@ public class MainGUIApplication {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Client - Service Controller");
-		frame.setBounds(300, 300, 800, 500);
+		frame.setBounds(500, 500, 1000, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		BoxLayout bl = new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS);
@@ -162,6 +162,19 @@ public class MainGUIApplication {
 		frame.getContentPane().add(panel_service_info);
 		panel_service_info.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
 		panel_service_info.add(info);
+
+		JButton btnPricer = new JButton("See all prices");
+		btnPricer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				Request req = Request.newBuilder().setRequest("").build();
+				Pricing response = blockingStub.viewPricing(req);
+				textResponse.append(response.getPrice());
+				System.out.println(response.getPrice());
+			}
+		});
+
+		panel_service_info.add(btnPricer);
 
 		JPanel panel_service_1 = new JPanel();
 		frame.getContentPane().add(panel_service_1);
@@ -199,30 +212,57 @@ public class MainGUIApplication {
 
 				Stations req = Stations.newBuilder().setDepartStation(station1).setArrivalStation(station2).build();
 
-				TrainDetails response = blockingStub.viewTimetable(req);
+				// TrainDetails response = blockingStub.viewTimetable(req);
+				Iterator<TrainDetails> response = blockingStub.viewTimetable(req);
 
 				// textResponse.append("reply:"+ response.getResult() + " mes:"+
 				// response.getMessage() + "\n");
-				if (station1.equals(null) || station2.equals(null)) {
-					textResponse.append("This is not a valid train station. Try again.");
-					System.out.println("This is not a valid train station. Try again.");
-				} else {
-					textResponse.append(station1 + " to " + station2 + ": Price is: €" + response.getPrice()
-							+ ", Time is: " + response.getTime() + "PM, Train number is: " + response.getTrainNo()
-							+ ", Additional Info: " + response.getMsg() + "\n");
 
-					System.out.println((station1 + " to " + station2 + ": Price is: €" + response.getPrice()
-							+ ", Time is: " + response.getTime() + "PM, Train number is: " + response.getTrainNo()
-							+ ", Additional Info: " + response.getMsg() + "\n"));
-					// System.out.println("res: " + response.getResult() + " mes: " +
-					// response.getMessage());
+				int counter = 0;
+				while (response.hasNext()) {
+
+					TrainDetails individualResponse = response.next();
+
+					if (station1.equals(null) || station2.equals(null)) {
+						textResponse.append("This is not a valid train station. Try again.");
+						System.out.println("This is not a valid train station. Try again.");
+					} else {
+						if (counter == 0) {
+							textResponse.append("\n\n"+station1 + " to " + station2 + ":");
+						} else if (counter == 1) {
+							textResponse.append("\nPrice is: €" + individualResponse.getPrice());
+						} else if (counter == 2) {
+							textResponse.append("\nArrival Time is: " + individualResponse.getTime());
+						} else if (counter == 3) {
+							textResponse.append("PM\nTrain number is: " + individualResponse.getTrainNo());
+							textResponse.append("\nAdditional Info: " + individualResponse.getMsg() + "\n");
+						
+						} else {
+							continue;
+
+						}
+						counter++;
+					}
+					
+
+					// System.out.println(station1 + " to " + station2 + ":");
+
+					// System.out.println("Price is: €" + individualResponse.getPrice());
+
+					// System.out.println("Arrival Time is: " + individualResponse.getTime() +
+					// "PM");
+
+					// System.out.println("Train number is: " + individualResponse.getTrainNo());
+
+					// System.out.println("Additional Info: " + individualResponse.getMsg() + "\n");
+
 				}
 
 			}
 		});
 		panel_service_1.add(btnJourneyFinder);
 
-		textResponse = new JTextArea(10, 60);
+		textResponse = new JTextArea(10, 80);
 		textResponse.setLineWrap(true);
 		textResponse.setWrapStyleWord(true);
 

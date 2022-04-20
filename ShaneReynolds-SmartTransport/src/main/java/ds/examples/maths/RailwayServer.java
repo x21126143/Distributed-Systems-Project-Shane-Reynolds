@@ -12,29 +12,28 @@ import java.util.Properties;
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 
-//import ds.examples.maths.CalculateRequest.Operation;
-import ds.examples.maths.MathServiceGrpc.MathServiceImplBase;
 
+import ds.examples.maths.RailwayServiceGrpc.RailwayServiceImplBase;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
-public class MathServer extends MathServiceImplBase {
+public class RailwayServer extends RailwayServiceImplBase {
 
 	public static void main(String[] args) {
-		MathServer mathserver = new MathServer();
+		RailwayServer railwayserver = new RailwayServer();
 
-		Properties prop = mathserver.getProperties();
+		Properties prop = railwayserver.getProperties();
 
-		mathserver.registerService(prop);
+		railwayserver.registerService(prop);
 
 		int port = Integer.valueOf(prop.getProperty("service_port"));// #.50051;
 
 		try {
 
-			Server server = ServerBuilder.forPort(port).addService(mathserver).build().start();
+			Server server = ServerBuilder.forPort(port).addService(railwayserver).build().start();
 
-			System.out.println("Math Server started, listening on " + port);
+			System.out.println("Railway Server started, listening on port " + port);
 
 			server.awaitTermination();
 
@@ -108,6 +107,14 @@ public class MathServer extends MathServiceImplBase {
 
 	}
 
+	public void viewPricing(Request request, StreamObserver<Pricing> responseObserver) {
+		System.out.println("receiving Request method " + request.getRequest());
+		
+		Pricing reply = Pricing.newBuilder().setPrice("\n1 Stop: €7.25 \n2 Stops: €8.25 \n3 Stops: €8.87 \n4 Stops: €9.03 \n5 Stops: €10.10\n").build();
+		responseObserver.onNext(reply);
+		responseObserver.onCompleted();
+	}
+
 	public void viewTimetable(Stations request, StreamObserver<TrainDetails> responseObserver) {
 
 		System.out.println(
@@ -119,7 +126,8 @@ public class MathServer extends MathServiceImplBase {
 		String msg = "No additional information";
 
 		String[] stationArray = { "Wexford", "Arklow", "Wicklow", "Greystones", "Bray", "Dun Laoghaire" };
-
+		TrainDetails.Builder responseBuilder = TrainDetails.newBuilder();
+		
 		// DEPARTING FROM WEXFORD:
 		if (request.getDepartStation().equals(stationArray[0])
 				|| request.getDepartStation().equals(stationArray[0].toLowerCase())
@@ -134,10 +142,18 @@ public class MathServer extends MathServiceImplBase {
 				price = 0f;
 				trainNo = 0;
 				msg = "Cannot travel from Wexford to Wexford";
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
+				
+				
 			}
 
 			// TO ARKLOW:
@@ -148,10 +164,16 @@ public class MathServer extends MathServiceImplBase {
 				time = "1:25";
 				price = 7.25f;
 				trainNo = 102;
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO WICKLOW:
@@ -162,10 +184,17 @@ public class MathServer extends MathServiceImplBase {
 				time = "1:45";
 				price = 8.25f;
 				trainNo = 103;
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO GREYSTONES:
@@ -176,10 +205,16 @@ public class MathServer extends MathServiceImplBase {
 				time = "2:00";
 				price = 8.87f;
 				trainNo = 104;
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO BRAY:
@@ -190,10 +225,16 @@ public class MathServer extends MathServiceImplBase {
 				time = "2:25";
 				price = 9.03f;
 				trainNo = 105;
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO DUN LAOGHAIRE
@@ -204,10 +245,16 @@ public class MathServer extends MathServiceImplBase {
 				time = "2:50";
 				price = 10.10f;
 				trainNo = 106;
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 		} // end of Wexford departures
@@ -227,10 +274,16 @@ public class MathServer extends MathServiceImplBase {
 				price = 0f;
 				trainNo = 0;
 				msg = "This is a northbound line. Cannot travel back to Wexford from Arklow.";
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO ARKLOW:
@@ -242,10 +295,16 @@ public class MathServer extends MathServiceImplBase {
 				price = 0f;
 				trainNo = 0;
 				msg = "Cannot travel from Arklow to Arklow.";
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO WICKLOW:
@@ -256,10 +315,16 @@ public class MathServer extends MathServiceImplBase {
 				time = "1:45";
 				price = 7.25f;
 				trainNo = 107;
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO GREYSTONES:
@@ -270,10 +335,16 @@ public class MathServer extends MathServiceImplBase {
 				time = "2:00";
 				price = 8.25f;
 				trainNo = 108;
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO BRAY:
@@ -284,10 +355,16 @@ public class MathServer extends MathServiceImplBase {
 				time = "2:25";
 				price = 8.87f;
 				trainNo = 109;
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO DUN LAOGHAIRE
@@ -298,10 +375,16 @@ public class MathServer extends MathServiceImplBase {
 				time = "2:50";
 				price = 9.03f;
 				trainNo = 110;
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 		} // end of Arklow departures
 
@@ -320,10 +403,16 @@ public class MathServer extends MathServiceImplBase {
 				price = 0f;
 				trainNo = 0;
 				msg = "This is a northbound line. Cannot travel back to Wexford from Wicklow.";
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO ARKLOW:
@@ -335,10 +424,16 @@ public class MathServer extends MathServiceImplBase {
 				price = 0f;
 				trainNo = 0;
 				msg = "This is a northbound line. Cannot travel back to Arklow from Wicklow.";
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO WICKLOW:
@@ -350,10 +445,16 @@ public class MathServer extends MathServiceImplBase {
 				price = 0f;
 				trainNo = 0;
 				msg = "Cannot travel from Wicklow to Wicklow.";
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO GREYSTONES:
@@ -364,10 +465,16 @@ public class MathServer extends MathServiceImplBase {
 				time = "2:00";
 				price = 7.25f;
 				trainNo = 111;
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO BRAY:
@@ -378,10 +485,16 @@ public class MathServer extends MathServiceImplBase {
 				time = "2:25";
 				price = 8.25f;
 				trainNo = 112;
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO DUN LAOGHAIRE:
@@ -392,10 +505,16 @@ public class MathServer extends MathServiceImplBase {
 				time = "2:50";
 				price = 8.87f;
 				trainNo = 113;
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 		} // End of Wicklow Departures
 
@@ -414,10 +533,16 @@ public class MathServer extends MathServiceImplBase {
 				price = 0f;
 				trainNo = 0;
 				msg = "This is a northbound line. Cannot travel back to Wexford from Greystones.";
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO ARKLOW:
@@ -429,10 +554,16 @@ public class MathServer extends MathServiceImplBase {
 				price = 0f;
 				trainNo = 0;
 				msg = "This is a northbound line. Cannot travel back to Arklow from Greystones.";
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO WICKLOW:
@@ -444,10 +575,16 @@ public class MathServer extends MathServiceImplBase {
 				price = 0f;
 				trainNo = 0;
 				msg = "This is a northbound line. Cannot travel back to Wicklow from Greystones.";
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO GREYSTONES:
@@ -459,10 +596,16 @@ public class MathServer extends MathServiceImplBase {
 				price = 0f;
 				trainNo = 0;
 				msg = "Cannot travel from Greystones to Greystones.";
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO BRAY:
@@ -473,10 +616,16 @@ public class MathServer extends MathServiceImplBase {
 				time = "2:25";
 				price = 7.25f;
 				trainNo = 114;
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO DUN LAOGHAIRE:
@@ -487,10 +636,16 @@ public class MathServer extends MathServiceImplBase {
 				time = "2:50";
 				price = 8.25f;
 				trainNo = 115;
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 		}
 
@@ -509,10 +664,16 @@ public class MathServer extends MathServiceImplBase {
 				price = 0f;
 				trainNo = 0;
 				msg = "This is a northbound line. Cannot travel back to Wexford from Bray.";
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO ARKLOW:
@@ -524,10 +685,16 @@ public class MathServer extends MathServiceImplBase {
 				price = 0f;
 				trainNo = 0;
 				msg = "This is a northbound line. Cannot travel back to Arklow from Bray.";
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO WICKLOW:
@@ -539,10 +706,16 @@ public class MathServer extends MathServiceImplBase {
 				price = 0f;
 				trainNo = 0;
 				msg = "This is a northbound line. Cannot travel back to Wicklow from Bray.";
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO GREYSTONES:
@@ -554,10 +727,16 @@ public class MathServer extends MathServiceImplBase {
 				price = 0f;
 				trainNo = 0;
 				msg = "This is a northbound line. Cannot travel back to Greystones from Bray.";
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO BRAY:
@@ -569,10 +748,16 @@ public class MathServer extends MathServiceImplBase {
 				price = 0f;
 				trainNo = 0;
 				msg = "Cannot travel from Bray to Bray.";
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 
 			// TO DUN LAOGHAIRE:
@@ -583,10 +768,16 @@ public class MathServer extends MathServiceImplBase {
 				time = "2:50";
 				price = 7.25f;
 				trainNo = 116;
-				TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo)
-						.setMsg(msg).build();
-				responseObserver.onNext(reply);
-				responseObserver.onCompleted();
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
 			}
 		}
 
@@ -600,10 +791,16 @@ public class MathServer extends MathServiceImplBase {
 			price = 0f;
 			trainNo = 0;
 			msg = "Dun Laoghaire is the final station in the northbound line. No journeys available.";
-			TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo).setMsg(msg)
-					.build();
-			responseObserver.onNext(reply);
-			responseObserver.onCompleted();
+			//Streaming multiple methods consecutively
+			responseBuilder.setTime(time);
+			responseObserver.onNext(responseBuilder.build());
+			responseBuilder.setPrice(price);
+			responseObserver.onNext(responseBuilder.build());
+			responseBuilder.setTrainNo(trainNo);
+			responseObserver.onNext(responseBuilder.build());
+			responseBuilder.setMsg(msg);
+			responseObserver.onNext(responseBuilder.build());
+			responseObserver.onCompleted(); // Finished Streaming
 		}
 
 		else {
@@ -612,17 +809,18 @@ public class MathServer extends MathServiceImplBase {
 			price = 0f;
 			trainNo = 0;
 			msg = "No journeys available.";
-			TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo).setMsg(msg)
-					.build();
-			responseObserver.onNext(reply);
-			responseObserver.onCompleted();
+			//Streaming multiple methods consecutively
+			responseBuilder.setTime(time);
+			responseObserver.onNext(responseBuilder.build());
+			responseBuilder.setPrice(price);
+			responseObserver.onNext(responseBuilder.build());
+			responseBuilder.setTrainNo(trainNo);
+			responseObserver.onNext(responseBuilder.build());
+			responseBuilder.setMsg(msg);
+			responseObserver.onNext(responseBuilder.build());
+			responseObserver.onCompleted(); // Finished Streaming
 		}
 
-		TrainDetails reply = TrainDetails.newBuilder().setTime(time).setPrice(price).setTrainNo(trainNo).setMsg(msg)
-				.build();
-
-		responseObserver.onNext(reply);
-		responseObserver.onCompleted();
 	}
 
 	/*
