@@ -1,4 +1,4 @@
-package ds.examples.maths;
+package ca.railway.timetableService1;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,6 +12,10 @@ import javax.jmdns.ServiceListener;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import ca.railway.timetableService1.RailwayServiceGrpc.RailwayServiceBlockingStub;
+import ca.railway.timetableService1.RailwayServiceGrpc.RailwayServiceStub;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 //import javax.swing.JComboBox;
@@ -21,8 +25,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import ds.examples.maths.RailwayServiceGrpc.RailwayServiceBlockingStub;
-import ds.examples.maths.RailwayServiceGrpc.RailwayServiceStub;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 

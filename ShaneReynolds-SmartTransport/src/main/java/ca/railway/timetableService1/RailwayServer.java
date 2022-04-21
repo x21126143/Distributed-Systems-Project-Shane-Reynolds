@@ -1,4 +1,4 @@
-package ds.examples.maths;
+package ca.railway.timetableService1;
 
 import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
@@ -12,8 +12,7 @@ import java.util.Properties;
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 
-
-import ds.examples.maths.RailwayServiceGrpc.RailwayServiceImplBase;
+import ca.railway.timetableService1.RailwayServiceGrpc.RailwayServiceImplBase;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;

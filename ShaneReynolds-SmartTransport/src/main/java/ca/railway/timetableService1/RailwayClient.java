@@ -1,13 +1,12 @@
-package ds.examples.maths;
+package ca.railway.timetableService1;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-
-import ds.examples.maths.RailwayServiceGrpc.RailwayServiceBlockingStub;
-import ds.examples.maths.RailwayServiceGrpc.RailwayServiceStub;
+import ca.railway.timetableService1.RailwayServiceGrpc.RailwayServiceBlockingStub;
+import ca.railway.timetableService1.RailwayServiceGrpc.RailwayServiceStub;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;

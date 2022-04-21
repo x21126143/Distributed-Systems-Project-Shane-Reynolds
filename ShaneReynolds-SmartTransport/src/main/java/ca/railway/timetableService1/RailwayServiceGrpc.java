@@ -1,4 +1,4 @@
-package ds.examples.maths;
+package ca.railway.timetableService1;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
@@ -27,33 +27,33 @@ public final class RailwayServiceGrpc {
 
   private RailwayServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "maths.RailwayService";
+  public static final String SERVICE_NAME = "timetableService1.RailwayService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<ds.examples.maths.RequestPrices,
-      ds.examples.maths.Pricing> getViewPricingMethod;
+  private static volatile io.grpc.MethodDescriptor<ca.railway.timetableService1.RequestPrices,
+      ca.railway.timetableService1.Pricing> getViewPricingMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "viewPricing",
-      requestType = ds.examples.maths.RequestPrices.class,
-      responseType = ds.examples.maths.Pricing.class,
+      requestType = ca.railway.timetableService1.RequestPrices.class,
+      responseType = ca.railway.timetableService1.Pricing.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<ds.examples.maths.RequestPrices,
-      ds.examples.maths.Pricing> getViewPricingMethod() {
-    io.grpc.MethodDescriptor<ds.examples.maths.RequestPrices, ds.examples.maths.Pricing> getViewPricingMethod;
+  public static io.grpc.MethodDescriptor<ca.railway.timetableService1.RequestPrices,
+      ca.railway.timetableService1.Pricing> getViewPricingMethod() {
+    io.grpc.MethodDescriptor<ca.railway.timetableService1.RequestPrices, ca.railway.timetableService1.Pricing> getViewPricingMethod;
     if ((getViewPricingMethod = RailwayServiceGrpc.getViewPricingMethod) == null) {
       synchronized (RailwayServiceGrpc.class) {
         if ((getViewPricingMethod = RailwayServiceGrpc.getViewPricingMethod) == null) {
           RailwayServiceGrpc.getViewPricingMethod = getViewPricingMethod = 
-              io.grpc.MethodDescriptor.<ds.examples.maths.RequestPrices, ds.examples.maths.Pricing>newBuilder()
+              io.grpc.MethodDescriptor.<ca.railway.timetableService1.RequestPrices, ca.railway.timetableService1.Pricing>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "maths.RailwayService", "viewPricing"))
+                  "timetableService1.RailwayService", "viewPricing"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.examples.maths.RequestPrices.getDefaultInstance()))
+                  ca.railway.timetableService1.RequestPrices.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.examples.maths.Pricing.getDefaultInstance()))
+                  ca.railway.timetableService1.Pricing.getDefaultInstance()))
                   .setSchemaDescriptor(new RailwayServiceMethodDescriptorSupplier("viewPricing"))
                   .build();
           }
@@ -62,30 +62,30 @@ public final class RailwayServiceGrpc {
      return getViewPricingMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<ds.examples.maths.Stations,
-      ds.examples.maths.TrainDetails> getViewTimetableMethod;
+  private static volatile io.grpc.MethodDescriptor<ca.railway.timetableService1.Stations,
+      ca.railway.timetableService1.TrainDetails> getViewTimetableMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "viewTimetable",
-      requestType = ds.examples.maths.Stations.class,
-      responseType = ds.examples.maths.TrainDetails.class,
+      requestType = ca.railway.timetableService1.Stations.class,
+      responseType = ca.railway.timetableService1.TrainDetails.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<ds.examples.maths.Stations,
-      ds.examples.maths.TrainDetails> getViewTimetableMethod() {
-    io.grpc.MethodDescriptor<ds.examples.maths.Stations, ds.examples.maths.TrainDetails> getViewTimetableMethod;
+  public static io.grpc.MethodDescriptor<ca.railway.timetableService1.Stations,
+      ca.railway.timetableService1.TrainDetails> getViewTimetableMethod() {
+    io.grpc.MethodDescriptor<ca.railway.timetableService1.Stations, ca.railway.timetableService1.TrainDetails> getViewTimetableMethod;
     if ((getViewTimetableMethod = RailwayServiceGrpc.getViewTimetableMethod) == null) {
       synchronized (RailwayServiceGrpc.class) {
         if ((getViewTimetableMethod = RailwayServiceGrpc.getViewTimetableMethod) == null) {
           RailwayServiceGrpc.getViewTimetableMethod = getViewTimetableMethod = 
-              io.grpc.MethodDescriptor.<ds.examples.maths.Stations, ds.examples.maths.TrainDetails>newBuilder()
+              io.grpc.MethodDescriptor.<ca.railway.timetableService1.Stations, ca.railway.timetableService1.TrainDetails>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "maths.RailwayService", "viewTimetable"))
+                  "timetableService1.RailwayService", "viewTimetable"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.examples.maths.Stations.getDefaultInstance()))
+                  ca.railway.timetableService1.Stations.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.examples.maths.TrainDetails.getDefaultInstance()))
+                  ca.railway.timetableService1.TrainDetails.getDefaultInstance()))
                   .setSchemaDescriptor(new RailwayServiceMethodDescriptorSupplier("viewTimetable"))
                   .build();
           }
@@ -94,30 +94,30 @@ public final class RailwayServiceGrpc {
      return getViewTimetableMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<ds.examples.maths.TrainNo,
-      ds.examples.maths.TrainAmenities> getAmenitiesMethod;
+  private static volatile io.grpc.MethodDescriptor<ca.railway.timetableService1.TrainNo,
+      ca.railway.timetableService1.TrainAmenities> getAmenitiesMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "amenities",
-      requestType = ds.examples.maths.TrainNo.class,
-      responseType = ds.examples.maths.TrainAmenities.class,
+      requestType = ca.railway.timetableService1.TrainNo.class,
+      responseType = ca.railway.timetableService1.TrainAmenities.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<ds.examples.maths.TrainNo,
-      ds.examples.maths.TrainAmenities> getAmenitiesMethod() {
-    io.grpc.MethodDescriptor<ds.examples.maths.TrainNo, ds.examples.maths.TrainAmenities> getAmenitiesMethod;
+  public static io.grpc.MethodDescriptor<ca.railway.timetableService1.TrainNo,
+      ca.railway.timetableService1.TrainAmenities> getAmenitiesMethod() {
+    io.grpc.MethodDescriptor<ca.railway.timetableService1.TrainNo, ca.railway.timetableService1.TrainAmenities> getAmenitiesMethod;
     if ((getAmenitiesMethod = RailwayServiceGrpc.getAmenitiesMethod) == null) {
       synchronized (RailwayServiceGrpc.class) {
         if ((getAmenitiesMethod = RailwayServiceGrpc.getAmenitiesMethod) == null) {
           RailwayServiceGrpc.getAmenitiesMethod = getAmenitiesMethod = 
-              io.grpc.MethodDescriptor.<ds.examples.maths.TrainNo, ds.examples.maths.TrainAmenities>newBuilder()
+              io.grpc.MethodDescriptor.<ca.railway.timetableService1.TrainNo, ca.railway.timetableService1.TrainAmenities>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "maths.RailwayService", "amenities"))
+                  "timetableService1.RailwayService", "amenities"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.examples.maths.TrainNo.getDefaultInstance()))
+                  ca.railway.timetableService1.TrainNo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.examples.maths.TrainAmenities.getDefaultInstance()))
+                  ca.railway.timetableService1.TrainAmenities.getDefaultInstance()))
                   .setSchemaDescriptor(new RailwayServiceMethodDescriptorSupplier("amenities"))
                   .build();
           }
@@ -158,22 +158,22 @@ public final class RailwayServiceGrpc {
 
     /**
      */
-    public void viewPricing(ds.examples.maths.RequestPrices request,
-        io.grpc.stub.StreamObserver<ds.examples.maths.Pricing> responseObserver) {
+    public void viewPricing(ca.railway.timetableService1.RequestPrices request,
+        io.grpc.stub.StreamObserver<ca.railway.timetableService1.Pricing> responseObserver) {
       asyncUnimplementedUnaryCall(getViewPricingMethod(), responseObserver);
     }
 
     /**
      */
-    public void viewTimetable(ds.examples.maths.Stations request,
-        io.grpc.stub.StreamObserver<ds.examples.maths.TrainDetails> responseObserver) {
+    public void viewTimetable(ca.railway.timetableService1.Stations request,
+        io.grpc.stub.StreamObserver<ca.railway.timetableService1.TrainDetails> responseObserver) {
       asyncUnimplementedUnaryCall(getViewTimetableMethod(), responseObserver);
     }
 
     /**
      */
-    public void amenities(ds.examples.maths.TrainNo request,
-        io.grpc.stub.StreamObserver<ds.examples.maths.TrainAmenities> responseObserver) {
+    public void amenities(ca.railway.timetableService1.TrainNo request,
+        io.grpc.stub.StreamObserver<ca.railway.timetableService1.TrainAmenities> responseObserver) {
       asyncUnimplementedUnaryCall(getAmenitiesMethod(), responseObserver);
     }
 
@@ -183,22 +183,22 @@ public final class RailwayServiceGrpc {
             getViewPricingMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                ds.examples.maths.RequestPrices,
-                ds.examples.maths.Pricing>(
+                ca.railway.timetableService1.RequestPrices,
+                ca.railway.timetableService1.Pricing>(
                   this, METHODID_VIEW_PRICING)))
           .addMethod(
             getViewTimetableMethod(),
             asyncServerStreamingCall(
               new MethodHandlers<
-                ds.examples.maths.Stations,
-                ds.examples.maths.TrainDetails>(
+                ca.railway.timetableService1.Stations,
+                ca.railway.timetableService1.TrainDetails>(
                   this, METHODID_VIEW_TIMETABLE)))
           .addMethod(
             getAmenitiesMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                ds.examples.maths.TrainNo,
-                ds.examples.maths.TrainAmenities>(
+                ca.railway.timetableService1.TrainNo,
+                ca.railway.timetableService1.TrainAmenities>(
                   this, METHODID_AMENITIES)))
           .build();
     }
@@ -227,24 +227,24 @@ public final class RailwayServiceGrpc {
 
     /**
      */
-    public void viewPricing(ds.examples.maths.RequestPrices request,
-        io.grpc.stub.StreamObserver<ds.examples.maths.Pricing> responseObserver) {
+    public void viewPricing(ca.railway.timetableService1.RequestPrices request,
+        io.grpc.stub.StreamObserver<ca.railway.timetableService1.Pricing> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getViewPricingMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void viewTimetable(ds.examples.maths.Stations request,
-        io.grpc.stub.StreamObserver<ds.examples.maths.TrainDetails> responseObserver) {
+    public void viewTimetable(ca.railway.timetableService1.Stations request,
+        io.grpc.stub.StreamObserver<ca.railway.timetableService1.TrainDetails> responseObserver) {
       asyncServerStreamingCall(
           getChannel().newCall(getViewTimetableMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void amenities(ds.examples.maths.TrainNo request,
-        io.grpc.stub.StreamObserver<ds.examples.maths.TrainAmenities> responseObserver) {
+    public void amenities(ca.railway.timetableService1.TrainNo request,
+        io.grpc.stub.StreamObserver<ca.railway.timetableService1.TrainAmenities> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getAmenitiesMethod(), getCallOptions()), request, responseObserver);
     }
@@ -273,22 +273,22 @@ public final class RailwayServiceGrpc {
 
     /**
      */
-    public ds.examples.maths.Pricing viewPricing(ds.examples.maths.RequestPrices request) {
+    public ca.railway.timetableService1.Pricing viewPricing(ca.railway.timetableService1.RequestPrices request) {
       return blockingUnaryCall(
           getChannel(), getViewPricingMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public java.util.Iterator<ds.examples.maths.TrainDetails> viewTimetable(
-        ds.examples.maths.Stations request) {
+    public java.util.Iterator<ca.railway.timetableService1.TrainDetails> viewTimetable(
+        ca.railway.timetableService1.Stations request) {
       return blockingServerStreamingCall(
           getChannel(), getViewTimetableMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public ds.examples.maths.TrainAmenities amenities(ds.examples.maths.TrainNo request) {
+    public ca.railway.timetableService1.TrainAmenities amenities(ca.railway.timetableService1.TrainNo request) {
       return blockingUnaryCall(
           getChannel(), getAmenitiesMethod(), getCallOptions(), request);
     }
@@ -317,16 +317,16 @@ public final class RailwayServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<ds.examples.maths.Pricing> viewPricing(
-        ds.examples.maths.RequestPrices request) {
+    public com.google.common.util.concurrent.ListenableFuture<ca.railway.timetableService1.Pricing> viewPricing(
+        ca.railway.timetableService1.RequestPrices request) {
       return futureUnaryCall(
           getChannel().newCall(getViewPricingMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<ds.examples.maths.TrainAmenities> amenities(
-        ds.examples.maths.TrainNo request) {
+    public com.google.common.util.concurrent.ListenableFuture<ca.railway.timetableService1.TrainAmenities> amenities(
+        ca.railway.timetableService1.TrainNo request) {
       return futureUnaryCall(
           getChannel().newCall(getAmenitiesMethod(), getCallOptions()), request);
     }
@@ -354,16 +354,16 @@ public final class RailwayServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_VIEW_PRICING:
-          serviceImpl.viewPricing((ds.examples.maths.RequestPrices) request,
-              (io.grpc.stub.StreamObserver<ds.examples.maths.Pricing>) responseObserver);
+          serviceImpl.viewPricing((ca.railway.timetableService1.RequestPrices) request,
+              (io.grpc.stub.StreamObserver<ca.railway.timetableService1.Pricing>) responseObserver);
           break;
         case METHODID_VIEW_TIMETABLE:
-          serviceImpl.viewTimetable((ds.examples.maths.Stations) request,
-              (io.grpc.stub.StreamObserver<ds.examples.maths.TrainDetails>) responseObserver);
+          serviceImpl.viewTimetable((ca.railway.timetableService1.Stations) request,
+              (io.grpc.stub.StreamObserver<ca.railway.timetableService1.TrainDetails>) responseObserver);
           break;
         case METHODID_AMENITIES:
-          serviceImpl.amenities((ds.examples.maths.TrainNo) request,
-              (io.grpc.stub.StreamObserver<ds.examples.maths.TrainAmenities>) responseObserver);
+          serviceImpl.amenities((ca.railway.timetableService1.TrainNo) request,
+              (io.grpc.stub.StreamObserver<ca.railway.timetableService1.TrainAmenities>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -387,7 +387,7 @@ public final class RailwayServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return ds.examples.maths.RailwayServiceImpl.getDescriptor();
+      return ca.railway.timetableService1.RailwayServiceImpl.getDescriptor();
     }
 
     @java.lang.Override

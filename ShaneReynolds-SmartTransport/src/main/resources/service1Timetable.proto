@@ -2,10 +2,10 @@ syntax = "proto3";
 
 
 option java_multiple_files = true;
-option java_package = "ds.examples.maths";
+option java_package = "ca.railway.timetableService1";
 option java_outer_classname = "RailwayServiceImpl";
 
-package maths;
+package timetableService1;
 
 // Interface exported by the server.
 service RailwayService {
