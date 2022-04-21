@@ -3,8 +3,8 @@
 
 package ds.examples.maths;
 
-public interface RequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:maths.Request)
+public interface RequestPricesOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:maths.RequestPrices)
     com.google.protobuf.MessageOrBuilder {
 
   /**

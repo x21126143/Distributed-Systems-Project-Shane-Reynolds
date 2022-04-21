@@ -43,6 +43,7 @@ public class MainGUIApplication {
 	private JFrame frame;
 	private JTextField departInput;
 	private JTextField arrivalInput;
+	private JTextField amenitiesInput;
 	private JTextArea textResponse;
 
 	/**
@@ -157,17 +158,20 @@ public class MainGUIApplication {
 		panel_service_title.add(titleLabel);
 
 		JPanel panel_service_info = new JPanel();
+		JPanel panel_service_info2 = new JPanel();
 		JLabel info = new JLabel("Stations: Wexford, Arklow, Wicklow, Greystones, Bray, Dun Laoghaire");
 		info.setForeground(Color.gray);
 		frame.getContentPane().add(panel_service_info);
 		panel_service_info.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
+		frame.getContentPane().add(panel_service_info2);
+		panel_service_info2.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
 		panel_service_info.add(info);
 
 		JButton btnPricer = new JButton("See all prices");
 		btnPricer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Request req = Request.newBuilder().setRequest("").build();
+				RequestPrices req = RequestPrices.newBuilder().setRequest("").build();
 				Pricing response = blockingStub.viewPricing(req);
 				textResponse.append(response.getPrice());
 				System.out.println(response.getPrice());
@@ -175,6 +179,35 @@ public class MainGUIApplication {
 		});
 
 		panel_service_info.add(btnPricer);
+
+		JLabel amenitiesLabel = new JLabel("Train Number");
+		panel_service_info2.add(amenitiesLabel);
+
+		amenitiesInput = new JTextField();
+		panel_service_info2.add(amenitiesInput);
+		amenitiesInput.setColumns(5);
+
+		JButton btnAmenities = new JButton("See Amenities");
+		btnAmenities.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				// Parsing from string to int
+				String text = amenitiesInput.getText();
+				int trainNo = Integer.parseInt(text);
+
+
+
+				TrainNo req = TrainNo.newBuilder().setTrainNo(trainNo).build();
+				// int trainNo = req.getTrainNo();
+				TrainAmenities response = blockingStub.amenities(req);
+				textResponse.append("For Train Number " + amenitiesInput.getText() + ": " + response.getCatering()
+						+ response.getBikeSlot() + response.getPetsAllowed() + "\n");
+				System.out.println("For Train Number " + amenitiesInput.getText() + ": " + response.getCatering()
+						+ response.getBikeSlot() + response.getPetsAllowed() + "\n");
+			}
+		});
+
+		panel_service_info2.add(btnAmenities);
 
 		JPanel panel_service_1 = new JPanel();
 		frame.getContentPane().add(panel_service_1);
@@ -201,6 +234,7 @@ public class MainGUIApplication {
 		 */
 
 		JButton btnJourneyFinder = new JButton("Find journeys");
+
 		btnJourneyFinder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -228,7 +262,7 @@ public class MainGUIApplication {
 						System.out.println("This is not a valid train station. Try again.");
 					} else {
 						if (counter == 0) {
-							textResponse.append("\n\n"+station1 + " to " + station2 + ":");
+							textResponse.append("\n\n" + station1 + " to " + station2 + ":");
 						} else if (counter == 1) {
 							textResponse.append("\nPrice is: €" + individualResponse.getPrice());
 						} else if (counter == 2) {
@@ -236,14 +270,13 @@ public class MainGUIApplication {
 						} else if (counter == 3) {
 							textResponse.append("PM\nTrain number is: " + individualResponse.getTrainNo());
 							textResponse.append("\nAdditional Info: " + individualResponse.getMsg() + "\n");
-						
+
 						} else {
 							continue;
 
 						}
 						counter++;
 					}
-					
 
 					// System.out.println(station1 + " to " + station2 + ":");
 

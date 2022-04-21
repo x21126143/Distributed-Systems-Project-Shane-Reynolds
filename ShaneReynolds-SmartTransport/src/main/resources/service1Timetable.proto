@@ -10,9 +10,11 @@ package maths;
 // Interface exported by the server.
 service RailwayService {
 
-	rpc viewPricing(Request) returns (Pricing) {} //Unary
+	rpc viewPricing(RequestPrices) returns (Pricing) {} //Unary
 	
 	rpc viewTimetable(Stations) returns (stream TrainDetails) {} //Server Streaming
+	
+	rpc amenities(TrainNo) returns (TrainAmenities) {} //Unary
 
   //rpc calculate(CalculateRequest) returns (CalculateResponse) {}
 
@@ -28,7 +30,7 @@ service RailwayService {
 }
 
 
-message Request{
+message RequestPrices{
 	string request = 1;
 }
 
@@ -49,6 +51,18 @@ message TrainDetails{
 	int32 trainNo = 3;
 	string msg = 4;
 }
+
+message TrainNo{
+	int32 trainNo = 1;
+}
+
+message TrainAmenities{
+	string catering = 1;
+	string bikeSlot = 2;
+	bool petsAllowed = 3;
+}
+
+
 
 
 

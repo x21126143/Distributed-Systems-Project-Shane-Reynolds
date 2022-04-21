@@ -15,10 +15,10 @@ public final class RailwayServiceImpl {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_maths_Request_descriptor;
+    internal_static_maths_RequestPrices_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_maths_Request_fieldAccessorTable;
+      internal_static_maths_RequestPrices_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_maths_Pricing_descriptor;
   static final 
@@ -34,6 +34,16 @@ public final class RailwayServiceImpl {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_maths_TrainDetails_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_maths_TrainNo_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_maths_TrainNo_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_maths_TrainAmenities_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_maths_TrainAmenities_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -43,16 +53,21 @@ public final class RailwayServiceImpl {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\027service1Timetable.proto\022\005maths\"\032\n\007Requ" +
-      "est\022\017\n\007request\030\001 \001(\t\"\030\n\007Pricing\022\r\n\005price" +
-      "\030\001 \001(\t\"9\n\010Stations\022\025\n\rdepartStation\030\001 \001(" +
-      "\t\022\026\n\016arrivalStation\030\002 \001(\t\"I\n\014TrainDetail" +
-      "s\022\014\n\004time\030\001 \001(\t\022\r\n\005price\030\002 \001(\002\022\017\n\007trainN" +
-      "o\030\003 \001(\005\022\013\n\003msg\030\004 \001(\t2|\n\016RailwayService\022/" +
-      "\n\013viewPricing\022\016.maths.Request\032\016.maths.Pr" +
-      "icing\"\000\0229\n\rviewTimetable\022\017.maths.Station" +
-      "s\032\023.maths.TrainDetails\"\0000\001B)\n\021ds.example" +
-      "s.mathsB\022RailwayServiceImplP\001b\006proto3"
+      "\n\027service1Timetable.proto\022\005maths\" \n\rRequ" +
+      "estPrices\022\017\n\007request\030\001 \001(\t\"\030\n\007Pricing\022\r\n" +
+      "\005price\030\001 \001(\t\"9\n\010Stations\022\025\n\rdepartStatio" +
+      "n\030\001 \001(\t\022\026\n\016arrivalStation\030\002 \001(\t\"I\n\014Train" +
+      "Details\022\014\n\004time\030\001 \001(\t\022\r\n\005price\030\002 \001(\002\022\017\n\007" +
+      "trainNo\030\003 \001(\005\022\013\n\003msg\030\004 \001(\t\"\032\n\007TrainNo\022\017\n" +
+      "\007trainNo\030\001 \001(\005\"I\n\016TrainAmenities\022\020\n\010cate" +
+      "ring\030\001 \001(\t\022\020\n\010bikeSlot\030\002 \001(\t\022\023\n\013petsAllo" +
+      "wed\030\003 \001(\0102\270\001\n\016RailwayService\0225\n\013viewPric" +
+      "ing\022\024.maths.RequestPrices\032\016.maths.Pricin" +
+      "g\"\000\0229\n\rviewTimetable\022\017.maths.Stations\032\023." +
+      "maths.TrainDetails\"\0000\001\0224\n\tamenities\022\016.ma" +
+      "ths.TrainNo\032\025.maths.TrainAmenities\"\000B)\n\021" +
+      "ds.examples.mathsB\022RailwayServiceImplP\001b" +
+      "\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -66,11 +81,11 @@ public final class RailwayServiceImpl {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_maths_Request_descriptor =
+    internal_static_maths_RequestPrices_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_maths_Request_fieldAccessorTable = new
+    internal_static_maths_RequestPrices_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_maths_Request_descriptor,
+        internal_static_maths_RequestPrices_descriptor,
         new java.lang.String[] { "Request", });
     internal_static_maths_Pricing_descriptor =
       getDescriptor().getMessageTypes().get(1);
@@ -90,6 +105,18 @@ public final class RailwayServiceImpl {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_maths_TrainDetails_descriptor,
         new java.lang.String[] { "Time", "Price", "TrainNo", "Msg", });
+    internal_static_maths_TrainNo_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_maths_TrainNo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_maths_TrainNo_descriptor,
+        new java.lang.String[] { "TrainNo", });
+    internal_static_maths_TrainAmenities_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_maths_TrainAmenities_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_maths_TrainAmenities_descriptor,
+        new java.lang.String[] { "Catering", "BikeSlot", "PetsAllowed", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

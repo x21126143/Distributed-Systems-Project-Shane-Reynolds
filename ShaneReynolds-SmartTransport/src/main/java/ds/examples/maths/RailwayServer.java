@@ -107,7 +107,7 @@ public class RailwayServer extends RailwayServiceImplBase {
 
 	}
 
-	public void viewPricing(Request request, StreamObserver<Pricing> responseObserver) {
+	public void viewPricing(RequestPrices request, StreamObserver<Pricing> responseObserver) {
 		System.out.println("receiving Request method " + request.getRequest());
 		
 		Pricing reply = Pricing.newBuilder().setPrice("\n1 Stop: €7.25 \n2 Stops: €8.25 \n3 Stops: €8.87 \n4 Stops: €9.03 \n5 Stops: €10.10\n").build();
@@ -823,6 +823,42 @@ public class RailwayServer extends RailwayServiceImplBase {
 
 	}
 
+	
+	public void amenities(TrainNo request, StreamObserver<TrainAmenities> responseObserver) {
+		System.out.println("Receiving Request Method: " + request.getTrainNo());
+		TrainAmenities.Builder reply = TrainAmenities.newBuilder();
+		
+		
+		//Catering options will change dynamically as the trains progress northbound.
+		if(request.getTrainNo() <= 110) {
+			
+			reply.setCatering("Catering: Sandwiches and wine.");
+			reply.setBikeSlot("3 Bike slots. Pets allowed: ");
+			reply.setPetsAllowed(false);
+			responseObserver.onNext(reply.build());
+			responseObserver.onCompleted();
+		}
+		else if(request.getTrainNo() == 111) {
+			reply.setCatering("Catering: SPECIAL - Tea and cakes.");
+			reply.setBikeSlot("No Bike slots. Pets allowed: ");
+			reply.setPetsAllowed(false);
+			responseObserver.onNext(reply.build());
+			responseObserver.onCompleted();
+		}
+		else if(request.getTrainNo() > 111) {
+			reply.setCatering("Catering: Limited availability - Select snacks and beer.");
+			reply.setBikeSlot("6 Bike slots. Pets allowed: ");
+			reply.setPetsAllowed(false);
+			responseObserver.onNext(reply.build());
+			responseObserver.onCompleted();
+		}
+		else {
+			reply.setCatering("No amenities");
+			reply.setBikeSlot("No amenities");
+			reply.setPetsAllowed(false);
+		}
+		
+	}
 	/*
 	 * //service implmentation for public void generateRandomNumbers(RandomRequest
 	 * request, StreamObserver<NumberResponse> responseObserver) {
