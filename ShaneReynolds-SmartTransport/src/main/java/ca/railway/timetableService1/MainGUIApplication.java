@@ -151,6 +151,11 @@ public class MainGUIApplication {
 		BoxLayout bl = new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS);
 
 		frame.getContentPane().setLayout(bl);
+		
+		
+		JPanel panel_service_login = new JPanel();
+		
+		
 
 		JPanel panel_service_title = new JPanel();
 		frame.getContentPane().add(panel_service_title);

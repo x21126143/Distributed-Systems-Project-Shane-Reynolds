@@ -859,6 +859,63 @@ public class RailwayServer extends RailwayServiceImplBase {
 		
 	}
 	/*
+	public void viewTimetable(Stations request, StreamObserver<TrainDetails> responseObserver) {
+		System.out.println(
+				"receiving arrival station method " + request.getArrivalStation() + " , " + request.getDepartStation());
+		String time = "";
+		float price = Float.NaN;
+		int trainNo = 0;
+		String msg = "No additional information";
+		String[] stationArray = { "Wexford", "Arklow", "Wicklow", "Greystones", "Bray", "Dun Laoghaire" };
+		TrainDetails.Builder responseBuilder = TrainDetails.newBuilder();
+		// DEPARTING FROM WEXFORD:
+		if (request.getDepartStation().equals(stationArray[0])
+				|| request.getDepartStation().equals(stationArray[0].toLowerCase())
+				|| request.getDepartStation().equals(stationArray[0].toUpperCase())) {
+			// TO WEXFORD:
+			if (request.getArrivalStation().equals(stationArray[0])
+					|| request.getArrivalStation().equals(stationArray[0].toLowerCase())
+					|| request.getArrivalStation().equals(stationArray[0].toUpperCase())) {
+				time = "";
+				price = 0f;
+				trainNo = 0;
+				msg = "Cannot travel from Wexford to Wexford";
+				//Streaming multiple methods consecutively
+				responseBuilder.setTime(time);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setPrice(price);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setTrainNo(trainNo);
+				responseObserver.onNext(responseBuilder.build());
+				responseBuilder.setMsg(msg);
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted(); // Finished Streaming
+			}
+*/
+	public void login(LoginRequest request, StreamObserver<LoginReply> responseObserver) {
+		System.out.println("receiving the request method for login " +request.getUsername() + request.getPassword());
+		LoginReply.Builder responseBuilder = LoginReply.newBuilder();
+		
+		if (request.getUsername().equals("Shane98")) {
+			if(request.getPassword().equals("cherries!")) {
+				System.out.println("Login successful!");
+				responseBuilder.setMessage("Login Successful!");
+				responseObserver.onNext(responseBuilder.build());
+				responseObserver.onCompleted();
+				
+			}
+		}
+		else {
+			System.out.println("Login unsuccessful. Try again.");
+			responseBuilder.setMessage("Login Unsuccessful. Try Again.");
+			responseObserver.onNext(responseBuilder.build());
+			responseObserver.onCompleted();
+		}
+		
+	}
+	
+	
+	/*
 	 * //service implmentation for public void generateRandomNumbers(RandomRequest
 	 * request, StreamObserver<NumberResponse> responseObserver) {
 	 * 
