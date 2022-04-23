@@ -12,6 +12,8 @@ import java.util.Properties;
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 
+//import ca.railway.bookingService2.LoginReply;
+//import ca.railway.bookingService2.LoginRequest;
 import ca.railway.timetableService1.RailwayServiceGrpc.RailwayServiceImplBase;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -892,27 +894,7 @@ public class RailwayServer extends RailwayServiceImplBase {
 				responseObserver.onCompleted(); // Finished Streaming
 			}
 */
-	public void login(LoginRequest request, StreamObserver<LoginReply> responseObserver) {
-		System.out.println("receiving the request method for login " +request.getUsername() + request.getPassword());
-		LoginReply.Builder responseBuilder = LoginReply.newBuilder();
-		
-		if (request.getUsername().equals("Shane98")) {
-			if(request.getPassword().equals("cherries!")) {
-				System.out.println("Login successful!");
-				responseBuilder.setMessage("Login Successful!");
-				responseObserver.onNext(responseBuilder.build());
-				responseObserver.onCompleted();
-				
-			}
-		}
-		else {
-			System.out.println("Login unsuccessful. Try again.");
-			responseBuilder.setMessage("Login Unsuccessful. Try Again.");
-			responseObserver.onNext(responseBuilder.build());
-			responseObserver.onCompleted();
-		}
-		
-	}
+	
 	
 	
 	/*

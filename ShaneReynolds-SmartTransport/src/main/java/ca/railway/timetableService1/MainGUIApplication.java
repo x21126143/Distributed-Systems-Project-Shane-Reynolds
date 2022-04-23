@@ -1,5 +1,6 @@
 package ca.railway.timetableService1;
 
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -15,6 +16,14 @@ import javax.swing.JTextField;
 
 import ca.railway.timetableService1.RailwayServiceGrpc.RailwayServiceBlockingStub;
 import ca.railway.timetableService1.RailwayServiceGrpc.RailwayServiceStub;
+import ca.railway.bookingService2.LoginReply;
+import ca.railway.bookingService2.LoginRequest;
+import ca.railway.bookingService2.BookingServiceGrpc;
+import ca.railway.bookingService2.BookingServiceGrpc.BookingServiceBlockingStub;
+import ca.railway.bookingService2.BookingServiceGrpc.BookingServiceStub;
+import ca.railway.bookingService2.*;
+import ca.railway.timetableService1.*;
+
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -39,13 +48,18 @@ public class MainGUIApplication {
 
 	private static RailwayServiceBlockingStub blockingStub;
 	private static RailwayServiceStub asyncStub;
+	
+	private static BookingServiceBlockingStub blockingStub2;
+	private static BookingServiceStub asyncStub2;
 
-	private ServiceInfo mathServiceInfo;
+	private ServiceInfo railServiceInfo;
 
 	private JFrame frame;
 	private JTextField departInput;
 	private JTextField arrivalInput;
 	private JTextField amenitiesInput;
+	private JTextField usernameInput;
+	private JTextField passwordInput;
 	private JTextArea textResponse;
 
 	/**
@@ -69,44 +83,49 @@ public class MainGUIApplication {
 	 */
 	public MainGUIApplication() {
 
-		String math_service_type = "_maths._tcp.local.";
-		discoverMathService(math_service_type);
+		String rail_service_type = "_rail._tcp.local.";
+		String booking_service_type = "_booking._tcp.local.";
+		discoverRailService(rail_service_type);
+		discoverRailService(booking_service_type);
 		// System.out.println(mathServiceInfo.getHostAddresses());
 		// String host = mathServiceInfo.getHostAddresses()[0];
 		// int port = mathServiceInfo.getPort();
 
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
+		ManagedChannel channel2 = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();
 
 		// stubs -- generate from proto
 		blockingStub = RailwayServiceGrpc.newBlockingStub(channel);
+		blockingStub2 = ca.railway.bookingService2.BookingServiceGrpc.newBlockingStub(channel2);
 
 		asyncStub = RailwayServiceGrpc.newStub(channel);
 
 		initialize();
 	}
 
-	private void discoverMathService(String service_type) {
+	private void discoverRailService(String service_type) {
 
 		try {
 			// Create a JmDNS instance
 			JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
-
+			JmDNS jmdns2 = JmDNS.create(InetAddress.getLocalHost());
+			
 			jmdns.addServiceListener(service_type, new ServiceListener() {
 
 				@Override
 				public void serviceResolved(ServiceEvent event) {
-					System.out.println("Math Service resolved: " + event.getInfo());
+					System.out.println("Rail Service resolved: " + event.getInfo());
 
-					mathServiceInfo = event.getInfo();
+					railServiceInfo = event.getInfo();
 
-					int port = mathServiceInfo.getPort();
+					int port = railServiceInfo.getPort();
 
 					System.out.println("resolving " + service_type + " with properties ...");
 					System.out.println("\t port: " + port);
 					System.out.println("\t type:" + event.getType());
 					System.out.println("\t name: " + event.getName());
-					System.out.println("\t description/properties: " + mathServiceInfo.getNiceTextString());
-					System.out.println("\t host: " + mathServiceInfo.getHostAddresses()[0]);
+					System.out.println("\t description/properties: " + railServiceInfo.getNiceTextString());
+					System.out.println("\t host: " + railServiceInfo.getHostAddresses()[0]);
 
 				}
 
@@ -172,7 +191,11 @@ public class MainGUIApplication {
 		panel_service_info.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
 		frame.getContentPane().add(panel_service_info2);
 		panel_service_info2.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
+		frame.getContentPane().add(panel_service_login);
+		panel_service_login.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
 		panel_service_info.add(info);
+		
+		
 
 		JButton btnPricer = new JButton("See all prices");
 		btnPricer.addActionListener(new ActionListener() {
@@ -184,7 +207,38 @@ public class MainGUIApplication {
 				System.out.println(response.getPrice());
 			}
 		});
-
+		
+		JButton btnLogin = new JButton("Login");
+		JLabel usernamesLabel = new JLabel("Enter username: ");
+		
+		
+		JLabel passwordsLabel = new JLabel("Enter password: ");
+		
+		usernameInput = new JTextField();
+		passwordInput = new JTextField();
+		
+		usernameInput.setColumns(10);
+		passwordInput.setColumns(10);
+		
+		panel_service_login.add(usernamesLabel);
+		panel_service_login.add(usernameInput);
+		panel_service_login.add(passwordsLabel);
+		panel_service_login.add(passwordInput);
+		
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String user = usernameInput.getText();
+				String pass = passwordInput.getText();
+				
+				LoginRequest req = LoginRequest.newBuilder().setUsername(user).setPassword(pass).build();
+				LoginReply response = blockingStub2.login(req);
+				
+				textResponse.append(response.getMessage());
+				System.out.println(response.getMessage());
+			}
+		});
+		
+		panel_service_login.add(btnLogin);
 		panel_service_info.add(btnPricer);
 
 		JLabel amenitiesLabel = new JLabel("Train Number");
@@ -197,13 +251,9 @@ public class MainGUIApplication {
 		JButton btnAmenities = new JButton("See Amenities");
 		btnAmenities.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				// Parsing from string to int
 				String text = amenitiesInput.getText();
 				int trainNo = Integer.parseInt(text);
-
-
-
 				TrainNo req = TrainNo.newBuilder().setTrainNo(trainNo).build();
 				// int trainNo = req.getTrainNo();
 				TrainAmenities response = blockingStub.amenities(req);
