@@ -4,11 +4,11 @@
 package ca.railway.bookingService2;
 
 /**
- * Protobuf type {@code ca.railway.timetableService2.BookingRequest}
+ * Protobuf type {@code bookingService2.BookingRequest}
  */
 public  final class BookingRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:ca.railway.timetableService2.BookingRequest)
+    // @@protoc_insertion_point(message_implements:bookingService2.BookingRequest)
     BookingRequestOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use BookingRequest.newBuilder() to construct.
@@ -76,13 +76,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_timetableService2_BookingRequest_descriptor;
+    return ca.railway.bookingService2.BookingServiceImpl.internal_static_bookingService2_BookingRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_timetableService2_BookingRequest_fieldAccessorTable
+    return ca.railway.bookingService2.BookingServiceImpl.internal_static_bookingService2_BookingRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             ca.railway.bookingService2.BookingRequest.class, ca.railway.bookingService2.BookingRequest.Builder.class);
   }
@@ -297,21 +297,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code ca.railway.timetableService2.BookingRequest}
+   * Protobuf type {@code bookingService2.BookingRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:ca.railway.timetableService2.BookingRequest)
+      // @@protoc_insertion_point(builder_implements:bookingService2.BookingRequest)
       ca.railway.bookingService2.BookingRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_timetableService2_BookingRequest_descriptor;
+      return ca.railway.bookingService2.BookingServiceImpl.internal_static_bookingService2_BookingRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_timetableService2_BookingRequest_fieldAccessorTable
+      return ca.railway.bookingService2.BookingServiceImpl.internal_static_bookingService2_BookingRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               ca.railway.bookingService2.BookingRequest.class, ca.railway.bookingService2.BookingRequest.Builder.class);
     }
@@ -344,7 +344,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_timetableService2_BookingRequest_descriptor;
+      return ca.railway.bookingService2.BookingServiceImpl.internal_static_bookingService2_BookingRequest_descriptor;
     }
 
     @java.lang.Override
@@ -557,10 +557,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:ca.railway.timetableService2.BookingRequest)
+    // @@protoc_insertion_point(builder_scope:bookingService2.BookingRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:ca.railway.timetableService2.BookingRequest)
+  // @@protoc_insertion_point(class_scope:bookingService2.BookingRequest)
   private static final ca.railway.bookingService2.BookingRequest DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new ca.railway.bookingService2.BookingRequest();

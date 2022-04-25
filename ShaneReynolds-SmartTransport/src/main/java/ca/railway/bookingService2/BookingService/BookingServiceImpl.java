@@ -15,25 +15,25 @@ public final class BookingServiceImpl {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ca_railway_bookingService2_LoginRequest_descriptor;
+    internal_static_ca_railway_bookingService2_BookingService_LoginRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ca_railway_bookingService2_LoginRequest_fieldAccessorTable;
+      internal_static_ca_railway_bookingService2_BookingService_LoginRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ca_railway_bookingService2_LoginReply_descriptor;
+    internal_static_ca_railway_bookingService2_BookingService_LoginReply_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ca_railway_bookingService2_LoginReply_fieldAccessorTable;
+      internal_static_ca_railway_bookingService2_BookingService_LoginReply_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ca_railway_bookingService2_BookingRequest_descriptor;
+    internal_static_ca_railway_bookingService2_BookingService_BookingRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ca_railway_bookingService2_BookingRequest_fieldAccessorTable;
+      internal_static_ca_railway_bookingService2_BookingService_BookingRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ca_railway_bookingService2_BookingConfirmationMsg_descriptor;
+    internal_static_ca_railway_bookingService2_BookingService_BookingConfirmationMsg_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ca_railway_bookingService2_BookingConfirmationMsg_fieldAccessorTable;
+      internal_static_ca_railway_bookingService2_BookingService_BookingConfirmationMsg_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -43,21 +43,23 @@ public final class BookingServiceImpl {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025service2Booking.proto\022\032ca.railway.book" +
-      "ingService2\"2\n\014LoginRequest\022\020\n\010username\030" +
-      "\001 \001(\t\022\020\n\010password\030\002 \001(\t\"\035\n\nLoginReply\022\017\n" +
-      "\007message\030\001 \001(\t\"9\n\016BookingRequest\022\017\n\007trai" +
-      "nNo\030\001 \001(\005\022\026\n\016specialRequest\030\002 \001(\t\"Y\n\026Boo" +
-      "kingConfirmationMsg\022\021\n\tbookingNo\030\001 \001(\005\022\017" +
-      "\n\007trainNo\030\002 \001(\005\022\033\n\023specialRequestReply\030\003" +
-      " \001(\t2\334\001\n\016BookingService\022[\n\005login\022(.ca.ra" +
-      "ilway.bookingService2.LoginRequest\032&.ca." +
-      "railway.bookingService2.LoginReply\"\000\022m\n\007" +
-      "booking\022*.ca.railway.bookingService2.Boo" +
-      "kingRequest\0322.ca.railway.bookingService2" +
-      ".BookingConfirmationMsg\"\000(\001BA\n)ca.railwa" +
-      "y.bookingService2.BookingServiceB\022Bookin" +
-      "gServiceImplP\001b\006proto3"
+      "\n\025service2Booking.proto\022)ca.railway.book" +
+      "ingService2.BookingService\"2\n\014LoginReque" +
+      "st\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"\035" +
+      "\n\nLoginReply\022\017\n\007message\030\001 \001(\t\"9\n\016Booking" +
+      "Request\022\017\n\007trainNo\030\001 \001(\005\022\026\n\016specialReque" +
+      "st\030\002 \001(\t\"Y\n\026BookingConfirmationMsg\022\021\n\tbo" +
+      "okingNo\030\001 \001(\005\022\017\n\007trainNo\030\002 \001(\005\022\033\n\023specia" +
+      "lRequestReply\030\003 \001(\t2\231\002\n\016BookingService\022y" +
+      "\n\005login\0227.ca.railway.bookingService2.Boo" +
+      "kingService.LoginRequest\0325.ca.railway.bo" +
+      "okingService2.BookingService.LoginReply\"" +
+      "\000\022\213\001\n\007booking\0229.ca.railway.bookingServic" +
+      "e2.BookingService.BookingRequest\032A.ca.ra" +
+      "ilway.bookingService2.BookingService.Boo" +
+      "kingConfirmationMsg\"\000(\001BA\n)ca.railway.bo" +
+      "okingService2.BookingServiceB\022BookingSer" +
+      "viceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -71,29 +73,29 @@ public final class BookingServiceImpl {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_ca_railway_bookingService2_LoginRequest_descriptor =
+    internal_static_ca_railway_bookingService2_BookingService_LoginRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_ca_railway_bookingService2_LoginRequest_fieldAccessorTable = new
+    internal_static_ca_railway_bookingService2_BookingService_LoginRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ca_railway_bookingService2_LoginRequest_descriptor,
+        internal_static_ca_railway_bookingService2_BookingService_LoginRequest_descriptor,
         new java.lang.String[] { "Username", "Password", });
-    internal_static_ca_railway_bookingService2_LoginReply_descriptor =
+    internal_static_ca_railway_bookingService2_BookingService_LoginReply_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_ca_railway_bookingService2_LoginReply_fieldAccessorTable = new
+    internal_static_ca_railway_bookingService2_BookingService_LoginReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ca_railway_bookingService2_LoginReply_descriptor,
+        internal_static_ca_railway_bookingService2_BookingService_LoginReply_descriptor,
         new java.lang.String[] { "Message", });
-    internal_static_ca_railway_bookingService2_BookingRequest_descriptor =
+    internal_static_ca_railway_bookingService2_BookingService_BookingRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_ca_railway_bookingService2_BookingRequest_fieldAccessorTable = new
+    internal_static_ca_railway_bookingService2_BookingService_BookingRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ca_railway_bookingService2_BookingRequest_descriptor,
+        internal_static_ca_railway_bookingService2_BookingService_BookingRequest_descriptor,
         new java.lang.String[] { "TrainNo", "SpecialRequest", });
-    internal_static_ca_railway_bookingService2_BookingConfirmationMsg_descriptor =
+    internal_static_ca_railway_bookingService2_BookingService_BookingConfirmationMsg_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_ca_railway_bookingService2_BookingConfirmationMsg_fieldAccessorTable = new
+    internal_static_ca_railway_bookingService2_BookingService_BookingConfirmationMsg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ca_railway_bookingService2_BookingConfirmationMsg_descriptor,
+        internal_static_ca_railway_bookingService2_BookingService_BookingConfirmationMsg_descriptor,
         new java.lang.String[] { "BookingNo", "TrainNo", "SpecialRequestReply", });
   }
 

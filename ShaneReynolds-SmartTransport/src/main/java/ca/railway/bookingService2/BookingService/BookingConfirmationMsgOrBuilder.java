@@ -4,7 +4,7 @@
 package ca.railway.bookingService2.BookingService;
 
 public interface BookingConfirmationMsgOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:ca.railway.bookingService2.BookingConfirmationMsg)
+    // @@protoc_insertion_point(interface_extends:ca.railway.bookingService2.BookingService.BookingConfirmationMsg)
     com.google.protobuf.MessageOrBuilder {
 
   /**

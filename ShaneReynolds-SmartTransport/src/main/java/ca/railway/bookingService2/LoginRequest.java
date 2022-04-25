@@ -4,11 +4,11 @@
 package ca.railway.bookingService2;
 
 /**
- * Protobuf type {@code ca.railway.timetableService2.LoginRequest}
+ * Protobuf type {@code bookingService2.LoginRequest}
  */
 public  final class LoginRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:ca.railway.timetableService2.LoginRequest)
+    // @@protoc_insertion_point(message_implements:bookingService2.LoginRequest)
     LoginRequestOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use LoginRequest.newBuilder() to construct.
@@ -77,13 +77,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_timetableService2_LoginRequest_descriptor;
+    return ca.railway.bookingService2.BookingServiceImpl.internal_static_bookingService2_LoginRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_timetableService2_LoginRequest_fieldAccessorTable
+    return ca.railway.bookingService2.BookingServiceImpl.internal_static_bookingService2_LoginRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             ca.railway.bookingService2.LoginRequest.class, ca.railway.bookingService2.LoginRequest.Builder.class);
   }
@@ -322,21 +322,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code ca.railway.timetableService2.LoginRequest}
+   * Protobuf type {@code bookingService2.LoginRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:ca.railway.timetableService2.LoginRequest)
+      // @@protoc_insertion_point(builder_implements:bookingService2.LoginRequest)
       ca.railway.bookingService2.LoginRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_timetableService2_LoginRequest_descriptor;
+      return ca.railway.bookingService2.BookingServiceImpl.internal_static_bookingService2_LoginRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_timetableService2_LoginRequest_fieldAccessorTable
+      return ca.railway.bookingService2.BookingServiceImpl.internal_static_bookingService2_LoginRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               ca.railway.bookingService2.LoginRequest.class, ca.railway.bookingService2.LoginRequest.Builder.class);
     }
@@ -369,7 +369,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_timetableService2_LoginRequest_descriptor;
+      return ca.railway.bookingService2.BookingServiceImpl.internal_static_bookingService2_LoginRequest_descriptor;
     }
 
     @java.lang.Override
@@ -626,10 +626,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:ca.railway.timetableService2.LoginRequest)
+    // @@protoc_insertion_point(builder_scope:bookingService2.LoginRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:ca.railway.timetableService2.LoginRequest)
+  // @@protoc_insertion_point(class_scope:bookingService2.LoginRequest)
   private static final ca.railway.bookingService2.LoginRequest DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new ca.railway.bookingService2.LoginRequest();

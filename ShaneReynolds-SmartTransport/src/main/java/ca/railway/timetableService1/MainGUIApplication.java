@@ -45,6 +45,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Iterator;
 import java.awt.event.ActionEvent;
+import java.lang.Thread;
 
 public class MainGUIApplication {
 
@@ -220,7 +221,7 @@ public class MainGUIApplication {
 
 				int bookingTrainNo = Integer.parseInt(bookingTrainNoInput.getText());
 				String bookingReq = bookingReqInput.getText();
-				BookingRequest req = BookingRequest.newBuilder().setTrainNo(bookingTrainNo).build();
+				BookingRequest req = BookingRequest.newBuilder().setTrainNo(bookingTrainNo).setSpecialRequest(bookingReq).build();
 				// Iterator<TrainDetails> response = blockingStub.viewTimetable(req);
 				Iterator<BookingConfirmationMsg> response = asyncStub2.booking(req);
 
@@ -235,9 +236,8 @@ public class MainGUIApplication {
 					textResponse.append("Your special request is: " + individualResponse.getSpecialRequestReply());
 				}
 				
-				StreamObserver<BookingRequest> responseObserver = new StreamObserver<BookingRequest>() {
+				StreamObserver<BookingConfirmationMsg> responseObserver = new StreamObserver<BookingConfirmationMsg>() {
 
-					@Override
 					public void onNext(BookingRequest value) {
 						System.out.println("Final Response from server" +value.getTrainNo() + value.getSpecialRequest());
 						
@@ -253,13 +253,31 @@ public class MainGUIApplication {
 					public void onCompleted() {
 						// TODO Auto-generated method stub
 						
+					}
+
+					@Override
+					public void onNext(BookingConfirmationMsg value) {
+						// TODO Auto-generated method stub
+						
 					}};
 					
 					
 					//Sending outgoing messages
-					StreamObserver<BookingConfirmationMsg> requestObserver = asyncStub2.sendStringClientStreaming(responseObserver);
+					StreamObserver<BookingRequest> requestObserver = asyncStub2.booking(responseObserver);
 					requestObserver.onNext(BookingRequest.newBuilder().setTrainNo(bookingTrainNo).setSpecialRequest(bookingReq).build());
-							
+					requestObserver.onNext(BookingRequest.newBuilder().setSpecialRequest(bookingReq).build());
+					
+					System.out.println("Client has now sent its messages.");
+					textResponse.append("\n Booking confirmed.");
+				
+					requestObserver.onCompleted();
+					
+					try {
+						Thread.sleep(3000);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 			}
 		});
 

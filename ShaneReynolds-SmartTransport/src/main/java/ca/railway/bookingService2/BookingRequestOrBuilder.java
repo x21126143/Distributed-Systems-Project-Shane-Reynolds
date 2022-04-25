@@ -4,7 +4,7 @@
 package ca.railway.bookingService2;
 
 public interface BookingRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:ca.railway.timetableService2.BookingRequest)
+    // @@protoc_insertion_point(interface_extends:bookingService2.BookingRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**

@@ -15,10 +15,6 @@ import static io.grpc.stub.ServerCalls.asyncUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
-import java.util.Iterator;
-
-import io.grpc.stub.StreamObserver;
-
 /**
  * <pre>
  * Interface exported by the server.
@@ -31,7 +27,7 @@ public final class BookingServiceGrpc {
 
   private BookingServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "ca.railway.timetableService2.BookingService";
+  public static final String SERVICE_NAME = "bookingService2.BookingService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<ca.railway.bookingService2.LoginRequest,
@@ -52,7 +48,7 @@ public final class BookingServiceGrpc {
               io.grpc.MethodDescriptor.<ca.railway.bookingService2.LoginRequest, ca.railway.bookingService2.LoginReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "ca.railway.timetableService2.BookingService", "login"))
+                  "bookingService2.BookingService", "login"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   ca.railway.bookingService2.LoginRequest.getDefaultInstance()))
@@ -84,7 +80,7 @@ public final class BookingServiceGrpc {
               io.grpc.MethodDescriptor.<ca.railway.bookingService2.BookingRequest, ca.railway.bookingService2.BookingConfirmationMsg>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "ca.railway.timetableService2.BookingService", "booking"))
+                  "bookingService2.BookingService", "booking"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   ca.railway.bookingService2.BookingRequest.getDefaultInstance()))
@@ -198,15 +194,6 @@ public final class BookingServiceGrpc {
       return asyncClientStreamingCall(
           getChannel().newCall(getBookingMethod(), getCallOptions()), responseObserver);
     }
-
-	public Iterator<BookingConfirmationMsg> booking(BookingRequest req) {
-		return blockingServerStreamingCall(
-		          getChannel(), getBookingMethod(), getCallOptions(), req);
-		    }
-
-	
-
-	
   }
 
   /**
