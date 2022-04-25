@@ -1,6 +1,5 @@
 package ca.railway.timetableService1;
 
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -18,12 +17,13 @@ import ca.railway.timetableService1.RailwayServiceGrpc.RailwayServiceBlockingStu
 import ca.railway.timetableService1.RailwayServiceGrpc.RailwayServiceStub;
 import ca.railway.bookingService2.LoginReply;
 import ca.railway.bookingService2.LoginRequest;
+import ca.railway.bookingService2.BookingRequest;
+import ca.railway.bookingService2.BookingConfirmationMsg;
 import ca.railway.bookingService2.BookingServiceGrpc;
 import ca.railway.bookingService2.BookingServiceGrpc.BookingServiceBlockingStub;
 import ca.railway.bookingService2.BookingServiceGrpc.BookingServiceStub;
 import ca.railway.bookingService2.*;
 import ca.railway.timetableService1.*;
-
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -36,6 +36,8 @@ import javax.swing.JTextArea;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.stub.StreamObserver;
+import io.grpc.*;
 
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -48,7 +50,7 @@ public class MainGUIApplication {
 
 	private static RailwayServiceBlockingStub blockingStub;
 	private static RailwayServiceStub asyncStub;
-	
+
 	private static BookingServiceBlockingStub blockingStub2;
 	private static BookingServiceStub asyncStub2;
 
@@ -60,6 +62,8 @@ public class MainGUIApplication {
 	private JTextField amenitiesInput;
 	private JTextField usernameInput;
 	private JTextField passwordInput;
+	private JTextField bookingTrainNoInput;
+	private JTextField bookingReqInput;
 	private JTextArea textResponse;
 
 	/**
@@ -96,9 +100,9 @@ public class MainGUIApplication {
 
 		// stubs -- generate from proto
 		blockingStub = RailwayServiceGrpc.newBlockingStub(channel);
-		blockingStub2 = ca.railway.bookingService2.BookingServiceGrpc.newBlockingStub(channel2);
+		blockingStub2 = BookingServiceGrpc.newBlockingStub(channel2);
 
-		asyncStub = RailwayServiceGrpc.newStub(channel);
+		asyncStub2 = BookingServiceGrpc.newStub(channel2); 
 
 		initialize();
 	}
@@ -109,7 +113,7 @@ public class MainGUIApplication {
 			// Create a JmDNS instance
 			JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
 			JmDNS jmdns2 = JmDNS.create(InetAddress.getLocalHost());
-			
+
 			jmdns.addServiceListener(service_type, new ServiceListener() {
 
 				@Override
@@ -135,7 +139,6 @@ public class MainGUIApplication {
 
 				}
 
-				@Override
 				public void serviceAdded(ServiceEvent event) {
 					System.out.println("Smart Railway Service added: " + event.getInfo());
 
@@ -170,15 +173,19 @@ public class MainGUIApplication {
 		BoxLayout bl = new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS);
 
 		frame.getContentPane().setLayout(bl);
-		
-		
-		JPanel panel_service_login = new JPanel();
-		
-		
 
 		JPanel panel_service_title = new JPanel();
+		JPanel panel_service_journey = new JPanel();
+		JPanel panel_service_login = new JPanel();
+		JPanel panel_service_booking = new JPanel();
+
+		frame.getContentPane().add(panel_service_booking);
+		panel_service_booking.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
+
 		frame.getContentPane().add(panel_service_title);
+
 		panel_service_title.setLayout(new FlowLayout(FlowLayout.CENTER, 2, 5));
+		panel_service_journey.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
 
 		JLabel titleLabel = new JLabel("Northbound Rail Line");
 		panel_service_title.add(titleLabel);
@@ -189,13 +196,72 @@ public class MainGUIApplication {
 		info.setForeground(Color.gray);
 		frame.getContentPane().add(panel_service_info);
 		panel_service_info.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
+		frame.getContentPane().add(panel_service_journey);
+		panel_service_journey.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
 		frame.getContentPane().add(panel_service_info2);
 		panel_service_info2.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
+
 		frame.getContentPane().add(panel_service_login);
 		panel_service_login.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
 		panel_service_info.add(info);
+
+		bookingTrainNoInput = new JTextField();
+		panel_service_journey.add(bookingTrainNoInput);
+		bookingTrainNoInput.setColumns(10);
 		
-		
+		bookingReqInput = new JTextField();
+		panel_service_journey.add(bookingReqInput);
+		bookingReqInput.setColumns(10);
+
+		JButton btnBook = new JButton("Book this train");
+		panel_service_journey.add(btnBook);
+		btnBook.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				int bookingTrainNo = Integer.parseInt(bookingTrainNoInput.getText());
+				String bookingReq = bookingReqInput.getText();
+				BookingRequest req = BookingRequest.newBuilder().setTrainNo(bookingTrainNo).build();
+				// Iterator<TrainDetails> response = blockingStub.viewTimetable(req);
+				Iterator<BookingConfirmationMsg> response = asyncStub2.booking(req);
+
+				int counter = 0;
+
+				while (response.hasNext()) {
+					BookingConfirmationMsg individualResponse = response.next();
+
+					textResponse.append("Your booking number is: " + individualResponse.getBookingNo());
+					textResponse.append("Your special request is: " + individualResponse.getSpecialRequestReply());
+					textResponse.append("Your booking number is: " + individualResponse.getBookingNo());
+					textResponse.append("Your special request is: " + individualResponse.getSpecialRequestReply());
+				}
+				
+				StreamObserver<BookingRequest> responseObserver = new StreamObserver<BookingRequest>() {
+
+					@Override
+					public void onNext(BookingRequest value) {
+						System.out.println("Final Response from server" +value.getTrainNo() + value.getSpecialRequest());
+						
+					}
+
+					@Override
+					public void onError(Throwable t) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void onCompleted() {
+						// TODO Auto-generated method stub
+						
+					}};
+					
+					
+					//Sending outgoing messages
+					StreamObserver<BookingConfirmationMsg> requestObserver = asyncStub2.sendStringClientStreaming(responseObserver);
+					requestObserver.onNext(BookingRequest.newBuilder().setTrainNo(bookingTrainNo).setSpecialRequest(bookingReq).build());
+							
+			}
+		});
 
 		JButton btnPricer = new JButton("See all prices");
 		btnPricer.addActionListener(new ActionListener() {
@@ -207,90 +273,27 @@ public class MainGUIApplication {
 				System.out.println(response.getPrice());
 			}
 		});
-		
-		JButton btnLogin = new JButton("Login");
-		JLabel usernamesLabel = new JLabel("Enter username: ");
-		
-		
-		JLabel passwordsLabel = new JLabel("Enter password: ");
-		
-		usernameInput = new JTextField();
-		passwordInput = new JTextField();
-		
-		usernameInput.setColumns(10);
-		passwordInput.setColumns(10);
-		
-		panel_service_login.add(usernamesLabel);
-		panel_service_login.add(usernameInput);
-		panel_service_login.add(passwordsLabel);
-		panel_service_login.add(passwordInput);
-		
-		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String user = usernameInput.getText();
-				String pass = passwordInput.getText();
-				
-				LoginRequest req = LoginRequest.newBuilder().setUsername(user).setPassword(pass).build();
-				LoginReply response = blockingStub2.login(req);
-				
-				textResponse.append(response.getMessage());
-				System.out.println(response.getMessage());
-			}
-		});
-		
-		panel_service_login.add(btnLogin);
-		panel_service_info.add(btnPricer);
 
-		JLabel amenitiesLabel = new JLabel("Train Number");
-		panel_service_info2.add(amenitiesLabel);
-
-		amenitiesInput = new JTextField();
-		panel_service_info2.add(amenitiesInput);
-		amenitiesInput.setColumns(5);
-
-		JButton btnAmenities = new JButton("See Amenities");
-		btnAmenities.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Parsing from string to int
-				String text = amenitiesInput.getText();
-				int trainNo = Integer.parseInt(text);
-				TrainNo req = TrainNo.newBuilder().setTrainNo(trainNo).build();
-				// int trainNo = req.getTrainNo();
-				TrainAmenities response = blockingStub.amenities(req);
-				textResponse.append("For Train Number " + amenitiesInput.getText() + ": " + response.getCatering()
-						+ response.getBikeSlot() + response.getPetsAllowed() + "\n");
-				System.out.println("For Train Number " + amenitiesInput.getText() + ": " + response.getCatering()
-						+ response.getBikeSlot() + response.getPetsAllowed() + "\n");
-			}
-		});
-
-		panel_service_info2.add(btnAmenities);
-
+		JButton btnJourneyFinder = new JButton("Find journeys");
 		JPanel panel_service_1 = new JPanel();
+
 		frame.getContentPane().add(panel_service_1);
+
 		panel_service_1.setLayout(new FlowLayout(FlowLayout.CENTER, 8, 5));
 
 		JLabel departLabel = new JLabel("Departure Station");
-		panel_service_1.add(departLabel);
+		panel_service_journey.add(departLabel);
 
 		departInput = new JTextField();
-		panel_service_1.add(departInput);
+		panel_service_journey.add(departInput);
 		departInput.setColumns(10);
 
 		JLabel arrivalLabel = new JLabel("Arrival Station");
-		panel_service_1.add(arrivalLabel);
+		panel_service_journey.add(arrivalLabel);
 
 		arrivalInput = new JTextField();
-		panel_service_1.add(arrivalInput);
+		panel_service_journey.add(arrivalInput);
 		arrivalInput.setColumns(10);
-
-		/*
-		 * JComboBox comboOperation = new JComboBox(); comboOperation.setModel(new
-		 * DefaultComboBoxModel(new String[] {"ADDITION", "SUBTRACTION",
-		 * "MULTIPLICATION", "DIVISION"})); panel_service_1.add(comboOperation);
-		 */
-
-		JButton btnJourneyFinder = new JButton("Find journeys");
 
 		btnJourneyFinder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -335,22 +338,80 @@ public class MainGUIApplication {
 						counter++;
 					}
 
-					// System.out.println(station1 + " to " + station2 + ":");
-
-					// System.out.println("Price is: €" + individualResponse.getPrice());
-
-					// System.out.println("Arrival Time is: " + individualResponse.getTime() +
-					// "PM");
-
-					// System.out.println("Train number is: " + individualResponse.getTrainNo());
-
-					// System.out.println("Additional Info: " + individualResponse.getMsg() + "\n");
-
 				}
 
 			}
 		});
-		panel_service_1.add(btnJourneyFinder);
+
+		panel_service_journey.add(btnJourneyFinder);
+
+		JButton btnLogin = new JButton("Login");
+		btnLogin.setForeground(Color.red); // Red indicates that the user is logged out.
+		JLabel usernamesLabel = new JLabel("Enter username: ");
+
+		JLabel passwordsLabel = new JLabel("Enter password: ");
+
+		usernameInput = new JTextField();
+		passwordInput = new JTextField();
+
+		usernameInput.setColumns(10);
+		passwordInput.setColumns(10);
+
+		panel_service_login.add(usernamesLabel);
+		panel_service_login.add(usernameInput);
+		panel_service_login.add(passwordsLabel);
+		panel_service_login.add(passwordInput);
+
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String user = usernameInput.getText();
+				String pass = passwordInput.getText();
+
+				LoginRequest req = LoginRequest.newBuilder().setUsername(user).setPassword(pass).build();
+				LoginReply response = blockingStub2.login(req);
+
+				textResponse.append(response.getMessage());
+				System.out.println(response.getMessage());
+
+				if (response.getMessage().equals("Login Successful!\n")) {
+					btnLogin.setForeground(Color.green); // green indicates that the user is logged in.
+				}
+			}
+		});
+
+		panel_service_login.add(btnLogin);
+		panel_service_info.add(btnPricer);
+
+		JLabel amenitiesLabel = new JLabel("Train Number");
+		panel_service_info2.add(amenitiesLabel);
+
+		amenitiesInput = new JTextField();
+		panel_service_info2.add(amenitiesInput);
+		amenitiesInput.setColumns(5);
+
+		JButton btnAmenities = new JButton("See Amenities");
+		btnAmenities.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Parsing from string to int
+				String text = amenitiesInput.getText();
+				int trainNo = Integer.parseInt(text);
+				TrainNo req = TrainNo.newBuilder().setTrainNo(trainNo).build();
+				// int trainNo = req.getTrainNo();
+				TrainAmenities response = blockingStub.amenities(req);
+				textResponse.append("For Train Number " + amenitiesInput.getText() + ": " + response.getCatering()
+						+ response.getBikeSlot() + response.getPetsAllowed() + "\n");
+				System.out.println("For Train Number " + amenitiesInput.getText() + ": " + response.getCatering()
+						+ response.getBikeSlot() + response.getPetsAllowed() + "\n");
+			}
+		});
+
+		panel_service_info2.add(btnAmenities);
+
+		/*
+		 * JComboBox comboOperation = new JComboBox(); comboOperation.setModel(new
+		 * DefaultComboBoxModel(new String[] {"ADDITION", "SUBTRACTION",
+		 * "MULTIPLICATION", "DIVISION"})); panel_service_1.add(comboOperation);
+		 */
 
 		textResponse = new JTextArea(10, 80);
 		textResponse.setLineWrap(true);

@@ -1,4 +1,4 @@
-package ca.railway.bookingService2;
+package ca.railway.bookingService2.BookingService;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
@@ -15,10 +15,6 @@ import static io.grpc.stub.ServerCalls.asyncUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
-import java.util.Iterator;
-
-import io.grpc.stub.StreamObserver;
-
 /**
  * <pre>
  * Interface exported by the server.
@@ -31,33 +27,33 @@ public final class BookingServiceGrpc {
 
   private BookingServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "ca.railway.timetableService2.BookingService";
+  public static final String SERVICE_NAME = "ca.railway.bookingService2.BookingService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<ca.railway.bookingService2.LoginRequest,
-      ca.railway.bookingService2.LoginReply> getLoginMethod;
+  private static volatile io.grpc.MethodDescriptor<ca.railway.bookingService2.BookingService.LoginRequest,
+      ca.railway.bookingService2.BookingService.LoginReply> getLoginMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "login",
-      requestType = ca.railway.bookingService2.LoginRequest.class,
-      responseType = ca.railway.bookingService2.LoginReply.class,
+      requestType = ca.railway.bookingService2.BookingService.LoginRequest.class,
+      responseType = ca.railway.bookingService2.BookingService.LoginReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<ca.railway.bookingService2.LoginRequest,
-      ca.railway.bookingService2.LoginReply> getLoginMethod() {
-    io.grpc.MethodDescriptor<ca.railway.bookingService2.LoginRequest, ca.railway.bookingService2.LoginReply> getLoginMethod;
+  public static io.grpc.MethodDescriptor<ca.railway.bookingService2.BookingService.LoginRequest,
+      ca.railway.bookingService2.BookingService.LoginReply> getLoginMethod() {
+    io.grpc.MethodDescriptor<ca.railway.bookingService2.BookingService.LoginRequest, ca.railway.bookingService2.BookingService.LoginReply> getLoginMethod;
     if ((getLoginMethod = BookingServiceGrpc.getLoginMethod) == null) {
       synchronized (BookingServiceGrpc.class) {
         if ((getLoginMethod = BookingServiceGrpc.getLoginMethod) == null) {
           BookingServiceGrpc.getLoginMethod = getLoginMethod = 
-              io.grpc.MethodDescriptor.<ca.railway.bookingService2.LoginRequest, ca.railway.bookingService2.LoginReply>newBuilder()
+              io.grpc.MethodDescriptor.<ca.railway.bookingService2.BookingService.LoginRequest, ca.railway.bookingService2.BookingService.LoginReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "ca.railway.timetableService2.BookingService", "login"))
+                  "ca.railway.bookingService2.BookingService", "login"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ca.railway.bookingService2.LoginRequest.getDefaultInstance()))
+                  ca.railway.bookingService2.BookingService.LoginRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ca.railway.bookingService2.LoginReply.getDefaultInstance()))
+                  ca.railway.bookingService2.BookingService.LoginReply.getDefaultInstance()))
                   .setSchemaDescriptor(new BookingServiceMethodDescriptorSupplier("login"))
                   .build();
           }
@@ -66,30 +62,30 @@ public final class BookingServiceGrpc {
      return getLoginMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<ca.railway.bookingService2.BookingRequest,
-      ca.railway.bookingService2.BookingConfirmationMsg> getBookingMethod;
+  private static volatile io.grpc.MethodDescriptor<ca.railway.bookingService2.BookingService.BookingRequest,
+      ca.railway.bookingService2.BookingService.BookingConfirmationMsg> getBookingMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "booking",
-      requestType = ca.railway.bookingService2.BookingRequest.class,
-      responseType = ca.railway.bookingService2.BookingConfirmationMsg.class,
+      requestType = ca.railway.bookingService2.BookingService.BookingRequest.class,
+      responseType = ca.railway.bookingService2.BookingService.BookingConfirmationMsg.class,
       methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-  public static io.grpc.MethodDescriptor<ca.railway.bookingService2.BookingRequest,
-      ca.railway.bookingService2.BookingConfirmationMsg> getBookingMethod() {
-    io.grpc.MethodDescriptor<ca.railway.bookingService2.BookingRequest, ca.railway.bookingService2.BookingConfirmationMsg> getBookingMethod;
+  public static io.grpc.MethodDescriptor<ca.railway.bookingService2.BookingService.BookingRequest,
+      ca.railway.bookingService2.BookingService.BookingConfirmationMsg> getBookingMethod() {
+    io.grpc.MethodDescriptor<ca.railway.bookingService2.BookingService.BookingRequest, ca.railway.bookingService2.BookingService.BookingConfirmationMsg> getBookingMethod;
     if ((getBookingMethod = BookingServiceGrpc.getBookingMethod) == null) {
       synchronized (BookingServiceGrpc.class) {
         if ((getBookingMethod = BookingServiceGrpc.getBookingMethod) == null) {
           BookingServiceGrpc.getBookingMethod = getBookingMethod = 
-              io.grpc.MethodDescriptor.<ca.railway.bookingService2.BookingRequest, ca.railway.bookingService2.BookingConfirmationMsg>newBuilder()
+              io.grpc.MethodDescriptor.<ca.railway.bookingService2.BookingService.BookingRequest, ca.railway.bookingService2.BookingService.BookingConfirmationMsg>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "ca.railway.timetableService2.BookingService", "booking"))
+                  "ca.railway.bookingService2.BookingService", "booking"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ca.railway.bookingService2.BookingRequest.getDefaultInstance()))
+                  ca.railway.bookingService2.BookingService.BookingRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ca.railway.bookingService2.BookingConfirmationMsg.getDefaultInstance()))
+                  ca.railway.bookingService2.BookingService.BookingConfirmationMsg.getDefaultInstance()))
                   .setSchemaDescriptor(new BookingServiceMethodDescriptorSupplier("booking"))
                   .build();
           }
@@ -130,15 +126,15 @@ public final class BookingServiceGrpc {
 
     /**
      */
-    public void login(ca.railway.bookingService2.LoginRequest request,
-        io.grpc.stub.StreamObserver<ca.railway.bookingService2.LoginReply> responseObserver) {
+    public void login(ca.railway.bookingService2.BookingService.LoginRequest request,
+        io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingService.LoginReply> responseObserver) {
       asyncUnimplementedUnaryCall(getLoginMethod(), responseObserver);
     }
 
     /**
      */
-    public io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingRequest> booking(
-        io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingConfirmationMsg> responseObserver) {
+    public io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingService.BookingRequest> booking(
+        io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingService.BookingConfirmationMsg> responseObserver) {
       return asyncUnimplementedStreamingCall(getBookingMethod(), responseObserver);
     }
 
@@ -148,15 +144,15 @@ public final class BookingServiceGrpc {
             getLoginMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                ca.railway.bookingService2.LoginRequest,
-                ca.railway.bookingService2.LoginReply>(
+                ca.railway.bookingService2.BookingService.LoginRequest,
+                ca.railway.bookingService2.BookingService.LoginReply>(
                   this, METHODID_LOGIN)))
           .addMethod(
             getBookingMethod(),
             asyncClientStreamingCall(
               new MethodHandlers<
-                ca.railway.bookingService2.BookingRequest,
-                ca.railway.bookingService2.BookingConfirmationMsg>(
+                ca.railway.bookingService2.BookingService.BookingRequest,
+                ca.railway.bookingService2.BookingService.BookingConfirmationMsg>(
                   this, METHODID_BOOKING)))
           .build();
     }
@@ -185,28 +181,19 @@ public final class BookingServiceGrpc {
 
     /**
      */
-    public void login(ca.railway.bookingService2.LoginRequest request,
-        io.grpc.stub.StreamObserver<ca.railway.bookingService2.LoginReply> responseObserver) {
+    public void login(ca.railway.bookingService2.BookingService.LoginRequest request,
+        io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingService.LoginReply> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getLoginMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingRequest> booking(
-        io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingConfirmationMsg> responseObserver) {
+    public io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingService.BookingRequest> booking(
+        io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingService.BookingConfirmationMsg> responseObserver) {
       return asyncClientStreamingCall(
           getChannel().newCall(getBookingMethod(), getCallOptions()), responseObserver);
     }
-
-	public Iterator<BookingConfirmationMsg> booking(BookingRequest req) {
-		return blockingServerStreamingCall(
-		          getChannel(), getBookingMethod(), getCallOptions(), req);
-		    }
-
-	
-
-	
   }
 
   /**
@@ -232,7 +219,7 @@ public final class BookingServiceGrpc {
 
     /**
      */
-    public ca.railway.bookingService2.LoginReply login(ca.railway.bookingService2.LoginRequest request) {
+    public ca.railway.bookingService2.BookingService.LoginReply login(ca.railway.bookingService2.BookingService.LoginRequest request) {
       return blockingUnaryCall(
           getChannel(), getLoginMethod(), getCallOptions(), request);
     }
@@ -261,8 +248,8 @@ public final class BookingServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<ca.railway.bookingService2.LoginReply> login(
-        ca.railway.bookingService2.LoginRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<ca.railway.bookingService2.BookingService.LoginReply> login(
+        ca.railway.bookingService2.BookingService.LoginRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getLoginMethod(), getCallOptions()), request);
     }
@@ -289,8 +276,8 @@ public final class BookingServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_LOGIN:
-          serviceImpl.login((ca.railway.bookingService2.LoginRequest) request,
-              (io.grpc.stub.StreamObserver<ca.railway.bookingService2.LoginReply>) responseObserver);
+          serviceImpl.login((ca.railway.bookingService2.BookingService.LoginRequest) request,
+              (io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingService.LoginReply>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -304,7 +291,7 @@ public final class BookingServiceGrpc {
       switch (methodId) {
         case METHODID_BOOKING:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.booking(
-              (io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingConfirmationMsg>) responseObserver);
+              (io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingService.BookingConfirmationMsg>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -317,7 +304,7 @@ public final class BookingServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return ca.railway.bookingService2.BookingServiceImpl.getDescriptor();
+      return ca.railway.bookingService2.BookingService.BookingServiceImpl.getDescriptor();
     }
 
     @java.lang.Override
