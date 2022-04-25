@@ -2,7 +2,7 @@ syntax = "proto3";
 
 
 option java_multiple_files = true;
-option java_package = "ca.railway.bookingService2.BookingService";
+option java_package = "ca.railway.bookingService2";
 option java_outer_classname = "BookingServiceImpl";
 
 package ca.railway.bookingService2;
@@ -12,8 +12,6 @@ package ca.railway.bookingService2;
 service BookingService {
 
 	rpc login(LoginRequest) returns (LoginReply) {} //Unary
-	
-	rpc booking(stream BookingRequest) returns (BookingConfirmationMsg) {} //Client-side streaming
 
 }
 
@@ -27,13 +25,3 @@ message LoginReply{
 	string message = 1;
 }
 
-message BookingRequest{
-	int32 trainNo = 1;
-	string specialRequest = 2;
-}
-
-message BookingConfirmationMsg{
-	int32 bookingNo = 1;
-	int32 trainNo = 2;
-	string specialRequestReply = 3;
-}
