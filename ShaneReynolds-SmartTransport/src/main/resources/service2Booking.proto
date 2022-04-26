@@ -34,7 +34,7 @@ message LoginReply{
 }
 
 message Booking{
-	int32 trainNo = 1;
+	string trainNo = 1;
 	string specialRequestMsg = 2;
 }
 

@@ -8,9 +8,14 @@ public interface BookingOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 trainNo = 1;</code>
+   * <code>string trainNo = 1;</code>
    */
-  int getTrainNo();
+  java.lang.String getTrainNo();
+  /**
+   * <code>string trainNo = 1;</code>
+   */
+  com.google.protobuf.ByteString
+      getTrainNoBytes();
 
   /**
    * <code>string specialRequestMsg = 2;</code>

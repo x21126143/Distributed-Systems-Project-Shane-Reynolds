@@ -41,7 +41,7 @@ public final class BookingServiceImpl {
       "\n\025service2Booking.proto\022\017bookingService2" +
       "\"2\n\014LoginRequest\022\020\n\010username\030\001 \001(\t\022\020\n\010pa" +
       "ssword\030\002 \001(\t\"\035\n\nLoginReply\022\017\n\007message\030\001 " +
-      "\001(\t\"5\n\007Booking\022\017\n\007trainNo\030\001 \001(\005\022\031\n\021speci" +
+      "\001(\t\"5\n\007Booking\022\017\n\007trainNo\030\001 \001(\t\022\031\n\021speci" +
       "alRequestMsg\030\002 \001(\t2\237\001\n\016BookingService\022E\n" +
       "\005login\022\035.bookingService2.LoginRequest\032\033." +
       "bookingService2.LoginReply\"\000\022F\n\014makeBook" +

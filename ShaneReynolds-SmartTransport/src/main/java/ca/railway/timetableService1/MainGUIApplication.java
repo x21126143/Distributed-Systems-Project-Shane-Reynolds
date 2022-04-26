@@ -1,6 +1,5 @@
 package ca.railway.timetableService1;
 
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -23,7 +22,6 @@ import ca.railway.bookingService2.BookingServiceGrpc.BookingServiceStub;
 import ca.railway.bookingService2.LoginReply;
 import ca.railway.bookingService2.LoginRequest;
 import ca.railway.timetableService1.*;
-
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -49,7 +47,7 @@ public class MainGUIApplication {
 
 	private static RailwayServiceBlockingStub blockingStub;
 	private static RailwayServiceStub asyncStub;
-	
+
 	private static BookingServiceBlockingStub blockingStub2;
 	private static BookingServiceStub asyncStub2;
 
@@ -58,6 +56,8 @@ public class MainGUIApplication {
 	private JFrame frame;
 	private JTextField departInput;
 	private JTextField arrivalInput;
+	private JTextField trainInput;
+	private JTextField specialInput;
 	private JTextField amenitiesInput;
 	private JTextField usernameInput;
 	private JTextField passwordInput;
@@ -110,7 +110,7 @@ public class MainGUIApplication {
 			// Create a JmDNS instance
 			JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
 			JmDNS jmdns2 = JmDNS.create(InetAddress.getLocalHost());
-			
+
 			jmdns.addServiceListener(service_type, new ServiceListener() {
 
 				@Override
@@ -171,11 +171,8 @@ public class MainGUIApplication {
 		BoxLayout bl = new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS);
 
 		frame.getContentPane().setLayout(bl);
-		
-		
+
 		JPanel panel_service_login = new JPanel();
-		
-		
 
 		JPanel panel_service_title = new JPanel();
 		frame.getContentPane().add(panel_service_title);
@@ -195,8 +192,6 @@ public class MainGUIApplication {
 		frame.getContentPane().add(panel_service_login);
 		panel_service_login.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
 		panel_service_info.add(info);
-		
-		
 
 		JButton btnPricer = new JButton("See all prices");
 		btnPricer.addActionListener(new ActionListener() {
@@ -208,37 +203,41 @@ public class MainGUIApplication {
 				System.out.println(response.getPrice());
 			}
 		});
-		
+
 		JButton btnLogin = new JButton("Login");
 		JLabel usernamesLabel = new JLabel("Enter username: ");
-		
-		
+
 		JLabel passwordsLabel = new JLabel("Enter password: ");
-		
+
 		usernameInput = new JTextField();
 		passwordInput = new JTextField();
-		
+		trainInput = new JTextField();
+		specialInput = new JTextField();
+
 		usernameInput.setColumns(10);
 		passwordInput.setColumns(10);
-		
+
 		panel_service_login.add(usernamesLabel);
 		panel_service_login.add(usernameInput);
 		panel_service_login.add(passwordsLabel);
 		panel_service_login.add(passwordInput);
 		
+		
+		
+
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String user = usernameInput.getText();
 				String pass = passwordInput.getText();
-				
+
 				LoginRequest req = LoginRequest.newBuilder().setUsername(user).setPassword(pass).build();
 				LoginReply response = blockingStub2.login(req);
-				
+
 				textResponse.append(response.getMessage());
 				System.out.println(response.getMessage());
 			}
 		});
-		
+
 		panel_service_login.add(btnLogin);
 		panel_service_info.add(btnPricer);
 
@@ -284,6 +283,11 @@ public class MainGUIApplication {
 		arrivalInput = new JTextField();
 		panel_service_1.add(arrivalInput);
 		arrivalInput.setColumns(10);
+		
+		panel_service_1.add(trainInput);
+		panel_service_1.add(specialInput);
+		trainInput.setColumns(10);
+		specialInput.setColumns(10);
 
 		/*
 		 * JComboBox comboOperation = new JComboBox(); comboOperation.setModel(new
@@ -348,53 +352,65 @@ public class MainGUIApplication {
 					// System.out.println("Additional Info: " + individualResponse.getMsg() + "\n");
 
 				}
-				
-				//Client side streaming code:
+
+			}
+		});
+
+		JButton btnJourneyBook = new JButton("Book");
+
+		btnJourneyBook.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				String trainNo = trainInput.getText();
+				String special = specialInput.getText();
+				// Client side streaming code:
 				StreamObserver<Booking> responseObserver = new StreamObserver<Booking>() {
 
 					public void onNext(Booking value) {
 						System.out.println("Final response from the server " + value.getTrainNo());
-						
+
 					}
 
 					@Override
 					public void onError(Throwable t) {
 						// TODO Auto-generated method stub
-						
+
 					}
 
 					@Override
 					public void onCompleted() {
 						// TODO Auto-generated method stub
-						
-					}}; 
-					
-					
-					//returning a StreamObserver:
-					
-					StreamObserver<Booking> requestObserver = asyncStub2.makeBookings(responseObserver);
-					requestObserver.onNext(Booking.newBuilder().setTrainNo(1).build());
-					requestObserver.onNext(Booking.newBuilder().setTrainNo(2).build());
-					requestObserver.onNext(Booking.newBuilder().setTrainNo(3).build());
-					
-					
-					System.out.println("Client successfully sent messages.");
-					
-					requestObserver.onCompleted();
-					
-					try {
-						Thread.sleep(3000);
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+
 					}
+				};
+
+				// returning a StreamObserver:
+
+				StreamObserver<Booking> requestObserver = asyncStub2.makeBookings(responseObserver);
+		        requestObserver.onNext(Booking.newBuilder().setTrainNo(trainNo).build());
+				requestObserver.onNext(Booking.newBuilder().setSpecialRequestMsg(special).build());
+			//	requestObserver.onNext(Booking.newBuilder().setTrainNo(3).build());
+
+				System.out.println("Client successfully sent messages.");
+				textResponse.append(trainNo);
+				textResponse.append(special);
+
+				requestObserver.onCompleted();
+
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				textResponse.append("Train is booked.");
 
 			}
-		});
-		
-		
-		
+			
 
+		});
+
+		panel_service_1.add(btnJourneyBook);
 		panel_service_1.add(btnJourneyFinder);
 		textResponse = new JTextArea(10, 80);
 		textResponse.setLineWrap(true);

@@ -123,6 +123,7 @@ public class BookingServer extends BookingServiceImplBase{
 			public void onNext(Booking value) {
 				System.out.println("On server; message received from the client." + value.getTrainNo() + value.getSpecialRequestMsg());
 				
+				
 			}
 
 			@Override

@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Booking() {
-    trainNo_ = 0;
+    trainNo_ = "";
     specialRequestMsg_ = "";
   }
 
@@ -44,9 +44,10 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            trainNo_ = input.readInt32();
+            trainNo_ = s;
             break;
           }
           case 18: {
@@ -88,12 +89,37 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int TRAINNO_FIELD_NUMBER = 1;
-  private int trainNo_;
+  private volatile java.lang.Object trainNo_;
   /**
-   * <code>int32 trainNo = 1;</code>
+   * <code>string trainNo = 1;</code>
    */
-  public int getTrainNo() {
-    return trainNo_;
+  public java.lang.String getTrainNo() {
+    java.lang.Object ref = trainNo_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      trainNo_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string trainNo = 1;</code>
+   */
+  public com.google.protobuf.ByteString
+      getTrainNoBytes() {
+    java.lang.Object ref = trainNo_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      trainNo_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int SPECIALREQUESTMSG_FIELD_NUMBER = 2;
@@ -144,8 +170,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (trainNo_ != 0) {
-      output.writeInt32(1, trainNo_);
+    if (!getTrainNoBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, trainNo_);
     }
     if (!getSpecialRequestMsgBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, specialRequestMsg_);
@@ -159,9 +185,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (trainNo_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, trainNo_);
+    if (!getTrainNoBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, trainNo_);
     }
     if (!getSpecialRequestMsgBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, specialRequestMsg_);
@@ -182,8 +207,8 @@ private static final long serialVersionUID = 0L;
     ca.railway.bookingService2.Booking other = (ca.railway.bookingService2.Booking) obj;
 
     boolean result = true;
-    result = result && (getTrainNo()
-        == other.getTrainNo());
+    result = result && getTrainNo()
+        .equals(other.getTrainNo());
     result = result && getSpecialRequestMsg()
         .equals(other.getSpecialRequestMsg());
     result = result && unknownFields.equals(other.unknownFields);
@@ -198,7 +223,7 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + TRAINNO_FIELD_NUMBER;
-    hash = (53 * hash) + getTrainNo();
+    hash = (53 * hash) + getTrainNo().hashCode();
     hash = (37 * hash) + SPECIALREQUESTMSG_FIELD_NUMBER;
     hash = (53 * hash) + getSpecialRequestMsg().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -334,7 +359,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      trainNo_ = 0;
+      trainNo_ = "";
 
       specialRequestMsg_ = "";
 
@@ -414,8 +439,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(ca.railway.bookingService2.Booking other) {
       if (other == ca.railway.bookingService2.Booking.getDefaultInstance()) return this;
-      if (other.getTrainNo() != 0) {
-        setTrainNo(other.getTrainNo());
+      if (!other.getTrainNo().isEmpty()) {
+        trainNo_ = other.trainNo_;
+        onChanged();
       }
       if (!other.getSpecialRequestMsg().isEmpty()) {
         specialRequestMsg_ = other.specialRequestMsg_;
@@ -450,28 +476,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int trainNo_ ;
+    private java.lang.Object trainNo_ = "";
     /**
-     * <code>int32 trainNo = 1;</code>
+     * <code>string trainNo = 1;</code>
      */
-    public int getTrainNo() {
-      return trainNo_;
+    public java.lang.String getTrainNo() {
+      java.lang.Object ref = trainNo_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        trainNo_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int32 trainNo = 1;</code>
+     * <code>string trainNo = 1;</code>
      */
-    public Builder setTrainNo(int value) {
-      
+    public com.google.protobuf.ByteString
+        getTrainNoBytes() {
+      java.lang.Object ref = trainNo_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        trainNo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string trainNo = 1;</code>
+     */
+    public Builder setTrainNo(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
       trainNo_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 trainNo = 1;</code>
+     * <code>string trainNo = 1;</code>
      */
     public Builder clearTrainNo() {
       
-      trainNo_ = 0;
+      trainNo_ = getDefaultInstance().getTrainNo();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string trainNo = 1;</code>
+     */
+    public Builder setTrainNoBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      trainNo_ = value;
       onChanged();
       return this;
     }
