@@ -3,16 +3,21 @@
 
 package ca.railway.bookingService2;
 
-public interface BookingReplyOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:ca.railway.bookingService2.BookingReply)
+public interface BookingOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:ca.railway.bookingService2.Booking)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string confirmationMsg = 1;</code>
+   * <code>int32 trainNo = 1;</code>
+   */
+  int getTrainNo();
+
+  /**
+   * <code>string confirmationMsg = 2;</code>
    */
   java.lang.String getConfirmationMsg();
   /**
-   * <code>string confirmationMsg = 1;</code>
+   * <code>string confirmationMsg = 2;</code>
    */
   com.google.protobuf.ByteString
       getConfirmationMsgBytes();

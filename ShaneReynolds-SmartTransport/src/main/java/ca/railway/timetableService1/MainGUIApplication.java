@@ -16,12 +16,12 @@ import javax.swing.JTextField;
 
 import ca.railway.timetableService1.RailwayServiceGrpc.RailwayServiceBlockingStub;
 import ca.railway.timetableService1.RailwayServiceGrpc.RailwayServiceStub;
-import ca.railway.bookingService2.LoginReply;
-import ca.railway.bookingService2.LoginRequest;
+import ca.railway.bookingService2.Booking;
 import ca.railway.bookingService2.BookingServiceGrpc;
 import ca.railway.bookingService2.BookingServiceGrpc.BookingServiceBlockingStub;
 import ca.railway.bookingService2.BookingServiceGrpc.BookingServiceStub;
-import ca.railway.bookingService2.*;
+import ca.railway.bookingService2.LoginReply;
+import ca.railway.bookingService2.LoginRequest;
 import ca.railway.timetableService1.*;
 
 
@@ -36,6 +36,7 @@ import javax.swing.JTextArea;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.stub.StreamObserver;
 
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -96,9 +97,9 @@ public class MainGUIApplication {
 
 		// stubs -- generate from proto
 		blockingStub = RailwayServiceGrpc.newBlockingStub(channel);
-		blockingStub2 = ca.railway.bookingService2.BookingServiceGrpc.newBlockingStub(channel2);
+		blockingStub2 = BookingServiceGrpc.newBlockingStub(channel2);
 
-		asyncStub = RailwayServiceGrpc.newStub(channel);
+		asyncStub2 = BookingServiceGrpc.newStub(channel2);
 
 		initialize();
 	}
@@ -347,11 +348,54 @@ public class MainGUIApplication {
 					// System.out.println("Additional Info: " + individualResponse.getMsg() + "\n");
 
 				}
+				
+				//Client side streaming code:
+				StreamObserver<Booking> responseObserver = new StreamObserver<Booking>() {
+
+					public void onNext(Booking value) {
+						System.out.println("Final response from the server " + value.getTrainNo());
+						
+					}
+
+					@Override
+					public void onError(Throwable t) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void onCompleted() {
+						// TODO Auto-generated method stub
+						
+					}}; 
+					
+					
+					//returning a StreamObserver:
+					
+					StreamObserver<Booking> requestObserver = asyncStub2.makeBookings(responseObserver);
+					requestObserver.onNext(Booking.newBuilder().setTrainNo(1).build());
+					requestObserver.onNext(Booking.newBuilder().setTrainNo(2).build());
+					requestObserver.onNext(Booking.newBuilder().setTrainNo(3).build());
+					
+					
+					System.out.println("Client successfully sent messages.");
+					
+					requestObserver.onCompleted();
+					
+					try {
+						Thread.sleep(3000);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 
 			}
 		});
-		panel_service_1.add(btnJourneyFinder);
+		
+		
+		
 
+		panel_service_1.add(btnJourneyFinder);
 		textResponse = new JTextArea(10, 80);
 		textResponse.setLineWrap(true);
 		textResponse.setWrapStyleWord(true);

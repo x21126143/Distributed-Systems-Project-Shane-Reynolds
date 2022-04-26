@@ -4,20 +4,20 @@
 package ca.railway.bookingService2;
 
 /**
- * Protobuf type {@code ca.railway.bookingService2.BookingRequest}
+ * Protobuf type {@code ca.railway.bookingService2.Booking}
  */
-public  final class BookingRequest extends
+public  final class Booking extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:ca.railway.bookingService2.BookingRequest)
-    BookingRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:ca.railway.bookingService2.Booking)
+    BookingOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use BookingRequest.newBuilder() to construct.
-  private BookingRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use Booking.newBuilder() to construct.
+  private Booking(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private BookingRequest() {
+  private Booking() {
     trainNo_ = 0;
-    specialRequestMsg_ = "";
+    confirmationMsg_ = "";
   }
 
   @java.lang.Override
@@ -25,7 +25,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private BookingRequest(
+  private Booking(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -52,7 +52,7 @@ private static final long serialVersionUID = 0L;
           case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            specialRequestMsg_ = s;
+            confirmationMsg_ = s;
             break;
           }
           default: {
@@ -76,15 +76,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_bookingService2_BookingRequest_descriptor;
+    return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_bookingService2_Booking_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_bookingService2_BookingRequest_fieldAccessorTable
+    return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_bookingService2_Booking_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            ca.railway.bookingService2.BookingRequest.class, ca.railway.bookingService2.BookingRequest.Builder.class);
+            ca.railway.bookingService2.Booking.class, ca.railway.bookingService2.Booking.Builder.class);
   }
 
   public static final int TRAINNO_FIELD_NUMBER = 1;
@@ -96,34 +96,34 @@ private static final long serialVersionUID = 0L;
     return trainNo_;
   }
 
-  public static final int SPECIALREQUESTMSG_FIELD_NUMBER = 2;
-  private volatile java.lang.Object specialRequestMsg_;
+  public static final int CONFIRMATIONMSG_FIELD_NUMBER = 2;
+  private volatile java.lang.Object confirmationMsg_;
   /**
-   * <code>string specialRequestMsg = 2;</code>
+   * <code>string confirmationMsg = 2;</code>
    */
-  public java.lang.String getSpecialRequestMsg() {
-    java.lang.Object ref = specialRequestMsg_;
+  public java.lang.String getConfirmationMsg() {
+    java.lang.Object ref = confirmationMsg_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      specialRequestMsg_ = s;
+      confirmationMsg_ = s;
       return s;
     }
   }
   /**
-   * <code>string specialRequestMsg = 2;</code>
+   * <code>string confirmationMsg = 2;</code>
    */
   public com.google.protobuf.ByteString
-      getSpecialRequestMsgBytes() {
-    java.lang.Object ref = specialRequestMsg_;
+      getConfirmationMsgBytes() {
+    java.lang.Object ref = confirmationMsg_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      specialRequestMsg_ = b;
+      confirmationMsg_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -147,8 +147,8 @@ private static final long serialVersionUID = 0L;
     if (trainNo_ != 0) {
       output.writeInt32(1, trainNo_);
     }
-    if (!getSpecialRequestMsgBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, specialRequestMsg_);
+    if (!getConfirmationMsgBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, confirmationMsg_);
     }
     unknownFields.writeTo(output);
   }
@@ -163,8 +163,8 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, trainNo_);
     }
-    if (!getSpecialRequestMsgBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, specialRequestMsg_);
+    if (!getConfirmationMsgBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, confirmationMsg_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -176,16 +176,16 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof ca.railway.bookingService2.BookingRequest)) {
+    if (!(obj instanceof ca.railway.bookingService2.Booking)) {
       return super.equals(obj);
     }
-    ca.railway.bookingService2.BookingRequest other = (ca.railway.bookingService2.BookingRequest) obj;
+    ca.railway.bookingService2.Booking other = (ca.railway.bookingService2.Booking) obj;
 
     boolean result = true;
     result = result && (getTrainNo()
         == other.getTrainNo());
-    result = result && getSpecialRequestMsg()
-        .equals(other.getSpecialRequestMsg());
+    result = result && getConfirmationMsg()
+        .equals(other.getConfirmationMsg());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -199,76 +199,76 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + TRAINNO_FIELD_NUMBER;
     hash = (53 * hash) + getTrainNo();
-    hash = (37 * hash) + SPECIALREQUESTMSG_FIELD_NUMBER;
-    hash = (53 * hash) + getSpecialRequestMsg().hashCode();
+    hash = (37 * hash) + CONFIRMATIONMSG_FIELD_NUMBER;
+    hash = (53 * hash) + getConfirmationMsg().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static ca.railway.bookingService2.BookingRequest parseFrom(
+  public static ca.railway.bookingService2.Booking parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ca.railway.bookingService2.BookingRequest parseFrom(
+  public static ca.railway.bookingService2.Booking parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ca.railway.bookingService2.BookingRequest parseFrom(
+  public static ca.railway.bookingService2.Booking parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ca.railway.bookingService2.BookingRequest parseFrom(
+  public static ca.railway.bookingService2.Booking parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ca.railway.bookingService2.BookingRequest parseFrom(byte[] data)
+  public static ca.railway.bookingService2.Booking parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ca.railway.bookingService2.BookingRequest parseFrom(
+  public static ca.railway.bookingService2.Booking parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ca.railway.bookingService2.BookingRequest parseFrom(java.io.InputStream input)
+  public static ca.railway.bookingService2.Booking parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ca.railway.bookingService2.BookingRequest parseFrom(
+  public static ca.railway.bookingService2.Booking parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ca.railway.bookingService2.BookingRequest parseDelimitedFrom(java.io.InputStream input)
+  public static ca.railway.bookingService2.Booking parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static ca.railway.bookingService2.BookingRequest parseDelimitedFrom(
+  public static ca.railway.bookingService2.Booking parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ca.railway.bookingService2.BookingRequest parseFrom(
+  public static ca.railway.bookingService2.Booking parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ca.railway.bookingService2.BookingRequest parseFrom(
+  public static ca.railway.bookingService2.Booking parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -281,7 +281,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(ca.railway.bookingService2.BookingRequest prototype) {
+  public static Builder newBuilder(ca.railway.bookingService2.Booking prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -297,26 +297,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code ca.railway.bookingService2.BookingRequest}
+   * Protobuf type {@code ca.railway.bookingService2.Booking}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:ca.railway.bookingService2.BookingRequest)
-      ca.railway.bookingService2.BookingRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:ca.railway.bookingService2.Booking)
+      ca.railway.bookingService2.BookingOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_bookingService2_BookingRequest_descriptor;
+      return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_bookingService2_Booking_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_bookingService2_BookingRequest_fieldAccessorTable
+      return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_bookingService2_Booking_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ca.railway.bookingService2.BookingRequest.class, ca.railway.bookingService2.BookingRequest.Builder.class);
+              ca.railway.bookingService2.Booking.class, ca.railway.bookingService2.Booking.Builder.class);
     }
 
-    // Construct using ca.railway.bookingService2.BookingRequest.newBuilder()
+    // Construct using ca.railway.bookingService2.Booking.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -336,7 +336,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       trainNo_ = 0;
 
-      specialRequestMsg_ = "";
+      confirmationMsg_ = "";
 
       return this;
     }
@@ -344,17 +344,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_bookingService2_BookingRequest_descriptor;
+      return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_bookingService2_Booking_descriptor;
     }
 
     @java.lang.Override
-    public ca.railway.bookingService2.BookingRequest getDefaultInstanceForType() {
-      return ca.railway.bookingService2.BookingRequest.getDefaultInstance();
+    public ca.railway.bookingService2.Booking getDefaultInstanceForType() {
+      return ca.railway.bookingService2.Booking.getDefaultInstance();
     }
 
     @java.lang.Override
-    public ca.railway.bookingService2.BookingRequest build() {
-      ca.railway.bookingService2.BookingRequest result = buildPartial();
+    public ca.railway.bookingService2.Booking build() {
+      ca.railway.bookingService2.Booking result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -362,10 +362,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public ca.railway.bookingService2.BookingRequest buildPartial() {
-      ca.railway.bookingService2.BookingRequest result = new ca.railway.bookingService2.BookingRequest(this);
+    public ca.railway.bookingService2.Booking buildPartial() {
+      ca.railway.bookingService2.Booking result = new ca.railway.bookingService2.Booking(this);
       result.trainNo_ = trainNo_;
-      result.specialRequestMsg_ = specialRequestMsg_;
+      result.confirmationMsg_ = confirmationMsg_;
       onBuilt();
       return result;
     }
@@ -404,21 +404,21 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof ca.railway.bookingService2.BookingRequest) {
-        return mergeFrom((ca.railway.bookingService2.BookingRequest)other);
+      if (other instanceof ca.railway.bookingService2.Booking) {
+        return mergeFrom((ca.railway.bookingService2.Booking)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(ca.railway.bookingService2.BookingRequest other) {
-      if (other == ca.railway.bookingService2.BookingRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(ca.railway.bookingService2.Booking other) {
+      if (other == ca.railway.bookingService2.Booking.getDefaultInstance()) return this;
       if (other.getTrainNo() != 0) {
         setTrainNo(other.getTrainNo());
       }
-      if (!other.getSpecialRequestMsg().isEmpty()) {
-        specialRequestMsg_ = other.specialRequestMsg_;
+      if (!other.getConfirmationMsg().isEmpty()) {
+        confirmationMsg_ = other.confirmationMsg_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -436,11 +436,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      ca.railway.bookingService2.BookingRequest parsedMessage = null;
+      ca.railway.bookingService2.Booking parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (ca.railway.bookingService2.BookingRequest) e.getUnfinishedMessage();
+        parsedMessage = (ca.railway.bookingService2.Booking) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -476,71 +476,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object specialRequestMsg_ = "";
+    private java.lang.Object confirmationMsg_ = "";
     /**
-     * <code>string specialRequestMsg = 2;</code>
+     * <code>string confirmationMsg = 2;</code>
      */
-    public java.lang.String getSpecialRequestMsg() {
-      java.lang.Object ref = specialRequestMsg_;
+    public java.lang.String getConfirmationMsg() {
+      java.lang.Object ref = confirmationMsg_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        specialRequestMsg_ = s;
+        confirmationMsg_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string specialRequestMsg = 2;</code>
+     * <code>string confirmationMsg = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getSpecialRequestMsgBytes() {
-      java.lang.Object ref = specialRequestMsg_;
+        getConfirmationMsgBytes() {
+      java.lang.Object ref = confirmationMsg_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        specialRequestMsg_ = b;
+        confirmationMsg_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string specialRequestMsg = 2;</code>
+     * <code>string confirmationMsg = 2;</code>
      */
-    public Builder setSpecialRequestMsg(
+    public Builder setConfirmationMsg(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      specialRequestMsg_ = value;
+      confirmationMsg_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string specialRequestMsg = 2;</code>
+     * <code>string confirmationMsg = 2;</code>
      */
-    public Builder clearSpecialRequestMsg() {
+    public Builder clearConfirmationMsg() {
       
-      specialRequestMsg_ = getDefaultInstance().getSpecialRequestMsg();
+      confirmationMsg_ = getDefaultInstance().getConfirmationMsg();
       onChanged();
       return this;
     }
     /**
-     * <code>string specialRequestMsg = 2;</code>
+     * <code>string confirmationMsg = 2;</code>
      */
-    public Builder setSpecialRequestMsgBytes(
+    public Builder setConfirmationMsgBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      specialRequestMsg_ = value;
+      confirmationMsg_ = value;
       onChanged();
       return this;
     }
@@ -557,41 +557,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:ca.railway.bookingService2.BookingRequest)
+    // @@protoc_insertion_point(builder_scope:ca.railway.bookingService2.Booking)
   }
 
-  // @@protoc_insertion_point(class_scope:ca.railway.bookingService2.BookingRequest)
-  private static final ca.railway.bookingService2.BookingRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:ca.railway.bookingService2.Booking)
+  private static final ca.railway.bookingService2.Booking DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new ca.railway.bookingService2.BookingRequest();
+    DEFAULT_INSTANCE = new ca.railway.bookingService2.Booking();
   }
 
-  public static ca.railway.bookingService2.BookingRequest getDefaultInstance() {
+  public static ca.railway.bookingService2.Booking getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<BookingRequest>
-      PARSER = new com.google.protobuf.AbstractParser<BookingRequest>() {
+  private static final com.google.protobuf.Parser<Booking>
+      PARSER = new com.google.protobuf.AbstractParser<Booking>() {
     @java.lang.Override
-    public BookingRequest parsePartialFrom(
+    public Booking parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new BookingRequest(input, extensionRegistry);
+      return new Booking(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<BookingRequest> parser() {
+  public static com.google.protobuf.Parser<Booking> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<BookingRequest> getParserForType() {
+  public com.google.protobuf.Parser<Booking> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public ca.railway.bookingService2.BookingRequest getDefaultInstanceForType() {
+  public ca.railway.bookingService2.Booking getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

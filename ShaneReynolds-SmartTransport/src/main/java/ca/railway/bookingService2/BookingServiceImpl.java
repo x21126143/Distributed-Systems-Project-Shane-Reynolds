@@ -25,15 +25,10 @@ public final class BookingServiceImpl {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ca_railway_bookingService2_LoginReply_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ca_railway_bookingService2_BookingRequest_descriptor;
+    internal_static_ca_railway_bookingService2_Booking_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ca_railway_bookingService2_BookingRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ca_railway_bookingService2_BookingReply_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ca_railway_bookingService2_BookingReply_fieldAccessorTable;
+      internal_static_ca_railway_bookingService2_Booking_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -46,16 +41,15 @@ public final class BookingServiceImpl {
       "\n\025service2Booking.proto\022\032ca.railway.book" +
       "ingService2\"2\n\014LoginRequest\022\020\n\010username\030" +
       "\001 \001(\t\022\020\n\010password\030\002 \001(\t\"\035\n\nLoginReply\022\017\n" +
-      "\007message\030\001 \001(\t\"<\n\016BookingRequest\022\017\n\007trai" +
-      "nNo\030\001 \001(\005\022\031\n\021specialRequestMsg\030\002 \001(\t\"\'\n\014" +
-      "BookingReply\022\027\n\017confirmationMsg\030\001 \001(\t2\325\001" +
-      "\n\016BookingService\022[\n\005login\022(.ca.railway.b" +
-      "ookingService2.LoginRequest\032&.ca.railway" +
-      ".bookingService2.LoginReply\"\000\022f\n\014makeBoo" +
-      "kings\022*.ca.railway.bookingService2.Booki" +
-      "ngRequest\032(.ca.railway.bookingService2.B" +
-      "ookingReply\"\000B2\n\032ca.railway.bookingServi" +
-      "ce2B\022BookingServiceImplP\001b\006proto3"
+      "\007message\030\001 \001(\t\"3\n\007Booking\022\017\n\007trainNo\030\001 \001" +
+      "(\005\022\027\n\017confirmationMsg\030\002 \001(\t2\313\001\n\016BookingS" +
+      "ervice\022[\n\005login\022(.ca.railway.bookingServ" +
+      "ice2.LoginRequest\032&.ca.railway.bookingSe" +
+      "rvice2.LoginReply\"\000\022\\\n\014makeBookings\022#.ca" +
+      ".railway.bookingService2.Booking\032#.ca.ra" +
+      "ilway.bookingService2.Booking\"\000(\001B2\n\032ca." +
+      "railway.bookingService2B\022BookingServiceI" +
+      "mplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -81,18 +75,12 @@ public final class BookingServiceImpl {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ca_railway_bookingService2_LoginReply_descriptor,
         new java.lang.String[] { "Message", });
-    internal_static_ca_railway_bookingService2_BookingRequest_descriptor =
+    internal_static_ca_railway_bookingService2_Booking_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_ca_railway_bookingService2_BookingRequest_fieldAccessorTable = new
+    internal_static_ca_railway_bookingService2_Booking_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ca_railway_bookingService2_BookingRequest_descriptor,
-        new java.lang.String[] { "TrainNo", "SpecialRequestMsg", });
-    internal_static_ca_railway_bookingService2_BookingReply_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_ca_railway_bookingService2_BookingReply_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ca_railway_bookingService2_BookingReply_descriptor,
-        new java.lang.String[] { "ConfirmationMsg", });
+        internal_static_ca_railway_bookingService2_Booking_descriptor,
+        new java.lang.String[] { "TrainNo", "ConfirmationMsg", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -19,7 +19,7 @@ service BookingService {
 	
 	//Client side streaming
 	
-	rpc makeBookings(BookingRequest) returns (BookingReply) {} 
+	rpc makeBookings(stream Booking) returns (Booking) {} 
 
 }
 
@@ -33,11 +33,8 @@ message LoginReply{
 	string message = 1;
 }
 
-message BookingRequest{
+message Booking{
 	int32 trainNo = 1;
-	string specialRequestMsg = 2;
+	string confirmationMsg = 2; 
 }
 
-message BookingReply{
-	string confirmationMsg = 1; 
-}

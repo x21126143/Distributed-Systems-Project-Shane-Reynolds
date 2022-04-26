@@ -112,16 +112,16 @@ public class BookingServer extends BookingServiceImplBase{
 
 	}
 	
-	public StreamObserver<BookingRequest> makeBookings(StreamObserver<BookingReply> responseObserver) {
+	public StreamObserver<Booking> makeBookings(StreamObserver<Booking> responseObserver) {
 		System.out.println("On server; inside the client streaming method");
 		//int trainNo = request.getTrainNo();
 		//String specialReq = request.getSpecialRequestMsg();
 		System.out.println("On server; inside the streaming method");
-		return new StreamObserver<BookingRequest>() {
+		return new StreamObserver<Booking>() {
 
 			@Override
-			public void onNext(BookingRequest value) {
-				System.out.println("On server; message received from the client." + value.getTrainNo() + value.getSpecialRequestMsg());
+			public void onNext(Booking value) {
+				System.out.println("On server; message received from the client." + value.getTrainNo());
 				
 			}
 
@@ -133,7 +133,7 @@ public class BookingServer extends BookingServiceImplBase{
 
 			@Override
 			public void onCompleted() {
-			BookingReply.Builder responseBuilder = BookingReply.newBuilder();
+			Booking.Builder responseBuilder = Booking.newBuilder();
 			
 			responseBuilder.setConfirmationMsg("Server says it has received message.");
 			responseObserver.onNext(responseBuilder.build());
