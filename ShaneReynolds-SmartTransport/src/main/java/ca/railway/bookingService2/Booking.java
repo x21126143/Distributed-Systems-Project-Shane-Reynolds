@@ -4,11 +4,11 @@
 package ca.railway.bookingService2;
 
 /**
- * Protobuf type {@code ca.railway.bookingService2.Booking}
+ * Protobuf type {@code bookingService2.Booking}
  */
 public  final class Booking extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:ca.railway.bookingService2.Booking)
+    // @@protoc_insertion_point(message_implements:bookingService2.Booking)
     BookingOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use Booking.newBuilder() to construct.
@@ -17,7 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private Booking() {
     trainNo_ = 0;
-    confirmationMsg_ = "";
+    specialRequestMsg_ = "";
   }
 
   @java.lang.Override
@@ -52,7 +52,7 @@ private static final long serialVersionUID = 0L;
           case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            confirmationMsg_ = s;
+            specialRequestMsg_ = s;
             break;
           }
           default: {
@@ -76,13 +76,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_bookingService2_Booking_descriptor;
+    return ca.railway.bookingService2.BookingServiceImpl.internal_static_bookingService2_Booking_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_bookingService2_Booking_fieldAccessorTable
+    return ca.railway.bookingService2.BookingServiceImpl.internal_static_bookingService2_Booking_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             ca.railway.bookingService2.Booking.class, ca.railway.bookingService2.Booking.Builder.class);
   }
@@ -96,34 +96,34 @@ private static final long serialVersionUID = 0L;
     return trainNo_;
   }
 
-  public static final int CONFIRMATIONMSG_FIELD_NUMBER = 2;
-  private volatile java.lang.Object confirmationMsg_;
+  public static final int SPECIALREQUESTMSG_FIELD_NUMBER = 2;
+  private volatile java.lang.Object specialRequestMsg_;
   /**
-   * <code>string confirmationMsg = 2;</code>
+   * <code>string specialRequestMsg = 2;</code>
    */
-  public java.lang.String getConfirmationMsg() {
-    java.lang.Object ref = confirmationMsg_;
+  public java.lang.String getSpecialRequestMsg() {
+    java.lang.Object ref = specialRequestMsg_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      confirmationMsg_ = s;
+      specialRequestMsg_ = s;
       return s;
     }
   }
   /**
-   * <code>string confirmationMsg = 2;</code>
+   * <code>string specialRequestMsg = 2;</code>
    */
   public com.google.protobuf.ByteString
-      getConfirmationMsgBytes() {
-    java.lang.Object ref = confirmationMsg_;
+      getSpecialRequestMsgBytes() {
+    java.lang.Object ref = specialRequestMsg_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      confirmationMsg_ = b;
+      specialRequestMsg_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -147,8 +147,8 @@ private static final long serialVersionUID = 0L;
     if (trainNo_ != 0) {
       output.writeInt32(1, trainNo_);
     }
-    if (!getConfirmationMsgBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, confirmationMsg_);
+    if (!getSpecialRequestMsgBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, specialRequestMsg_);
     }
     unknownFields.writeTo(output);
   }
@@ -163,8 +163,8 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, trainNo_);
     }
-    if (!getConfirmationMsgBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, confirmationMsg_);
+    if (!getSpecialRequestMsgBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, specialRequestMsg_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -184,8 +184,8 @@ private static final long serialVersionUID = 0L;
     boolean result = true;
     result = result && (getTrainNo()
         == other.getTrainNo());
-    result = result && getConfirmationMsg()
-        .equals(other.getConfirmationMsg());
+    result = result && getSpecialRequestMsg()
+        .equals(other.getSpecialRequestMsg());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -199,8 +199,8 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + TRAINNO_FIELD_NUMBER;
     hash = (53 * hash) + getTrainNo();
-    hash = (37 * hash) + CONFIRMATIONMSG_FIELD_NUMBER;
-    hash = (53 * hash) + getConfirmationMsg().hashCode();
+    hash = (37 * hash) + SPECIALREQUESTMSG_FIELD_NUMBER;
+    hash = (53 * hash) + getSpecialRequestMsg().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -297,21 +297,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code ca.railway.bookingService2.Booking}
+   * Protobuf type {@code bookingService2.Booking}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:ca.railway.bookingService2.Booking)
+      // @@protoc_insertion_point(builder_implements:bookingService2.Booking)
       ca.railway.bookingService2.BookingOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_bookingService2_Booking_descriptor;
+      return ca.railway.bookingService2.BookingServiceImpl.internal_static_bookingService2_Booking_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_bookingService2_Booking_fieldAccessorTable
+      return ca.railway.bookingService2.BookingServiceImpl.internal_static_bookingService2_Booking_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               ca.railway.bookingService2.Booking.class, ca.railway.bookingService2.Booking.Builder.class);
     }
@@ -336,7 +336,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       trainNo_ = 0;
 
-      confirmationMsg_ = "";
+      specialRequestMsg_ = "";
 
       return this;
     }
@@ -344,7 +344,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return ca.railway.bookingService2.BookingServiceImpl.internal_static_ca_railway_bookingService2_Booking_descriptor;
+      return ca.railway.bookingService2.BookingServiceImpl.internal_static_bookingService2_Booking_descriptor;
     }
 
     @java.lang.Override
@@ -365,7 +365,7 @@ private static final long serialVersionUID = 0L;
     public ca.railway.bookingService2.Booking buildPartial() {
       ca.railway.bookingService2.Booking result = new ca.railway.bookingService2.Booking(this);
       result.trainNo_ = trainNo_;
-      result.confirmationMsg_ = confirmationMsg_;
+      result.specialRequestMsg_ = specialRequestMsg_;
       onBuilt();
       return result;
     }
@@ -417,8 +417,8 @@ private static final long serialVersionUID = 0L;
       if (other.getTrainNo() != 0) {
         setTrainNo(other.getTrainNo());
       }
-      if (!other.getConfirmationMsg().isEmpty()) {
-        confirmationMsg_ = other.confirmationMsg_;
+      if (!other.getSpecialRequestMsg().isEmpty()) {
+        specialRequestMsg_ = other.specialRequestMsg_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -476,71 +476,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object confirmationMsg_ = "";
+    private java.lang.Object specialRequestMsg_ = "";
     /**
-     * <code>string confirmationMsg = 2;</code>
+     * <code>string specialRequestMsg = 2;</code>
      */
-    public java.lang.String getConfirmationMsg() {
-      java.lang.Object ref = confirmationMsg_;
+    public java.lang.String getSpecialRequestMsg() {
+      java.lang.Object ref = specialRequestMsg_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        confirmationMsg_ = s;
+        specialRequestMsg_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string confirmationMsg = 2;</code>
+     * <code>string specialRequestMsg = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getConfirmationMsgBytes() {
-      java.lang.Object ref = confirmationMsg_;
+        getSpecialRequestMsgBytes() {
+      java.lang.Object ref = specialRequestMsg_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        confirmationMsg_ = b;
+        specialRequestMsg_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string confirmationMsg = 2;</code>
+     * <code>string specialRequestMsg = 2;</code>
      */
-    public Builder setConfirmationMsg(
+    public Builder setSpecialRequestMsg(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      confirmationMsg_ = value;
+      specialRequestMsg_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string confirmationMsg = 2;</code>
+     * <code>string specialRequestMsg = 2;</code>
      */
-    public Builder clearConfirmationMsg() {
+    public Builder clearSpecialRequestMsg() {
       
-      confirmationMsg_ = getDefaultInstance().getConfirmationMsg();
+      specialRequestMsg_ = getDefaultInstance().getSpecialRequestMsg();
       onChanged();
       return this;
     }
     /**
-     * <code>string confirmationMsg = 2;</code>
+     * <code>string specialRequestMsg = 2;</code>
      */
-    public Builder setConfirmationMsgBytes(
+    public Builder setSpecialRequestMsgBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      confirmationMsg_ = value;
+      specialRequestMsg_ = value;
       onChanged();
       return this;
     }
@@ -557,10 +557,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:ca.railway.bookingService2.Booking)
+    // @@protoc_insertion_point(builder_scope:bookingService2.Booking)
   }
 
-  // @@protoc_insertion_point(class_scope:ca.railway.bookingService2.Booking)
+  // @@protoc_insertion_point(class_scope:bookingService2.Booking)
   private static final ca.railway.bookingService2.Booking DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new ca.railway.bookingService2.Booking();

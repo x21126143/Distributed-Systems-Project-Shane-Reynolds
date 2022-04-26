@@ -27,7 +27,7 @@ public final class BookingServiceGrpc {
 
   private BookingServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "ca.railway.bookingService2.BookingService";
+  public static final String SERVICE_NAME = "bookingService2.BookingService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<ca.railway.bookingService2.LoginRequest,
@@ -48,7 +48,7 @@ public final class BookingServiceGrpc {
               io.grpc.MethodDescriptor.<ca.railway.bookingService2.LoginRequest, ca.railway.bookingService2.LoginReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "ca.railway.bookingService2.BookingService", "login"))
+                  "bookingService2.BookingService", "login"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   ca.railway.bookingService2.LoginRequest.getDefaultInstance()))
@@ -80,7 +80,7 @@ public final class BookingServiceGrpc {
               io.grpc.MethodDescriptor.<ca.railway.bookingService2.Booking, ca.railway.bookingService2.Booking>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "ca.railway.bookingService2.BookingService", "makeBookings"))
+                  "bookingService2.BookingService", "makeBookings"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   ca.railway.bookingService2.Booking.getDefaultInstance()))
