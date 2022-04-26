@@ -1,8 +1,8 @@
 package ca.railway.bookingService2;
+
 import ca.railway.timetableService1.*;
 import ca.railway.bookingService2.BookingServiceGrpc.BookingServiceImplBase;
 import io.grpc.stub.StreamObserver;
-
 
 import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
@@ -18,13 +18,8 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
+public class BookingServer extends BookingServiceImplBase {
 
-
-
-
-
-public class BookingServer extends BookingServiceImplBase{
-	
 	public static void main(String[] args) {
 		BookingServer bookingserver = new BookingServer();
 
@@ -111,60 +106,59 @@ public class BookingServer extends BookingServiceImplBase{
 		}
 
 	}
-	
+
 	public StreamObserver<Booking> makeBookings(StreamObserver<Booking> responseObserver) {
 		System.out.println("On server; inside the client streaming method");
-		//int trainNo = request.getTrainNo();
-		//String specialReq = request.getSpecialRequestMsg();
+		// int trainNo = request.getTrainNo();
+		// String specialReq = request.getSpecialRequestMsg();
 		System.out.println("On server; inside the streaming method");
 		return new StreamObserver<Booking>() {
 
 			@Override
 			public void onNext(Booking value) {
-				System.out.println("On server; message received from the client." + value.getTrainNo() + value.getSpecialRequestMsg());
-				
-				
+				System.out.println("On server; message received from the client." + value.getTrainNo()
+						+ value.getSpecialRequestMsg());
+
 			}
 
 			@Override
 			public void onError(Throwable t) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void onCompleted() {
-			Booking.Builder responseBuilder = Booking.newBuilder();
-			
-			responseBuilder.setSpecialRequestMsg("Received");
-			responseObserver.onNext(responseBuilder.build());
-			responseObserver.onCompleted();
-				
-			}};
-		//Response Build
-		//newResponse.Builder responseBuilder = newResponse.newBuilder();
-	}
-	
-	public void login(LoginRequest request, StreamObserver<LoginReply> responseObserver) {
-		System.out.println("receiving the request method for login " +request.getUsername() + request.getPassword());
-		LoginReply.Builder responseBuilder = LoginReply.newBuilder();
-		
-		if (request.getUsername().equals("Shane98")) {
-			if(request.getPassword().equals("cherries!")) {
-				System.out.println("Login successful!");
-				responseBuilder.setMessage("Login Successful!");
+				Booking.Builder responseBuilder = Booking.newBuilder();
+
+				responseBuilder.setSpecialRequestMsg("Received");
 				responseObserver.onNext(responseBuilder.build());
 				responseObserver.onCompleted();
-				
+
 			}
-		}
-		else {
-			System.out.println("Login unsuccessful. Try again.");
-			responseBuilder.setMessage("Login Unsuccessful. Try Again.");
+		};
+		// Response Build
+		// newResponse.Builder responseBuilder = newResponse.newBuilder();
+	}
+
+	public void login(LoginRequest request, StreamObserver<LoginReply> responseObserver) {
+		System.out.println("receiving the request method for login " + request.getUsername() + request.getPassword());
+		LoginReply.Builder responseBuilder = LoginReply.newBuilder();
+
+		if (request.getUsername().equals("Shane98") && request.getPassword().equals("cherries!")) {
+
+			System.out.println("Login successful!\n");
+			responseBuilder.setMessage("Login Successful!\n");
+			responseObserver.onNext(responseBuilder.build());
+			responseObserver.onCompleted();
+
+		} else {
+			System.out.println("Login unsuccessful. Try again.\n");
+			responseBuilder.setMessage("Login Unsuccessful. Try Again.\n");
 			responseObserver.onNext(responseBuilder.build());
 			responseObserver.onCompleted();
 		}
-		
+
 	}
 
 }

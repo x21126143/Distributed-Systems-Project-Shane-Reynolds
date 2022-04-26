@@ -41,6 +41,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Iterator;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 
 public class MainGUIApplication {
@@ -164,6 +165,7 @@ public class MainGUIApplication {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setForeground(Color.cyan);
 		frame.setTitle("Client - Service Controller");
 		frame.setBounds(500, 500, 1000, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -174,6 +176,7 @@ public class MainGUIApplication {
 
 		JPanel panel_service_login = new JPanel();
 
+		frame.setForeground(Color.cyan);
 		JPanel panel_service_title = new JPanel();
 		frame.getContentPane().add(panel_service_title);
 		panel_service_title.setLayout(new FlowLayout(FlowLayout.CENTER, 2, 5));
@@ -190,8 +193,10 @@ public class MainGUIApplication {
 		frame.getContentPane().add(panel_service_info2);
 		panel_service_info2.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
 		frame.getContentPane().add(panel_service_login);
+		panel_service_info.setForeground(Color.cyan);
 		panel_service_login.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
 		panel_service_info.add(info);
+		
 
 		JButton btnPricer = new JButton("See all prices");
 		btnPricer.addActionListener(new ActionListener() {
@@ -205,6 +210,7 @@ public class MainGUIApplication {
 		});
 
 		JButton btnLogin = new JButton("Login");
+		btnLogin.setForeground(Color.RED);
 		JLabel usernamesLabel = new JLabel("Enter username: ");
 
 		JLabel passwordsLabel = new JLabel("Enter password: ");
@@ -235,18 +241,21 @@ public class MainGUIApplication {
 
 				textResponse.append(response.getMessage());
 				System.out.println(response.getMessage());
+				if(user.equals("Shane98") && pass.equals("cherries!")) {
+						btnLogin.setForeground(Color.GREEN);
+						System.out.println("Logged in..............");
+				}
+				else {
+					btnLogin.setForeground(Color.RED);
+				}
 			}
 		});
 
 		panel_service_login.add(btnLogin);
 		panel_service_info.add(btnPricer);
-
-		JLabel amenitiesLabel = new JLabel("Train Number");
-		panel_service_info2.add(amenitiesLabel);
-
-		amenitiesInput = new JTextField();
-		panel_service_info2.add(amenitiesInput);
-		amenitiesInput.setColumns(5);
+		
+		JPanel panel_service_amenities = new JPanel();
+		
 
 		JButton btnAmenities = new JButton("See Amenities");
 		btnAmenities.addActionListener(new ActionListener() {
@@ -263,8 +272,7 @@ public class MainGUIApplication {
 						+ response.getBikeSlot() + response.getPetsAllowed() + "\n");
 			}
 		});
-
-		panel_service_info2.add(btnAmenities);
+		
 
 		JPanel panel_service_1 = new JPanel();
 		frame.getContentPane().add(panel_service_1);
@@ -284,16 +292,34 @@ public class MainGUIApplication {
 		panel_service_1.add(arrivalInput);
 		arrivalInput.setColumns(10);
 		
-		panel_service_1.add(trainInput);
-		panel_service_1.add(specialInput);
+		
+		frame.getContentPane().add(panel_service_amenities);
+		panel_service_amenities.setLayout(new FlowLayout(FlowLayout.CENTER, 8, 5));
+
+		JLabel amenitiesLabel = new JLabel("Train Number");
+		panel_service_amenities.add(amenitiesLabel);
+
+		amenitiesInput = new JTextField();
+		panel_service_amenities.add(amenitiesInput);
+		amenitiesInput.setColumns(5);
+		
+		
+		panel_service_amenities.add(btnAmenities);
+		
+		
+		
+		
+		JPanel panel_service_book = new JPanel();
+		frame.getContentPane().add(panel_service_book);
+		JLabel bookingLabel1 = new JLabel("Train Number");
+		panel_service_book.add(bookingLabel1);
+		panel_service_book.add(trainInput);
+		
+		JLabel bookingLabel2 = new JLabel("Special Request for this Booking");
+		panel_service_book.add(bookingLabel2);
+		panel_service_book.add(specialInput);
 		trainInput.setColumns(10);
 		specialInput.setColumns(10);
-
-		/*
-		 * JComboBox comboOperation = new JComboBox(); comboOperation.setModel(new
-		 * DefaultComboBoxModel(new String[] {"ADDITION", "SUBTRACTION",
-		 * "MULTIPLICATION", "DIVISION"})); panel_service_1.add(comboOperation);
-		 */
 
 		JButton btnJourneyFinder = new JButton("Find journeys");
 
@@ -302,17 +328,10 @@ public class MainGUIApplication {
 
 				String station1 = departInput.getText();
 				String station2 = arrivalInput.getText();
-
-				// int index = comboOperation.getSelectedIndex();
-				// Operation operation = Operation.forNumber(index);
-
 				Stations req = Stations.newBuilder().setDepartStation(station1).setArrivalStation(station2).build();
 
-				// TrainDetails response = blockingStub.viewTimetable(req);
 				Iterator<TrainDetails> response = blockingStub.viewTimetable(req);
 
-				// textResponse.append("reply:"+ response.getResult() + " mes:"+
-				// response.getMessage() + "\n");
 
 				int counter = 0;
 				while (response.hasNext()) {
@@ -340,16 +359,6 @@ public class MainGUIApplication {
 						counter++;
 					}
 
-					// System.out.println(station1 + " to " + station2 + ":");
-
-					// System.out.println("Price is: €" + individualResponse.getPrice());
-
-					// System.out.println("Arrival Time is: " + individualResponse.getTime() +
-					// "PM");
-
-					// System.out.println("Train number is: " + individualResponse.getTrainNo());
-
-					// System.out.println("Additional Info: " + individualResponse.getMsg() + "\n");
 
 				}
 
@@ -391,9 +400,13 @@ public class MainGUIApplication {
 				requestObserver.onNext(Booking.newBuilder().setSpecialRequestMsg(special).build());
 			//	requestObserver.onNext(Booking.newBuilder().setTrainNo(3).build());
 
+				Random random = new Random();
+				
 				System.out.println("Client successfully sent messages.");
-				textResponse.append(trainNo);
-				textResponse.append(special);
+				textResponse.append("\n");
+				textResponse.append("Booking Confirmation Number: " + random.nextInt(100000) +"\n");
+				textResponse.append("Train Number: " + trainNo + "\n");
+				textResponse.append("Special Request from customer: " + special + "\n");
 
 				requestObserver.onCompleted();
 
@@ -410,7 +423,7 @@ public class MainGUIApplication {
 
 		});
 
-		panel_service_1.add(btnJourneyBook);
+		panel_service_book.add(btnJourneyBook);
 		panel_service_1.add(btnJourneyFinder);
 		textResponse = new JTextArea(10, 80);
 		textResponse.setLineWrap(true);
