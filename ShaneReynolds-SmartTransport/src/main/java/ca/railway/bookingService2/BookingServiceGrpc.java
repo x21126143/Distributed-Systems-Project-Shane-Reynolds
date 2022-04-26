@@ -62,6 +62,38 @@ public final class BookingServiceGrpc {
      return getLoginMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<ca.railway.bookingService2.BookingRequest,
+      ca.railway.bookingService2.BookingReply> getMakeBookingsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "makeBookings",
+      requestType = ca.railway.bookingService2.BookingRequest.class,
+      responseType = ca.railway.bookingService2.BookingReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<ca.railway.bookingService2.BookingRequest,
+      ca.railway.bookingService2.BookingReply> getMakeBookingsMethod() {
+    io.grpc.MethodDescriptor<ca.railway.bookingService2.BookingRequest, ca.railway.bookingService2.BookingReply> getMakeBookingsMethod;
+    if ((getMakeBookingsMethod = BookingServiceGrpc.getMakeBookingsMethod) == null) {
+      synchronized (BookingServiceGrpc.class) {
+        if ((getMakeBookingsMethod = BookingServiceGrpc.getMakeBookingsMethod) == null) {
+          BookingServiceGrpc.getMakeBookingsMethod = getMakeBookingsMethod = 
+              io.grpc.MethodDescriptor.<ca.railway.bookingService2.BookingRequest, ca.railway.bookingService2.BookingReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "ca.railway.bookingService2.BookingService", "makeBookings"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ca.railway.bookingService2.BookingRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ca.railway.bookingService2.BookingReply.getDefaultInstance()))
+                  .setSchemaDescriptor(new BookingServiceMethodDescriptorSupplier("makeBookings"))
+                  .build();
+          }
+        }
+     }
+     return getMakeBookingsMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -99,6 +131,13 @@ public final class BookingServiceGrpc {
       asyncUnimplementedUnaryCall(getLoginMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void makeBookings(ca.railway.bookingService2.BookingRequest request,
+        io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingReply> responseObserver) {
+      asyncUnimplementedUnaryCall(getMakeBookingsMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -108,6 +147,13 @@ public final class BookingServiceGrpc {
                 ca.railway.bookingService2.LoginRequest,
                 ca.railway.bookingService2.LoginReply>(
                   this, METHODID_LOGIN)))
+          .addMethod(
+            getMakeBookingsMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                ca.railway.bookingService2.BookingRequest,
+                ca.railway.bookingService2.BookingReply>(
+                  this, METHODID_MAKE_BOOKINGS)))
           .build();
     }
   }
@@ -140,6 +186,14 @@ public final class BookingServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getLoginMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void makeBookings(ca.railway.bookingService2.BookingRequest request,
+        io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingReply> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getMakeBookingsMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -168,6 +222,13 @@ public final class BookingServiceGrpc {
     public ca.railway.bookingService2.LoginReply login(ca.railway.bookingService2.LoginRequest request) {
       return blockingUnaryCall(
           getChannel(), getLoginMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public ca.railway.bookingService2.BookingReply makeBookings(ca.railway.bookingService2.BookingRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getMakeBookingsMethod(), getCallOptions(), request);
     }
   }
 
@@ -199,9 +260,18 @@ public final class BookingServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getLoginMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<ca.railway.bookingService2.BookingReply> makeBookings(
+        ca.railway.bookingService2.BookingRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getMakeBookingsMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_LOGIN = 0;
+  private static final int METHODID_MAKE_BOOKINGS = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -223,6 +293,10 @@ public final class BookingServiceGrpc {
         case METHODID_LOGIN:
           serviceImpl.login((ca.railway.bookingService2.LoginRequest) request,
               (io.grpc.stub.StreamObserver<ca.railway.bookingService2.LoginReply>) responseObserver);
+          break;
+        case METHODID_MAKE_BOOKINGS:
+          serviceImpl.makeBookings((ca.railway.bookingService2.BookingRequest) request,
+              (io.grpc.stub.StreamObserver<ca.railway.bookingService2.BookingReply>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -286,6 +360,7 @@ public final class BookingServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new BookingServiceFileDescriptorSupplier())
               .addMethod(getLoginMethod())
+              .addMethod(getMakeBookingsMethod())
               .build();
         }
       }
