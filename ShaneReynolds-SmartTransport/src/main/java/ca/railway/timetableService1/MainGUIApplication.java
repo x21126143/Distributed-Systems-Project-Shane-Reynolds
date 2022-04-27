@@ -21,6 +21,10 @@ import ca.railway.bookingService2.BookingServiceGrpc.BookingServiceBlockingStub;
 import ca.railway.bookingService2.BookingServiceGrpc.BookingServiceStub;
 import ca.railway.bookingService2.LoginReply;
 import ca.railway.bookingService2.LoginRequest;
+import ca.railway.supportService3.SupportServiceGrpc;
+import ca.railway.supportService3.SupportServiceGrpc.SupportServiceBlockingStub;
+import ca.railway.supportService3.complaintConfirmation;
+import ca.railway.supportService3.complaintMsg;
 import ca.railway.timetableService1.*;
 
 import javax.swing.JButton;
@@ -51,6 +55,8 @@ public class MainGUIApplication {
 
 	private static BookingServiceBlockingStub blockingStub2;
 	private static BookingServiceStub asyncStub2;
+	
+	private static SupportServiceBlockingStub blockingStub3;
 
 	private ServiceInfo railServiceInfo;
 
@@ -62,6 +68,7 @@ public class MainGUIApplication {
 	private JTextField amenitiesInput;
 	private JTextField usernameInput;
 	private JTextField passwordInput;
+	private JTextField complaintInput;
 	private JTextArea textResponse;
 
 	/**
@@ -95,11 +102,12 @@ public class MainGUIApplication {
 
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
 		ManagedChannel channel2 = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();
-
+		ManagedChannel channel3 = ManagedChannelBuilder.forAddress("localhost", 50053).usePlaintext().build();
 		// stubs -- generate from proto
 		blockingStub = RailwayServiceGrpc.newBlockingStub(channel);
 		blockingStub2 = BookingServiceGrpc.newBlockingStub(channel2);
-
+		blockingStub3 = SupportServiceGrpc.newBlockingStub(channel3);
+		
 		asyncStub2 = BookingServiceGrpc.newStub(channel2);
 
 		initialize();
@@ -273,6 +281,20 @@ public class MainGUIApplication {
 			}
 		});
 		
+		
+		JButton btnComplaint = new JButton("Send Complaint");
+		btnComplaint.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String complaint = complaintInput.getText();
+				complaintMsg req = complaintMsg.newBuilder().setComplaint(complaint).build();
+				
+				complaintConfirmation response = blockingStub3.complaint(req);
+				textResponse.append(response.getReply() + "\nYour Complaint Message:\n");
+				textResponse.append(req.getComplaint());
+				System.out.println(req.getComplaint());
+			}
+		});
+		
 
 		JPanel panel_service_1 = new JPanel();
 		frame.getContentPane().add(panel_service_1);
@@ -422,6 +444,18 @@ public class MainGUIApplication {
 			
 
 		});
+		
+		complaintInput = new JTextField();
+		JPanel panel_service_support1 = new JPanel();
+		panel_service_support1.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
+		frame.getContentPane().add(panel_service_support1);
+		
+		JLabel supportLabel = new JLabel("Have a complaint? Please enter it here");
+		panel_service_support1.add(supportLabel);
+		
+		panel_service_support1.add(complaintInput);
+		complaintInput.setColumns(40);
+		panel_service_support1.add(btnComplaint);
 
 		panel_service_book.add(btnJourneyBook);
 		panel_service_1.add(btnJourneyFinder);
@@ -439,6 +473,10 @@ public class MainGUIApplication {
 
 		JPanel panel_service_3 = new JPanel();
 		frame.getContentPane().add(panel_service_3);
+		
+		
+		
+		panel_service_info.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
 
 	}
 

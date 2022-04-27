@@ -16,19 +16,7 @@ service RailwayService {
 	
 	rpc amenities(TrainNo) returns (TrainAmenities) {} //Unary
 
-  //rpc calculate(CalculateRequest) returns (CalculateResponse) {}
-
-
-  //rpc generateRandomNumbers(RandomRequest) returns (stream NumberResponse ) {}
-
-
-  //rpc averageValues(stream NumberMessage) returns (CalculateResponse ) {}
-
-
-  //rpc convertBase(stream ConvertMessage) returns (stream ConvertResponse ) {}
-
 }
-
 
 message RequestPrices{
 	string request = 1;
@@ -37,8 +25,6 @@ message RequestPrices{
 message Pricing{
 	string price = 1;
 }
-
-
 
 message Stations{
 	string departStation = 1;
@@ -61,56 +47,3 @@ message TrainAmenities{
 	string bikeSlot = 2;
 	bool petsAllowed = 3;
 }
-
-
-
-
-
-//message ConvertMessage {
-//	string number = 1;
-//	int32 fromBase = 2;
-//	int32 toBase = 3;
-//}
-
-//message ConvertResponse {
-//	string number  = 1;
-//	int32 base = 2;
-//}
-
-//message RandomRequest {
-//	int32 numbers = 1;
-//	int32 min = 2;
-//	int32 max = 3;
-//}
-
-
-//message NumberResponse {
-//	int32 number = 1;
-//}
-
-
-
-//message CalculateRequest {
-//  float number1 = 1;
-//  float number2 = 2;
-//
-//  enum Operation{
-//
-// 	ADDITION =0;
-//  	SUBTRACTION=1;
-//  	MULTIPLICATION=2;
-//  	DIVISION=3;
-//  }
-//  Operation operation = 3;
-//}
-
-
-//message CalculateResponse {
-//	float result = 1;
-//	string message = 2;
-//}
-
-
-//message NumberMessage{
-//	float number = 1;
-//}

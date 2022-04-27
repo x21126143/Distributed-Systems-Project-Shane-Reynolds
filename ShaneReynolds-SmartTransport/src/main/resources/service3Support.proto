@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+
+option java_multiple_files = true;
+option java_package = "ca.railway.supportService3";
+option java_outer_classname = "SupportServiceImpl";
+
+package supportService3;
+
+// Interface exported by the server.
+service SupportService {
+
+	rpc complaint(complaintMsg) returns (complaintConfirmation) {}
+	
+}
+
+message complaintMsg{
+	string complaint = 1;
+}
+
+message complaintConfirmation{
+	string reply = 1;
+}
