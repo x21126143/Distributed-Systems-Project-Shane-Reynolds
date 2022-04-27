@@ -62,6 +62,38 @@ public final class SupportServiceGrpc {
      return getComplaintMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<ca.railway.supportService3.emergencyReportBool,
+      ca.railway.supportService3.emergencyResponse> getEmergencyMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "emergency",
+      requestType = ca.railway.supportService3.emergencyReportBool.class,
+      responseType = ca.railway.supportService3.emergencyResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<ca.railway.supportService3.emergencyReportBool,
+      ca.railway.supportService3.emergencyResponse> getEmergencyMethod() {
+    io.grpc.MethodDescriptor<ca.railway.supportService3.emergencyReportBool, ca.railway.supportService3.emergencyResponse> getEmergencyMethod;
+    if ((getEmergencyMethod = SupportServiceGrpc.getEmergencyMethod) == null) {
+      synchronized (SupportServiceGrpc.class) {
+        if ((getEmergencyMethod = SupportServiceGrpc.getEmergencyMethod) == null) {
+          SupportServiceGrpc.getEmergencyMethod = getEmergencyMethod = 
+              io.grpc.MethodDescriptor.<ca.railway.supportService3.emergencyReportBool, ca.railway.supportService3.emergencyResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "supportService3.SupportService", "emergency"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ca.railway.supportService3.emergencyReportBool.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ca.railway.supportService3.emergencyResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new SupportServiceMethodDescriptorSupplier("emergency"))
+                  .build();
+          }
+        }
+     }
+     return getEmergencyMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -99,6 +131,13 @@ public final class SupportServiceGrpc {
       asyncUnimplementedUnaryCall(getComplaintMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void emergency(ca.railway.supportService3.emergencyReportBool request,
+        io.grpc.stub.StreamObserver<ca.railway.supportService3.emergencyResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getEmergencyMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -108,6 +147,13 @@ public final class SupportServiceGrpc {
                 ca.railway.supportService3.complaintMsg,
                 ca.railway.supportService3.complaintConfirmation>(
                   this, METHODID_COMPLAINT)))
+          .addMethod(
+            getEmergencyMethod(),
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                ca.railway.supportService3.emergencyReportBool,
+                ca.railway.supportService3.emergencyResponse>(
+                  this, METHODID_EMERGENCY)))
           .build();
     }
   }
@@ -140,6 +186,14 @@ public final class SupportServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getComplaintMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void emergency(ca.railway.supportService3.emergencyReportBool request,
+        io.grpc.stub.StreamObserver<ca.railway.supportService3.emergencyResponse> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(getEmergencyMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -168,6 +222,14 @@ public final class SupportServiceGrpc {
     public ca.railway.supportService3.complaintConfirmation complaint(ca.railway.supportService3.complaintMsg request) {
       return blockingUnaryCall(
           getChannel(), getComplaintMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<ca.railway.supportService3.emergencyResponse> emergency(
+        ca.railway.supportService3.emergencyReportBool request) {
+      return blockingServerStreamingCall(
+          getChannel(), getEmergencyMethod(), getCallOptions(), request);
     }
   }
 
@@ -202,6 +264,7 @@ public final class SupportServiceGrpc {
   }
 
   private static final int METHODID_COMPLAINT = 0;
+  private static final int METHODID_EMERGENCY = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -223,6 +286,10 @@ public final class SupportServiceGrpc {
         case METHODID_COMPLAINT:
           serviceImpl.complaint((ca.railway.supportService3.complaintMsg) request,
               (io.grpc.stub.StreamObserver<ca.railway.supportService3.complaintConfirmation>) responseObserver);
+          break;
+        case METHODID_EMERGENCY:
+          serviceImpl.emergency((ca.railway.supportService3.emergencyReportBool) request,
+              (io.grpc.stub.StreamObserver<ca.railway.supportService3.emergencyResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -286,6 +353,7 @@ public final class SupportServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new SupportServiceFileDescriptorSupplier())
               .addMethod(getComplaintMethod())
+              .addMethod(getEmergencyMethod())
               .build();
         }
       }

@@ -113,8 +113,24 @@ public class SupportServer extends SupportServiceImplBase {
 		System.out.println("receiving Request method " + request.getComplaint());
 
 		complaintConfirmation reply = complaintConfirmation.newBuilder()
-				.setReply("Thank you for submitting your message. Apologies for the inconvenience.").build();
+				.setReply("\nThank you for submitting your message. Apologies for the inconvenience.\n").build();
 		responseObserver.onNext(reply);
 		responseObserver.onCompleted();
 	}
+	
+	public void emergency(emergencyReportBool request, StreamObserver<emergencyResponse> responseObserver) {
+		System.out.println("Receiving the method " + request.getEmergency());
+		emergencyResponse.Builder responseBuilder = emergencyResponse.newBuilder();
+		
+		responseBuilder.setSafetyDetails("\nRemain calm and seated if necessary. Seek emergency exit in the event of a fire.\n"
+				+ "Below, see the police number, followed by paramedic number.");
+		responseObserver.onNext(responseBuilder.build());
+		responseBuilder.setPoliceNo(999);
+		responseObserver.onNext(responseBuilder.build());
+		responseBuilder.setParamedicNo(343);
+		responseObserver.onNext(responseBuilder.build());
+		responseObserver.onCompleted(); // Finished Streaming
+	}
+	
+	
 }

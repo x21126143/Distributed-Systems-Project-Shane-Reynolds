@@ -12,6 +12,8 @@ service SupportService {
 
 	rpc complaint(complaintMsg) returns (complaintConfirmation) {}
 	
+	rpc emergency(emergencyReportBool) returns (stream emergencyResponse) {}
+	
 }
 
 message complaintMsg{
@@ -20,4 +22,14 @@ message complaintMsg{
 
 message complaintConfirmation{
 	string reply = 1;
+}
+
+message emergencyReportBool{
+	bool emergency = 1;
+}
+
+message emergencyResponse{
+	string safetyDetails = 1;
+	int32 policeNo = 2;
+	int32 paramedicNo = 3;
 }

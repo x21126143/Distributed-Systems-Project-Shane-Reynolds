@@ -24,6 +24,16 @@ public final class SupportServiceImpl {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_supportService3_complaintConfirmation_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_supportService3_emergencyReportBool_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_supportService3_emergencyReportBool_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_supportService3_emergencyResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_supportService3_emergencyResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -35,11 +45,17 @@ public final class SupportServiceImpl {
     java.lang.String[] descriptorData = {
       "\n\025service3Support.proto\022\017supportService3" +
       "\"!\n\014complaintMsg\022\021\n\tcomplaint\030\001 \001(\t\"&\n\025c" +
-      "omplaintConfirmation\022\r\n\005reply\030\001 \001(\t2f\n\016S" +
-      "upportService\022T\n\tcomplaint\022\035.supportServ" +
-      "ice3.complaintMsg\032&.supportService3.comp" +
-      "laintConfirmation\"\000B2\n\032ca.railway.suppor" +
-      "tService3B\022SupportServiceImplP\001b\006proto3"
+      "omplaintConfirmation\022\r\n\005reply\030\001 \001(\t\"(\n\023e" +
+      "mergencyReportBool\022\021\n\temergency\030\001 \001(\010\"Q\n" +
+      "\021emergencyResponse\022\025\n\rsafetyDetails\030\001 \001(" +
+      "\t\022\020\n\010policeNo\030\002 \001(\005\022\023\n\013paramedicNo\030\003 \001(\005" +
+      "2\301\001\n\016SupportService\022T\n\tcomplaint\022\035.suppo" +
+      "rtService3.complaintMsg\032&.supportService" +
+      "3.complaintConfirmation\"\000\022Y\n\temergency\022$" +
+      ".supportService3.emergencyReportBool\032\".s" +
+      "upportService3.emergencyResponse\"\0000\001B2\n\032" +
+      "ca.railway.supportService3B\022SupportServi" +
+      "ceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -65,6 +81,18 @@ public final class SupportServiceImpl {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_supportService3_complaintConfirmation_descriptor,
         new java.lang.String[] { "Reply", });
+    internal_static_supportService3_emergencyReportBool_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_supportService3_emergencyReportBool_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_supportService3_emergencyReportBool_descriptor,
+        new java.lang.String[] { "Emergency", });
+    internal_static_supportService3_emergencyResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_supportService3_emergencyResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_supportService3_emergencyResponse_descriptor,
+        new java.lang.String[] { "SafetyDetails", "PoliceNo", "ParamedicNo", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

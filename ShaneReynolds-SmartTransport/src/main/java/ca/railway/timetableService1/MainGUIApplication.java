@@ -25,6 +25,8 @@ import ca.railway.supportService3.SupportServiceGrpc;
 import ca.railway.supportService3.SupportServiceGrpc.SupportServiceBlockingStub;
 import ca.railway.supportService3.complaintConfirmation;
 import ca.railway.supportService3.complaintMsg;
+import ca.railway.supportService3.emergencyReportBool;
+import ca.railway.supportService3.emergencyResponse;
 import ca.railway.timetableService1.*;
 
 import javax.swing.JButton;
@@ -55,7 +57,7 @@ public class MainGUIApplication {
 
 	private static BookingServiceBlockingStub blockingStub2;
 	private static BookingServiceStub asyncStub2;
-	
+
 	private static SupportServiceBlockingStub blockingStub3;
 
 	private ServiceInfo railServiceInfo;
@@ -107,7 +109,7 @@ public class MainGUIApplication {
 		blockingStub = RailwayServiceGrpc.newBlockingStub(channel);
 		blockingStub2 = BookingServiceGrpc.newBlockingStub(channel2);
 		blockingStub3 = SupportServiceGrpc.newBlockingStub(channel3);
-		
+
 		asyncStub2 = BookingServiceGrpc.newStub(channel2);
 
 		initialize();
@@ -118,7 +120,6 @@ public class MainGUIApplication {
 		try {
 			// Create a JmDNS instance
 			JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
-			JmDNS jmdns2 = JmDNS.create(InetAddress.getLocalHost());
 
 			jmdns.addServiceListener(service_type, new ServiceListener() {
 
@@ -204,7 +205,6 @@ public class MainGUIApplication {
 		panel_service_info.setForeground(Color.cyan);
 		panel_service_login.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
 		panel_service_info.add(info);
-		
 
 		JButton btnPricer = new JButton("See all prices");
 		btnPricer.addActionListener(new ActionListener() {
@@ -235,9 +235,6 @@ public class MainGUIApplication {
 		panel_service_login.add(usernameInput);
 		panel_service_login.add(passwordsLabel);
 		panel_service_login.add(passwordInput);
-		
-		
-		
 
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -249,11 +246,10 @@ public class MainGUIApplication {
 
 				textResponse.append(response.getMessage());
 				System.out.println(response.getMessage());
-				if(user.equals("Shane98") && pass.equals("cherries!")) {
-						btnLogin.setForeground(Color.GREEN);
-						System.out.println("Logged in..............");
-				}
-				else {
+				if (user.equals("Shane98") && pass.equals("cherries!")) {
+					btnLogin.setForeground(Color.GREEN);
+					System.out.println("Logged in..............");
+				} else {
 					btnLogin.setForeground(Color.RED);
 				}
 			}
@@ -261,9 +257,8 @@ public class MainGUIApplication {
 
 		panel_service_login.add(btnLogin);
 		panel_service_info.add(btnPricer);
-		
+
 		JPanel panel_service_amenities = new JPanel();
-		
 
 		JButton btnAmenities = new JButton("See Amenities");
 		btnAmenities.addActionListener(new ActionListener() {
@@ -280,21 +275,19 @@ public class MainGUIApplication {
 						+ response.getBikeSlot() + response.getPetsAllowed() + "\n");
 			}
 		});
-		
-		
+
 		JButton btnComplaint = new JButton("Send Complaint");
 		btnComplaint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String complaint = complaintInput.getText();
 				complaintMsg req = complaintMsg.newBuilder().setComplaint(complaint).build();
-				
+
 				complaintConfirmation response = blockingStub3.complaint(req);
 				textResponse.append(response.getReply() + "\nYour Complaint Message:\n");
 				textResponse.append(req.getComplaint());
 				System.out.println(req.getComplaint());
 			}
 		});
-		
 
 		JPanel panel_service_1 = new JPanel();
 		frame.getContentPane().add(panel_service_1);
@@ -313,8 +306,7 @@ public class MainGUIApplication {
 		arrivalInput = new JTextField();
 		panel_service_1.add(arrivalInput);
 		arrivalInput.setColumns(10);
-		
-		
+
 		frame.getContentPane().add(panel_service_amenities);
 		panel_service_amenities.setLayout(new FlowLayout(FlowLayout.CENTER, 8, 5));
 
@@ -324,19 +316,15 @@ public class MainGUIApplication {
 		amenitiesInput = new JTextField();
 		panel_service_amenities.add(amenitiesInput);
 		amenitiesInput.setColumns(5);
-		
-		
+
 		panel_service_amenities.add(btnAmenities);
-		
-		
-		
-		
+
 		JPanel panel_service_book = new JPanel();
 		frame.getContentPane().add(panel_service_book);
 		JLabel bookingLabel1 = new JLabel("Train Number");
 		panel_service_book.add(bookingLabel1);
 		panel_service_book.add(trainInput);
-		
+
 		JLabel bookingLabel2 = new JLabel("Special Request for this Booking");
 		panel_service_book.add(bookingLabel2);
 		panel_service_book.add(specialInput);
@@ -353,7 +341,6 @@ public class MainGUIApplication {
 				Stations req = Stations.newBuilder().setDepartStation(station1).setArrivalStation(station2).build();
 
 				Iterator<TrainDetails> response = blockingStub.viewTimetable(req);
-
 
 				int counter = 0;
 				while (response.hasNext()) {
@@ -380,7 +367,6 @@ public class MainGUIApplication {
 						}
 						counter++;
 					}
-
 
 				}
 
@@ -418,15 +404,15 @@ public class MainGUIApplication {
 				// returning a StreamObserver:
 
 				StreamObserver<Booking> requestObserver = asyncStub2.makeBookings(responseObserver);
-		        requestObserver.onNext(Booking.newBuilder().setTrainNo(trainNo).build());
+				requestObserver.onNext(Booking.newBuilder().setTrainNo(trainNo).build());
 				requestObserver.onNext(Booking.newBuilder().setSpecialRequestMsg(special).build());
-			//	requestObserver.onNext(Booking.newBuilder().setTrainNo(3).build());
+				// requestObserver.onNext(Booking.newBuilder().setTrainNo(3).build());
 
 				Random random = new Random();
-				
+
 				System.out.println("Client successfully sent messages.");
 				textResponse.append("\n");
-				textResponse.append("Booking Confirmation Number: " + random.nextInt(100000) +"\n");
+				textResponse.append("Booking Confirmation Number: " + random.nextInt(100000) + "\n");
 				textResponse.append("Train Number: " + trainNo + "\n");
 				textResponse.append("Special Request from customer: " + special + "\n");
 
@@ -441,24 +427,61 @@ public class MainGUIApplication {
 				textResponse.append("Train is booked.");
 
 			}
-			
 
 		});
-		
+
 		complaintInput = new JTextField();
 		JPanel panel_service_support1 = new JPanel();
 		panel_service_support1.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
 		frame.getContentPane().add(panel_service_support1);
-		
+
 		JLabel supportLabel = new JLabel("Have a complaint? Please enter it here");
 		panel_service_support1.add(supportLabel);
-		
+
 		panel_service_support1.add(complaintInput);
 		complaintInput.setColumns(40);
 		panel_service_support1.add(btnComplaint);
 
 		panel_service_book.add(btnJourneyBook);
 		panel_service_1.add(btnJourneyFinder);
+
+		JButton btnEmer = new JButton("CLICK FOR EMERGENCY ASSISTANCE");
+		btnEmer.setForeground(Color.RED);
+		btnEmer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				emergencyReportBool req = emergencyReportBool.newBuilder().setEmergency(true).build();
+
+				Iterator<emergencyResponse> response = blockingStub3.emergency(req);
+
+				int counter = 0;
+				while (response.hasNext()) {
+
+					emergencyResponse individualResponse = response.next();
+
+					if (counter == 0) {
+						textResponse.append(individualResponse.getSafetyDetails());
+					} else if (counter == 1) {
+						String pol = Integer.toString(individualResponse.getPoliceNo());
+						textResponse.append("\n" + pol);
+					} else if (counter == 2) {
+						String safe = Integer.toString(individualResponse.getParamedicNo());
+						textResponse.append("\n" + safe + "\n");
+					} else {
+						continue;
+					}
+					counter++;
+
+				}
+
+			}
+		});
+
+		JPanel panel_service_emer = new JPanel();
+		frame.getContentPane().add(panel_service_emer);
+		panel_service_emer.setLayout(new FlowLayout(FlowLayout.CENTER, 8, 5));
+		panel_service_emer.add(btnEmer);
+
 		textResponse = new JTextArea(10, 80);
 		textResponse.setLineWrap(true);
 		textResponse.setWrapStyleWord(true);
@@ -473,9 +496,7 @@ public class MainGUIApplication {
 
 		JPanel panel_service_3 = new JPanel();
 		frame.getContentPane().add(panel_service_3);
-		
-		
-		
+
 		panel_service_info.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 5));
 
 	}
